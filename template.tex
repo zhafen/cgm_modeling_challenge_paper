@@ -47,7 +47,7 @@
 % Only include extra packages if you really need them. Common packages are:
 \usepackage{graphicx}	% Including figure files
 \usepackage{amsmath}	% Advanced maths commands
-\usepackage{amssymb}	% Extra maths symbols
+% \usepackage{amssymb}	% Extra maths symbols
 
 \usepackage[dvipsnames]{xcolor}
 
@@ -67,20 +67,15 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[The CGM Modeling Challenge]{The Robustness of Observational Modeling of CGM Absorption Systems}
+\title[Halo21 CGM Modeling Challenge]{The Halo21 Absorption Modeling Challenge: [Takeaway Title Message Here]}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
-\author[K. T. Smith et al.]{
-Keith T. Smith,$^{1}$\thanks{E-mail: mn@ras.org.uk (KTS)}
-A. N. Other,$^{2}$
-Third Author$^{2,3}$
-and Fourth Author$^{3}$
+\author[]{
+The Halo 21 Absorption Modeling Group
 \\
 % List of institutions
-$^{1}$Royal Astronomical Society, Burlington House, Piccadilly, London W1J 0BQ, UK\\
-$^{2}$Department, Institution, Street Address, City Postal Code, Country\\
-$^{3}$Another Department, Different Institution, Street Address, City Postal Code, Country
+$^{1}$TBD\\
 }
 
 % These dates will be filled out by the publisher
@@ -161,6 +156,31 @@ However, the ionization fractions were calculated in post-processing via Trident
 \section{Observational Modeling}
 
 \section{Results}
+
+\subsection{Highly idealized}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/sample0/comparison_H_density_inc_freq.pdf}
+    \includegraphics[width=0.45\textwidth]{figures/sample0/comparison_length_inc_freq.pdf}
+    \includegraphics[width=0.45\textwidth]{figures/sample0/comparison_temperature_inc_freq.pdf}
+    \includegraphics[width=0.45\textwidth]{figures/sample0/comparison_metallicity_inc_freq.pdf}
+    \caption{
+    Matching in highly idealized scenario.
+    }
+    \label{f: idealized}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/sample0/Z_modeled_vs_actual.pdf}
+    \label{f: idealized explanation}
+\end{figure*}
+
+
+\subsection{Informed by cosmological simulations}
+
+\subsection{Drawn from high resolution simulations}
 
 \section{Conclusions}
 
