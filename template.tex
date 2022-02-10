@@ -59,7 +59,14 @@
 % overwriting existing commands. Example:
 %\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
 
-\newcommand{\zach}[1]{\textcolor{BurntOrange}{\textbf{Zach: #1}}}
+\newcommand{\todo}[1]{\textcolor{Magenta}{\textbf{Address: #1}}}
+\newcommand{\atsameer}[1]{\textcolor{CornflowerBlue}{\textbf{@Sameer or Jane: #1}}}
+\newcommand{\atcameron}[1]{\textcolor{BurntOrange}{\textbf{@Cameron: #1}}}
+\newcommand{\atnastasha}[1]{\textcolor{Plum}{\textbf{@Nastasha: #1}}}
+\newcommand{\atnir}[1]{\textcolor{ForestGreen}{\textbf{@Nir: #1}}}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,26 +132,71 @@ In particular, what could they really use?
 
 \section{Introduction}
 
+% Other mock data challenges
+Other mock data challenges include a mock data challenge for detecting a gravitational-wave background~\cite{Meacher2015}, a mock data challenge for discriminating overlapping gravitational-wave signals~\cite{Regimbau2012},  and a mock data challenge for identifying gravitational-wave signals in pulsar timing array data~\cite{Hazboun2019}.
+\todo{What other mock data challenges are there?}
 
-\section{Data samples}
+% Mock CGM analyses of robustness of modeling.
+\cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS mass-weighted properties.
+\cite{Marra2021} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
+\cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
+\todo{What other similar studies are there?}
+\todo{What else can we learn from these studies?}
 
-\subsection{Highly idealized}
+\todo{Add a paragraph describing how the challenge was set up.}
 
-\textbf{This corresponds to sample0.}
+\section{Synthetic Data Generation}
 
-\zach{Cameron, would you be able to write down the steps you took?}
+% Summary
+Data generators produced three mock data samples of increasing sophistication for observers to model:
+a highly-idealized sample consisting of ion column densities for uniform clouds,
+a sample consisting of spectra generated with properties drawn from a cosmological simulation,
+and a sample of spectra drawn directly from a high-resolution simulation.
 
-\subsection{Informed by cosmological simulations}
+% Spectra generation
+The synthetic spectrum generator \textsc{trident} was used during the production of all three samples.
+\atcameron{
+Would you mind adding a summary paragraph of Trident here?
+}
+
+\subsection{Highly idealized --- \texttt{sample0}}
+\label{s: data generation -- sample0}
+
+% Sample summary and motivation
+The first data sample, \texttt{sample0} was a highly idealized sample consisting of 10 clouds of uniform metallicity, density, and temperature.
+The data products made available to modelers were total ion column densities, as opposed to full spectra.
+The motivation for \texttt{sample0} was to set a baseline for interpreting the subsequent data samples, absent complications from multiphase structure or interpreting spectra.
+
+% Sample details
+For each of the 10 uniform clouds we sampled from $Z$ = [ 0.01, 1.5 ] $Z_\odot$, $n_{\rm H}$ = [ 10-6, 0.1 ] cm$^{-3}$, $T$ = [ $10^4$, $10^6$ ] K.
+The values of density, temperature, and metallicity were chosen to be uncorrelated, which plays a role in the analysis (\S\ref{s: results -- idealized}).
+Our mock observing instrument was COS G130M, we set the redshift for our mock sample to $z=0.25$ (typical for many CGM samples observed with COS), and we included all ions present in the instrument window at $z=0.25$~\todo{Mention which ions explicitly.}.
+For each ion we looked up the ion densities according to photo-ionization equilibrium, as tabulated by \textsc{trident} for single zone simulations produced with \textsc{cloudy}~\citep{Ferland2013} using the \cite{Haardt2012} UV background.
+To determine the absorber lengths ($\ell = N_{\ion{H}{I}} / n_{\ion{H}{I}}$) we randomly sample the \ion{H}{I} column density from $N_{\ion{H}{I}}$ = [ $10^{15}$, $10^{17}$ ] cm$^{-2}$, and discarded absorbers with length $> 1$ Mpc.
+
+% Noising of data
+Prior to making the ion column densities available we modified them to reflect uncertainty typical of similar real observations.
+\todo{Continue here.}
+
+\subsection{Informed by cosmological simulations  --- \texttt{sample1}}
+\label{s: data generation -- sample1}
 
 \textbf{This corresponds to sample1.}
 
-\zach{Nastasha, would you be able to write down the steps you took?}
+% \atnastasha{
+% I have copied in what you wrote about extracting the distributions from the simulations, along with my edited version to fit into the paper.
+% Can you please review the edited version for correctness?
+% }
 
-\subsection{Drawn from high resolution simulations}
+\subsection{Drawn from a high resolution simulation --- \texttt{sample2}}
+\label{s: data generation -- sample2}
 
 \textbf{This corresponds to sample2.}
 
-\zach{Nir, would you be able to write down the steps you took?}
+% \atnir{
+% I have copied in what you wrote about extracting the distributions from the simulations, along with my edited version to fit into the paper.
+% Can you please review the edited version for correctness?
+% }
 
 % C IV and changed redshift
 \textit{
@@ -155,9 +207,15 @@ However, the ionization fractions were calculated in post-processing via Trident
 
 \section{Observational Modeling}
 
+\atsameer{
+Can you please describe your modeling in this section?
+Ideally you would include a short summary of your modeling, accompanied by citations to your paper containing the full details.
+}
+
 \section{Results}
 
 \subsection{Highly idealized}
+\label{s: results -- idealized}
 
 \begin{figure*}
     \centering
@@ -172,8 +230,8 @@ However, the ionization fractions were calculated in post-processing via Trident
     \centering
     \includegraphics[width=\columnwidth]{figures/sample0/phase_space.png}
     \caption{
-    \textbf{Set colorbar by percent enclosed.}
-    \textbf{Use consistent axes: all log, or no log.}
+    \todo{Set colorbar by percent enclosed.}
+    \todo{Use consistent axes: all log, or no log.}
     }
     \label{f: idealized explanation}
 \end{figure}
@@ -199,9 +257,96 @@ However, the ionization fractions were calculated in post-processing via Trident
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/correlations.pdf}
-    \label{f: column density agreement}
+    \includegraphics[width=\textwidth]{figures/sample2/correlations.png}
+    \label{f: high-res}
+    \caption{
+    \todo{Use ``modeled'', not ``found''.}
+    \todo{Cut out $r( {\rm all} )$.}
+    }
 \end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/correlations_corner.png}
+    \label{f: high-res corner}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0003.png}
+    \label{f: sample2 03}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0005.png}
+    \label{f: sample2 05}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 05.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0007.png}
+    \label{f: sample2 07}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0008.png}
+    \label{f: sample2 08}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0011.png}
+    \label{f: sample2 11}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0012.png}
+    \label{f: sample2 12}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0014.png}
+    \label{f: sample2 14}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0015.png}
+    \label{f: sample2 15}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0016.png}
+    \label{f: sample2 16}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/sightline_0019.png}
+    \label{f: sample2 19}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
+\end{figure*}
+
+\section{Discussion}
+
+\subsection{What data is required for accurate modeling?}
+
+\todo{What data is necessary in order to get the average properties right?}
+
+\todo{What data is necessary to reproduce the logspace distributions?}
 
 \section{Conclusions}
 
