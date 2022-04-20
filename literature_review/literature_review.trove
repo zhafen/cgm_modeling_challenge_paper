@@ -20,6 +20,11 @@ zotero_projection_fp = ${root_data_dir}/projection_zotero.h5
 # Analysis parameters
 kernel_size = 16
 citation_key = 'Hafen2022b'
+emphasis_vector = [
+    ( 'molecular', -1. ),
+    ( 'emission', -2. ),
+    ]
+emphasis_scaling = 0.5
 
 ########################################################################
 [SCRIPTS]
@@ -52,4 +57,36 @@ nb.1 = output
 publications = [
     'Marra2021',
     'Marra2022',
+    ]
+    
+[bayesian_modeling]
+publications = [
+    'Sameer2021',
+    'Liang2017',
+    'Liang2018',
+    ]
+    
+[mock_spectra]
+search_str = 'mock quasar absorption spectra'
+publications = [
+    'Hummels2017',
+    ]
+    
+[sample0]
+search_str = 'column densities of uniform clouds'
+publications = [
+    'Ferland2013', # Cloudy
+    ]
+    
+[sample1]
+search_str = 'spectra of multi-cloud systems'
+publications = [
+    'Wijers2019',
+    'Wijers2021',
+    ]
+    
+[sample2]
+search_str = 'spectra of a high resolution simulation'
+publications = [
+    'Mandelker2020a',
     ]
