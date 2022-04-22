@@ -23,6 +23,7 @@ citation_key = 'Hafen2022b'
 emphasis_vector = [
     ( 'molecular', -1. ),
     ( 'emission', -2. ),
+    ( 'HVC', -0.5 ),
     ]
 emphasis_scaling = 0.5
 
