@@ -145,7 +145,7 @@ Imagine sitting down with the target audience.
 What are the most important points we want to convey?
 In particular, what could they really use?
 
-\section{Introduction}
+\subsection{Other Notes}
 
 % Other mock data challenges
 \note{Paragraph on other mock data challenges.}
@@ -154,6 +154,7 @@ Other mock data challenges include a mock data challenge for detecting a gravita
 \todo{What other mock data challenges are there?}
 
 % Implications
+The number of publications that estimate the properties of gas via absorption lines is significant, including~\citep[e.g.][]{Churchill1996}
 \note{Paragraph on the importance of doing estimating absorption system parameters for understanding the CGM and galaxy evolution.}
 \todo{Fill this in.}
 
@@ -162,17 +163,56 @@ Other mock data challenges include a mock data challenge for detecting a gravita
 \cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS mass-weighted average properties.
 \cite{Marra2021} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
 \cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
+\cite{Sameer2021} 
 \todo{What other similar studies are there?}
 \todo{What else can we learn from these studies?}
+
+% Multiple components
+Many absorption spectra are best fit by multiple components~\citep[e.g.][]{Muzahid2015, Liang2017, Liang2018, Haislmaier2020, Sameer2021, Zahedy2021, Marra2021, Marra2022}.
+Observations of the local (<100 pc) ISM show that even at smaller scales absorption lines can be best modeled by a number of small clouds~\citep[e.g.][]{Welsh2010}.
+
+% Mock spectra
+Synthetic spectra of absorption systems~\citep[e.g.][]{Hummels2013, Liang2018} are one method to test the robustness of observational methods~\citep[e.g.][]{Churchill2015}.
 
 \note{Paragraph on motivations for the challenge.}
 \thoughts{
 Why did \textit{you} (a challenge participant) think this challenge was important enough that you spent time and energy on it?
 }
+Over the past decade astronomers have built an extensive repository of detailed QSO absorption spectra, with numerous sightlines and/or spectra per sightline, often with information about galaxies with small projected distances to the QSO absorption systems~\citep[e.g.][]{Zahedy2019a, Zahedy2021}.
+\todo{This is a placeholder reference, and there are many observations I haven't added.}
+It has nevertheless been challenging to make full use of this data.
+These extensive observations reveal that CGM gas is highly multiphase~\citep[][]{Zahedy2019a, Zahedy2021, Haislmaier2020}, dynamic, and variable, a picture confirmed by cosmological simulations of galactic ecosystems~\citep[e.g.][]{Hafen2019, Hafen2020}.
+This is a major update from early models of the CGM that assumed uniform, isotropic media~\citep[e.g.][]{Maller2003, Srianand1994}.
+The wider the variability in properties, the more data is required to produce a physical picture from the data~\todo{Find a reference for this.}.
+Similarly, when there are differences between the observed and simulated data there are often multiple possible explanations~\todo{Refer ``mystery of OVI underprediction'' problem.}.
+Simulations (especially cosmological simulations) are believed to near-universally under-resolve hydrodynamics in the CGM---observational and theoretical analyses infer cloud sizes of $\lesssim 5$ pc~\citep[e.g.][]{Zahedy2021} while the highest resolution of cosmological simulations capable of providing the necessary context is \textbf{X pc}.~\todo{Add references.}
+Before any of the above issues can be addressed properly, we first must understand the uncertainties in deriving the physical properties of observed gas.
+The goal of this paper is to build that understanding.
 
 \thoughts{
 Other topics that would be good to add to the intro.
 }
+
+\section{Introduction}
+
+% Baryon cycle and absorption spectra
+With the understanding that galaxies and their surrounding are part of an interconnected galactic ecosystem one of the primary goals of galaxy-scale astrophysics for the next decade is to identify the processes that drive galaxy growth~\citep{Decadal2020}.
+Central to this effort are absorption system observations, one of the only constraints on gas outside galaxies, in the circumgalactic medium (CGM) and the intergalactic medium (IGM).
+Absorption system observations typically consist of a $\sim 1-50$ absorption spectra, each from a beam of background light that is partially absorbed by intermittent gas en route to the observer.
+Unfortunately, absorption system observations are notoriously difficult to interpret.
+
+% Interpreting given correct properties
+The challenge in interpreting absorption spectra is in two parts.
+First, the maximum amount of information obtainable from an absorption spectra is temperature, density, and metallicity as a function of line-of-sight velocity along a skewer through a CGM.
+If the CGM is described by a simple radial profile this might be sufficient to easily constrain models.
+Instead, observations suggest metallicities, densities, and temperatures spanning many orders of magnitude.
+This is consistent with cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{Hafen2019, Hafen2020}.
+As such, even given perfect information from each absorption spectra it may be challenging to use that information to gain a clear picture of the galactic ecosystem.
+
+% Deriving accurate properties
+The other challenge in interpreting absorption spectra is that it is highly non-trivial to identify the properties of the gas responsible for a given absorption spectra.
+Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must content with line saturation, large and uncertain ionization corrections, spatially-separated gas clouds with similar line-of-sight velocities, and other challenges.
+In this paper we address this aspect of interpreting absorption spectra via the Halo21 Absorption Modeling Challenge.
 
 % Challenge summary
 The Halo21 KITP virtual conference\footnote{Halo21 was a ten-week open-attendance online conference held in early 2021 with the support of the Kavli Institute for Theoretical Physics at Santa Barbara. \atcameron{As an organizer, anything else we should add? I also added acknowledgements at the end.}} revealed significant interest in addressing the above issues, and subsequently we organized the Halo21 Absorption Modeling Challenge.
@@ -287,14 +327,14 @@ The only additional information provided to observers was that they could assume
 
 % Sample goal
 We designed the final sample to test modeling absorption systems with a realistic multiphase \textit{distribution} of properties, as opposed to being described by a few discrete clouds.
-This choice reflects growing knowledge that instabilities may drive clouds to fragment and mix with surrounding gas.
-\todo{Add multiphase CGM citations.}
+This choice reflects growing knowledge that instabilities may drive clouds to fragment and mix with surrounding gas, \todo{Add multiphase CGM citations}, and is consistent with mock spectra of cosmological simulations~\citep[e.g.][]{Marra2022}.
 For \texttt{sample2} we used data from a high-resolution simulation of a cool filament embedded in a hot halo~\citep{Mandelker2020a}.
 A turbulent mixing layer forms at the boundary of the filament and the hot gas, which produces gas with a complex continuous distribution of temperature, density, and metallicity.
 
 % Simulation
 \atnir{Would you mind adding a summary of your sim from \cite{Mandelker2020a} here? As a start I've copied in (with minor editing) your descriptions you sent me, though it would be good to check that what is stated is accurate.}
-The simulation used here is the M1.0\_d100 simulation from Table 1 of \cite{Mandelker2020a}. This simulation uses the AMR code \texttt{RAMSES} \citep{Teyssier02} to simulate a cold, dense cylindrical stream flowing supersonically through a hot, diffuse background, initially in pressure equilibrium.
+The simulation used here is the M1.0\_d100 simulation from Table 1 of \cite{Mandelker2020a}.
+This simulation uses the AMR code \texttt{RAMSES} \citep{Teyssier02} to simulate a cold, dense cylindrical stream flowing supersonically through a hot, diffuse background, initially in pressure equilibrium.
 This represents the cold-streams tracing cosmic-web filaments, which are predicted to be the main mode of gas accretion in massive high-$z$ galaxies \citep{Dekel09}, as they flow towards the central galaxy through its hot CGM.
 The initial density in the stream is $n_{\rm H,s}=10^{-2}$ cm$^{-3}$ and the density in the background is smaller by a factor of $\delta=100$, $n_{\rm H,b}=10^{-4}$ cm$^{-3}$.
 The temperature in the cold stream is set by thermal equilibrium with a $z=2$ \cite{Haardt1996} UV background with no self-shielding for dense gas, resulting in $T_{\rm s}\sim 1.5 \times 10^4$ K.
@@ -329,16 +369,22 @@ For the third sample we aimed for greater consistency with observational modelin
 % Modified flux errors
 \todo{Note that we forced the flux error (typically 0.1) to 0.01 for this sample of spectra, and describe why.}
 
-\section[Observational Modeling]{Observational Modeling\footnote{
+\subsection[Observational Modeling]{Observational Modeling \textbf{If I delete this bolded text the section disappears from the overleaf TOC for some reason.}\footnote{
 Observational modeling was performed by Sameer and Jane Charlton}}
 \label{s: observational modeling}
 
 \atsameer{
 Can you please describe your modeling in this section?
 Ideally you would include a short summary of your modeling, accompanied by citations to your paper containing the full details.
+It might also be good to touch on other work that considers multicomponent modeling, e.g.~\cite{Liang2018}.
 }
 
-
+\atsameer{
+Some ISM absorption-line observers use Autonomous Gaussian Decomposition to identify absorption components~\citep[e.g.][]{Murray2017}.
+Are you familiar with this technique?
+It might be a useful point of comparison, if only to argue that your modeling is more effective.
+For example, their Figure 3 shows that they cannot well-recover complex LOS structure.
+}
 
 \section{Results}
 \label{s: results}
@@ -523,6 +569,12 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
 \end{figure*}
 
+% Interpreting multi-component spectra
+Absorbing gas with the same LOS-velocity is not necessarily co-spatial, but instead a single absorption component can correspond to multiple clouds of gas that are physically separated.
+Analysis of mock absorption spectra from cosmological simulations shows that only $\sim 30-50\%$ of absorption components are composed of a single, contiguous cloud, and $\sim 50\%$ of multiple clouds contributing to a single component are separated by $\gtrsim 3-12$ kpc depending on ion~\citep[][]{Marra2022}.
+Further, the amount of mass in common between velocity-aligned absorption from different ions varies widely, with $\sim 1/3$ of \ion{Si}{II} and \ion{C}{IV} absorbers sharing $>50\%$ of their mass~\citep[][]{Marra2022}.
+These results are expected to be enhanced for higher-resolution simulations focused on individual filaments or clouds.
+
 \note{
 Follow-up analysis for this sample is currently ongoing.
 The results section will be written at time of completion.
@@ -543,7 +595,7 @@ The results section will be written at time of completion.
 
 \todo{What data is necessary in order to get the average properties right?}
 
-\todo{What data is necessary to reproduce the logspace distributions?}
+\todo{What data is necessary to reproduce the simulated logspace distributions?}
 
 \subsection{What level of agreement is necessary for modeling to be representative?}
 
@@ -551,7 +603,17 @@ The results section will be written at time of completion.
 
 \subsection{Implications for existing results}
 
-\subsection{Discrete components versus a distributions of cloud properties}
+% For analyses that infer a physical picture from individual sightlines
+Some works argue that detailed information about the physical nature of the absorbing gas can be suggested, often with the aid of additional observations regarding the associated galaxy such as via IFU instruments (e.g. \citealt{Peroux2013}, who identify some of their systems as outflows; or \citealt{Peroux2017}, who exclude outflows).
+Do our results throw any doubt into the mix about these models, or are they safe?
+
+% For analyses that infer total masses or mass profiles
+Some works aim to constrain total masses or mass profiles~\citep[e.g.][]{Zahedy2019a}.
+Are these estimates affected?
+
+\subsection{Modeling choices}
+
+\subsubsection{Discrete components versus a distributions of cloud properties}
 
 % Interpreting posteriors of single clouds as distributions.
 Absorbers in reality are likely composed of infinitely many clouds with a distribution of properties.
@@ -576,6 +638,12 @@ $\frac{dM}{dx} = \sum_{i=1}^{q} M_i f(x)$, and in turn $\frac{d\NHI}{dT} = \sum_
 \todo{There's at least one flaw in this argument.
 When checking the fit Sameer uses the discrete properties of multiple clouds, not multiple distributions.
 As such some of the individual clouds may "try" to balance missing data from the other clouds.}
+
+\subsubsection{Absorption modeling ``by hand''}
+
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{Lacki2010}.
+How does the modeling done here compare?
+\atsameer{This is a question especially for you.}
 
 \subsection{Other questions}
 
