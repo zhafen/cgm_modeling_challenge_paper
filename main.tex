@@ -164,12 +164,12 @@ As such, even given perfect information from each absorption spectra it may be c
 % Deriving accurate properties
 The second challenge is that it is highly non-trivial to identify the properties of the gas responsible for a given absorption spectra.
 Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must contend with line saturation, large and uncertain ionization corrections~\citep[e.g.][]{Schaye2006, Acharya2021}, and more.
-One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that absorbing gas is a cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds with variable properties~\citep[e.g.][]{Boksenberg1979, Muzahid2015, Liang2017, Liang2018, Haislmaier2020, Sameer2021, Zahedy2021, Marra2021}, some of which can have overlapping LOS velocities~\citep[e.g.][]{Marra2022}.
+One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that absorbing gas is a cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds with variable properties~\citep[e.g.][]{Boksenberg1979, Muzahid2015, Liang2017, Liang2018, Haislmaier2021, Sameer2021, Zahedy2021, Marra2021}, some of which can have overlapping LOS velocities~\citep[e.g.][]{Marra2022}.
 High-resolution simulations predict a distribution of clouds instead of discrete clouds~\citep[e.g.][]{Fielding2020, Vijayan2021}, consistent with absorption lines on scales $<100$ pc that are best fit by multiple components~\citep[e.g.][]{Welsh2010}.
 
 % Hope for the future
 Despite the above concerns, there is reason to be optimistic.
-While interpreting individual absorption systems is challenging, the bulk properties of absorption surveys can place constraints on galactic ecosystem models~\citep[e.g.][]{Sorini2017, Lan2018}.
+While interpreting individual absorption systems is challenging, the bulk properties of absorption surveys can place constraints on galactic ecosystem models~\citep[e.g.][]{Sorini2018, Lan2018}.
 Simultaneously, astrophysicists have been increasing the sophistication of their interpretations of absorption spectra~\citep[e.g.][]{Churchill2015, Sameer2021}, often with insight from synthetic spectra~\citep[e.g.][]{Hummels2013, Liang2018}.
 This paper marks the next step in improving interpretations of absorption spectra---the Halo21 Absorption Modeling Challenge, a mock-data challenge~\citep[e.g.][]{Regimbau2012, Meacher2015, Hazboun2019} that combines the expertise of observers and theorists to test the limits of the current methodology for interpreting absorption spectra.
 
@@ -293,8 +293,8 @@ A turbulent mixing layer forms at the boundary of the filament and the hot gas, 
 % Simulation
 \atnir{Would you mind adding a summary of your sim from \cite{Mandelker2020a} here? As a start I've copied in (with minor editing) your descriptions you sent me, though it would be good to check that what is stated is accurate.}
 The simulation used here is the M1.0\_d100 simulation from Table 1 of \cite{Mandelker2020a}.
-This simulation uses the AMR code \texttt{RAMSES} \citep{Teyssier02} to simulate a cold, dense cylindrical stream flowing supersonically through a hot, diffuse background, initially in pressure equilibrium.
-This represents the cold-streams tracing cosmic-web filaments, which are predicted to be the main mode of gas accretion in massive high-$z$ galaxies \citep{Dekel09}, as they flow towards the central galaxy through its hot CGM.
+This simulation uses the AMR code \texttt{RAMSES} \citep{Teyssier2002} to simulate a cold, dense cylindrical stream flowing supersonically through a hot, diffuse background, initially in pressure equilibrium.
+This represents the cold-streams tracing cosmic-web filaments, which are predicted to be the main mode of gas accretion in massive high-$z$ galaxies \citep{Dekel2009}, as they flow towards the central galaxy through its hot CGM.
 The initial density in the stream is $n_{\rm H,s}=10^{-2}$ cm$^{-3}$ and the density in the background is smaller by a factor of $\delta=100$, $n_{\rm H,b}=10^{-4}$ cm$^{-3}$.
 The temperature in the cold stream is set by thermal equilibrium with a $z=2$ \cite{Haardt1996} UV background with no self-shielding for dense gas, resulting in $T_{\rm s}\sim 1.5 \times 10^4$ K.
 The hot and cold gas are initially in pressure equilibrium, which sets the temperature in the hot phase, $T_{\rm b}\sim 1.5 \times 10^6$ K.
