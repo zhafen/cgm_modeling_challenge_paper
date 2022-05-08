@@ -58,6 +58,10 @@ nb.1 = output
 
 [absorption_surveys]
 publications = [
+    'Bahcall1993',
+    'Lanzetta1995',
+    'Lauroesch1996',
+    'Churchill1996',
     'Shull1996',
     'Tripp2000',
     'Tripp2000a',
@@ -70,6 +74,7 @@ publications = [
     'Burchett2018',
     'Burchett2019a',
     'Rudie2019',
+    'Lan2018',
     ]
 
 [multicomponent_modeling] # Typically Bayesian analyses
