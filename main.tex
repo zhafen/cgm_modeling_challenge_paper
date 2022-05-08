@@ -145,74 +145,33 @@ Imagine sitting down with the target audience.
 What are the most important points we want to convey?
 In particular, what could they really use?
 
-\subsection{Other Notes}
-
-% Other mock data challenges
-\note{Paragraph on other mock data challenges.}
-Other mock data challenges include a mock data challenge for detecting a gravitational-wave background~\cite{Meacher2015}, a mock data challenge for discriminating overlapping gravitational-wave signals~\cite{Regimbau2012},  and a mock data challenge for identifying gravitational-wave signals in pulsar timing array data~\cite{Hazboun2019}.
-\todo{Add reference to Mathematica mock data challenge.}
-\todo{What other mock data challenges are there?}
-
-% Implications
-The number of publications that estimate the properties of gas via absorption lines is significant, including~\citep[e.g.][]{Churchill1996}
-\note{Paragraph on the importance of doing estimating absorption system parameters for understanding the CGM and galaxy evolution.}
-\todo{Fill this in.}
-
-% Mock CGM analyses of robustness of modeling.
-\note{Paragraph on other analyses of the robustness of absorption modeling.}
-\cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS mass-weighted average properties.
-\cite{Marra2021} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
-\cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
-\cite{Sameer2021} 
-\todo{What other similar studies are there?}
-\todo{What else can we learn from these studies?}
-
-% Multiple components
-Many absorption spectra are best fit by multiple components~\citep[e.g.][]{Muzahid2015, Liang2017, Liang2018, Haislmaier2020, Sameer2021, Zahedy2021, Marra2021, Marra2022}.
-Observations of the local (<100 pc) ISM show that even at smaller scales absorption lines can be best modeled by a number of small clouds~\citep[e.g.][]{Welsh2010}.
-
-% Mock spectra
-Synthetic spectra of absorption systems~\citep[e.g.][]{Hummels2013, Liang2018} are one method to test the robustness of observational methods~\citep[e.g.][]{Churchill2015}.
-
-\note{Paragraph on motivations for the challenge.}
-\thoughts{
-Why did \textit{you} (a challenge participant) think this challenge was important enough that you spent time and energy on it?
-}
-Over the past decade astronomers have built an extensive repository of detailed QSO absorption spectra, with numerous sightlines and/or spectra per sightline, often with information about galaxies with small projected distances to the QSO absorption systems~\citep[e.g.][]{Zahedy2019a, Zahedy2021}.
-\todo{This is a placeholder reference, and there are many observations I haven't added.}
-It has nevertheless been challenging to make full use of this data.
-These extensive observations reveal that CGM gas is highly multiphase~\citep[][]{Zahedy2019a, Zahedy2021, Haislmaier2020}, dynamic, and variable, a picture confirmed by cosmological simulations of galactic ecosystems~\citep[e.g.][]{Hafen2019, Hafen2020}.
-This is a major update from early models of the CGM that assumed uniform, isotropic media~\citep[e.g.][]{Maller2003, Srianand1994}.
-The wider the variability in properties, the more data is required to produce a physical picture from the data~\todo{Find a reference for this.}.
-Similarly, when there are differences between the observed and simulated data there are often multiple possible explanations~\todo{Refer ``mystery of OVI underprediction'' problem.}.
-Simulations (especially cosmological simulations) are believed to near-universally under-resolve hydrodynamics in the CGM---observational and theoretical analyses infer cloud sizes of $\lesssim 5$ pc~\citep[e.g.][]{Zahedy2021} while the highest resolution of cosmological simulations capable of providing the necessary context is \textbf{X pc}.~\todo{Add references.}
-Before any of the above issues can be addressed properly, we first must understand the uncertainties in deriving the physical properties of observed gas.
-The goal of this paper is to build that understanding.
-
-\thoughts{
-Other topics that would be good to add to the intro.
-}
-
 \section{Introduction}
 
 % Baryon cycle and absorption spectra
 With the understanding that galaxies and their surrounding are part of an interconnected galactic ecosystem one of the primary goals of galaxy-scale astrophysics for the next decade is to identify the processes that drive galaxy growth~\citep{Decadal2020}.
-Central to this effort are absorption system observations, one of the only constraints on gas outside galaxies, in the circumgalactic medium (CGM) and the intergalactic medium (IGM).
+Central to this effort are absorption system observations~\citep[e.g.][]{Bahcall1993, Lanzetta1995, Lauroesch1996, Churchill1996}, one of the only constraints on gas outside galaxies, in the circumgalactic medium (CGM) and the intergalactic medium (IGM).
 Absorption system observations typically consist of a $\sim 1-50$ absorption spectra, each from a beam of background light that is partially absorbed by intermittent gas en route to the observer.
 Unfortunately, absorption system observations are notoriously difficult to interpret.
 
 % Interpreting given correct properties
 The challenge in interpreting absorption spectra is in two parts.
 First, the maximum amount of information obtainable from an absorption spectra is temperature, density, and metallicity as a function of line-of-sight velocity along a skewer through a CGM.
-If the CGM is described by a simple radial profile this might be sufficient to easily constrain models.
-Instead, observations suggest metallicities, densities, and temperatures spanning many orders of magnitude.
-This is consistent with cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{Hafen2019, Hafen2020}.
+If the CGM is described by a few discrete components (as proposed by early models for absorption system distributions, e.g.~\citealt{Srianand1994, Das2001, Maller2003}) this might be sufficient to easily constrain models.
+Instead, observations suggest metallicities, densities, and temperatures spanning orders of magnitude, consistent with analytic theory and high-resolution simulations that predict fragmentation and mixing of circumgalactic clouds~\citep[][]{Maller2004}.
+This is also consistent with cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{Hafen2019, Hafen2020}.
 As such, even given perfect information from each absorption spectra it may be challenging to use that information to gain a clear picture of the galactic ecosystem.
 
 % Deriving accurate properties
-The other challenge in interpreting absorption spectra is that it is highly non-trivial to identify the properties of the gas responsible for a given absorption spectra.
-Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must content with line saturation, large and uncertain ionization corrections, spatially-separated gas clouds with similar line-of-sight velocities, and other challenges.
-In this paper we address this aspect of interpreting absorption spectra via the Halo21 Absorption Modeling Challenge.
+The second challenge is that it is highly non-trivial to identify the properties of the gas responsible for a given absorption spectra.
+Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must contend with line saturation, large and uncertain ionization corrections~\citep[e.g.][]{Schaye2006, Acharya2021}, and more.
+One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that absorbing gas is a cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds with variable properties~\citep[e.g.][]{Boksenberg1979, Muzahid2015, Liang2017, Liang2018, Haislmaier2020, Sameer2021, Zahedy2021, Marra2021}, some of which can have overlapping LOS velocities~\citep[e.g.][]{Marra2022}.
+High-resolution simulations predict a distribution of clouds instead of discrete clouds~\citep[e.g.][]{Fielding2020, Vijayan2021}, consistent with absorption lines on scales $<100$ pc that are best fit by multiple components~\citep[e.g.][]{Welsh2010}.
+
+% Hope for the future
+Despite the above concerns, there is reason to be optimistic.
+While interpreting individual absorption systems is challenging, the bulk properties of absorption surveys can place constraints on galactic ecosystem models~\citep[e.g.][]{Sorini2017, Lan2018}.
+Simultaneously, astrophysicists have been increasing the sophistication of their interpretations of absorption spectra~\citep[e.g.][]{Churchill2015, Sameer2021}, often with insight from synthetic spectra~\citep[e.g.][]{Hummels2013, Liang2018}.
+This paper marks the next step in improving interpretations of absorption spectra---the Halo21 Absorption Modeling Challenge, a mock-data challenge~\citep[e.g.][]{Regimbau2012, Meacher2015, Hazboun2019} that combines the expertise of observers and theorists to test the limits of the current methodology for interpreting absorption spectra.
 
 % Challenge summary
 The Halo21 KITP virtual conference\footnote{Halo21 was a ten-week open-attendance online conference held in early 2021 with the support of the Kavli Institute for Theoretical Physics at Santa Barbara. \atcameron{As an organizer, anything else we should add? I also added acknowledgements at the end.}} revealed significant interest in addressing the above issues, and subsequently we organized the Halo21 Absorption Modeling Challenge.
@@ -644,6 +603,14 @@ As such some of the individual clouds may "try" to balance missing data from the
 There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{Lacki2010}.
 How does the modeling done here compare?
 \atsameer{This is a question especially for you.}
+
+\subsection{Comparison to similar analyses}
+
+% Mock CGM analyses of robustness of modeling.
+\cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS mass-weighted average properties.
+\cite{Marra2021} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
+\cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
+\cite{Sameer2021} 
 
 \subsection{Other questions}
 
