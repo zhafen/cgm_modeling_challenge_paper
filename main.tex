@@ -348,6 +348,19 @@ For the third sample we aimed for greater consistency with observational modelin
 Observational modeling was performed by Sameer and Jane Charlton.}}
 \label{s: observational modeling}
 
+Observational modeling employed the cloud-by-cloud, multiphase, Bayesian ionization modeling (CMBM) methods introduced in \cite{Sameer2021}, and further refined in \cite{Sameer2022}. It was demonstrated by \cite{Zahedy2019} that the metallicity can vary substantially in velocity space across an observed absorption line system, and thus that cloud-by-cloud modeling is important. As with the synthetic data generation, the observational modeling used \textsc{cloudy}~\citep{Ferland2013} with the \cite{Haardt2012} UV background.
+
+For \texttt{sample0}, the initial modeling procedure involved adjustment of the three free parameters: HI column density, $N_{\ion{H}{I}}$, metallicity, $Z$, and hydrogen number density, $n_H$. For each point in parameter space \textsc{cloudy} calculated the temperature based on balance of heating and cooling, and determined the column densities of all ions provided by the simulators, assuming photoionization equilibrium. A log-likelihood function was computed by summing the chi-squared between the provided and the model column densities for all ions, accounting for the provided errors for each column density.  This function was minimized to determine the distribution of the three parameters. The parameter estimation was performed using PyMultiNest~(cite Buchner et al. 2014). 
+
+Alternatively, for \textit{sample0} we also added in the temperature, $T$, as a free parameter, no longer assuming a balance of heating and cooling.  In some of this parameter space, at higher temperature, the gas is predominantly collisionally ionized.  The distribution of the four parameters, $N_{\ion{H}{I}}$, $Z$, $n_H$, and $T$, was then evaluated as constrained by the model column densities.
+
+For the other two samples, \textit{sample1} and \textit{sample2}, model spectra were provided. The shapes of the model line profiles provide an important constraint using the methods of \cite{Sameer2021} and \cite{Sameer2022}. Though the observational modeling methods employed by \cite{Zahedy2019} and \cite{Haislmaier2021} use a cloud-by-cloud approach, they do not use profile fitting, but instead use measured column densities. The shapes of the profiles, as employed here, give more leverage to separate phases that are coincident in velocity. The important transitions that were covered by the provided  data included \ion{Mg}{II}, \ion{C}{II}, \ion{C}{III}, \ion{Si}{II}, \ion{Si}{III}, \ion{Si}{IV}, \ion{N}{V}, and \ion{O}{VI} for \textit{sample1}, and additionally \ion{C}{IV}, \ion{Ne}{VIII}, and \ion{Mg}{X} for \textit{sample2}. The given spectra are inspected for absorption in various ionization transitions. and an initial Voigt profile (VP) fit was obtained for representative unsaturated transitions for a range of ionization states.  The VP fit to the low ionization transitions is used to set a starting number of component locations for the modeling, and their initial positions in velocity space.
+
+CLOUDY models are generated over the four parameter space defined by $N_{\ion{H}{I}}$ = [10$^{10}$,10$^{21}$], $Z$ = [10$^{-3}$,10$^{2}$], $T$ = [10$^{2}$, 10$^{6.5}$], and $n_H$ = [10$^{-6}$,10$^{2}$].  For the set of initial model clouds, a spectrum is synthesized using the superposition of all clouds.  The VP for each cloud comes from the CLOUDY output at a given grid point and a Doppler parameter which is the sum of contributions of the thermal component, and a non-thermal Doppler parameter which is a fifth free parameter of the model. The velocities of each of the clouds are also allowed to vary, making the redshift a sixth parameter for each cloud.
+The grid of CLOUDY models is then explored for the combination of the multiple clouds to determine the parameters for which the log-likelihood function is minimized. In this case, the log-likelihood function is computed by comparing the model spectra to the provided spectra, and summing the differences pixel by pixel.
+If the starting number of component clouds from the low ionization VP fits do not completely account for the absorption in the higher ionization transitions, then additional components are included and the procedure is repeated. It is found, for example, that \ion{O}{VI} seldom arises in the same phase as \ion{Mg}{II}. The posterior distribution of parameters for each of the clouds is then determined, again using PyMultiNest~(cite Buchner et al. 2014).
+
+
 \atsameer{
 Can you please describe your modeling in this section?
 Ideally you would include a short summary of your modeling, accompanied by citations to your paper containing the full details.
@@ -371,12 +384,16 @@ For example, their Figure 3 shows that they cannot well-recover complex LOS stru
     \centering
     \includegraphics[width=\textwidth]{figures/sample0/comparison.pdf}
     \caption{
-    Comparison between modeled and actual properties of highly-idealized absorption systems.
+    Comparison between modeled and actual properties of highly-idealized absorption systems (\texttt{sample0}).
     Sightlines are ordered from left to right according to agreement between the original modeled metallicity and the actual metallicity, and the background color indicates the level of agreement for each property.
     Black, red, and blue points show the actual, original modeled, and revised modeled values respectively for each property.
     Metallicities have agree on a better than $<0.5$ dex level for approximately half the sightlines, all of which have $Z > 0.1 Z_\odot$.
     Temperature agreement is typically $<0.5$ dex for most sightlines.
     Density and absorber length are less well-constrained, with errors up to 4 dex.
+    \todo{Try getting rid of the sort order.}
+    \todo{Try coloring by magnituded of the difference.}
+    \todo{Reduce vertical whitespace (which is actually from hspace).}
+    \todo{Add $\ell$ for revised analysis.}
     }
     \label{f: idealized}
 \end{figure*}
@@ -385,16 +402,23 @@ For example, their Figure 3 shows that they cannot well-recover complex LOS stru
     \centering
     \includegraphics[width=\columnwidth]{figures/sample0/phase_space.png}
     \caption{
-    Comparison between modeled and actual properties of highly-idealized absorption systems in the context of the phase-space distribution of CGM gas in a cosmological simulation (background distribution; includes satellite ISM).
+    Comparison between modeled and actual properties of \texttt{sample0} in the context of the phase-space distribution of CGM gas in a cosmological simulation (background distribution; includes satellite ISM).
     Observational modeling is more successful at deriving metallicities the more typical the values are of CGM gas.
+    \todo{If this is going to be a single-column plot the font needs to be larger.}
     }
     \label{f: idealized explanation}
 \end{figure}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample0/column_den.pdf}
-    \label{f: column density agreement}
+    \includegraphics[width=\textwidth]{figures/sample0/error_vs_error.pdf}
+    \caption{
+    Error in properties of the absorbing gas vs error in column densities for \texttt{sample0}.
+    The x-axis shows average log-space difference between column densities across all ions, weighted by the provided uncertainty.
+    The original models fit the data decently (mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert < 0.3$), but do not accurately recover the properties of the absorbing gas (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \gtrsim 0.4$).
+    The revised models (with expanded priors) recover the properties of the gas much better (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \lesssim 0.1$), and typically fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.05$.
+    }
+    \label{f: error vs error}
 \end{figure*}
 
 % Results description
@@ -619,7 +643,9 @@ As such, we use $f(x)$ as an estimate for $dfrac{da}{dx}$. Therefore we have an 
 $\frac{dM}{dx} = \sum_{i=1}^{q} M_i f(x)$, and in turn $\frac{d\NHI}{dT} = \sum_{i=1}^{q} N_{\ion{H}{I},\,i} f(T)$.
 \todo{There's at least one flaw in this argument.
 When checking the fit Sameer uses the discrete properties of multiple clouds, not multiple distributions.
-As such some of the individual clouds may "try" to balance missing data from the other clouds.}
+As such some of the individual clouds may "try" to balance missing data from the other clouds.
+Zach --- reread this section to understand the argument.
+}
 
 \subsubsection{Absorption modeling ``by hand''}
 
@@ -652,7 +678,8 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
 \subsubsection{For observational modelers}
 
 \begin{enumerate}
-    \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. Derived properties that are inaccurate by $\gtrsim 1$ dex (Figure~\ref{f: idealized}) due to over-restriction can still produce apparently good agreement with observable column densities~(Figure~\ref{f: column density agreement}).
+    \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. Derived properties that are overly-restricted can be inaccurate by $\gtrsim 1$ dex (Figure~\ref{f: idealized}).
+    \item When possible, models should fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.1$, but even then the derived properties of the absorbing gas can be inaccurate to $\gtrsim 0.5$ dex ( Figure~\ref{f: error vs err}).
     \item The distribution of possible values is more informative than a single best value. Even when the best estimated value and the real value disagree, the real value is typically among the likely values (Figure~\ref{f: informed}).
 \end{enumerate}
 
@@ -660,6 +687,7 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
 
 \begin{enumerate}
     \item Avoid generating spectra that are overly pathological. While testing the limits of observational modeling is useful, unusual spectra are disproportionately likely to be poorly modeled (Figure~\ref{f: idealized explanation}).
+    \item Provide mock spectra when available, not just column densities. Much additional information is contained in the shape of the spectra.
 \end{enumerate}
 
 The last numbered section should briefly summarise what has been done, and describe
@@ -672,12 +700,8 @@ This research was supported in part by the National Science Foundation under Gra
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Data Availability}
-
  
 The inclusion of a Data Availability Statement is a requirement for articles published in MNRAS. Data Availability Statements provide a standardised format for readers to understand the availability of data underlying the research results described in the article. The statement may refer to original data generated in the course of the study or to third-party data analysed in the article. The statement should describe and provide means of access, where possible, by linking to the data or providing the required accession numbers for the relevant databases or DOIs.
-
-
-
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
 
@@ -693,6 +717,12 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 \appendix
 
 \section{Some extra material}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample0/column_den.pdf}
+    \label{f: column density agreement}
+\end{figure*}
 
 If you want to present additional material which would interrupt the flow of the main paper,
 it can be placed in an Appendix which appears after the list of references.
