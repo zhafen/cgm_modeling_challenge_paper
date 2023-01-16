@@ -145,6 +145,10 @@ For scientists who so far have contributed data or analysis, look out for the fo
     \item Jane: ``\texttt{sample0} was ion column densities of uniform clouds, and revealed that constraining models to either collisional or photo-ionization equilibrium results in best estimates of metallicity being off by up to $\sim 1$ dex.''
     Can you walk me through the process used in each sample, step by step? What was done at each stage?
     \item We have a good opportunity at Cosmic Desert --- early in the conference, and the three of us are in a row.
+    Proposal: I introduce the project and give an overview, highlight some of the top level takeaways, and discuss implications for theorists.
+    Sameer (and Jane?) discusses the meat of the modeling.
+    What is the recommended procedure for modeling multiphase absorption systems?
+    What information can we extract? What can't we extract?
 \end{enumerate}
 
 % Who is the target audience?
@@ -500,92 +504,97 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/correlations.png}
+    \includegraphics[width=\textwidth]{figures/sample2/correlations.pdf}
     \label{f: high-res}
     \caption{
-    \todo{Use ``modeled'', not ``found''.}
-    \todo{Cut out $r( {\rm all} )$.}
+    Correlation coefficients between the likelihood distributions estimated by observational modeling and the actual distributions of gas properties.
+    The gas probed is found along sightlines through a high-resolution simulation of turbulent mixing zones (\texttt{sample2}).
+    The results of fully-blind modeling is shown in red.
+    The revised results are shown in red.
+    \todo{Some of the poor disagreements are because the predicted distribution is poorly constrained, not because it outright disagrees.
+    We should find a way to show this.}
     }
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/correlations_corner.png}
+    \includegraphics[width=\textwidth]{figures/sample2/original/correlations_corner.png}
     \label{f: high-res corner}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0003.png}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0003.png}
+    \label{f: sample2 03 original}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0003.png}
+    \includegraphics[width=\textwidth]{figures/sample2/high-z/sightline_0003.png}
     \label{f: sample2 03}
 \end{figure*}
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0005.png}
-    \label{f: sample2 05}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 05.}
-\end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0007.png}
-    \label{f: sample2 07}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0007.png}
+    \label{f: sample2 07 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0008.png}
-    \label{f: sample2 08}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0008.png}
+    \label{f: sample2 08 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0011.png}
-    \label{f: sample2 11}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0011.png}
+    \label{f: sample2 11 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0012.png}
-    \label{f: sample2 12}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0012.png}
+    \label{f: sample2 12 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0014.png}
-    \label{f: sample2 14}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0014.png}
+    \label{f: sample2 14 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0015.png}
-    \label{f: sample2 15}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0015.png}
+    \label{f: sample2 15 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0016.png}
-    \label{f: sample2 16}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0016.png}
+    \label{f: sample2 16 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/sightline_0019.png}
-    \label{f: sample2 19}
+    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0019.png}
+    \label{f: sample2 19 original}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
 \end{figure*}
 
 % Interpreting multi-component spectra
 Absorbing gas with the same LOS-velocity is not necessarily co-spatial, but instead a single absorption component can correspond to multiple clouds of gas that are physically separated.
-Analysis of mock absorption spectra from cosmological simulations shows that only $\sim 30-50\%$ of absorption components are composed of a single, contiguous cloud, and $\sim 50\%$ of multiple clouds contributing to a single component are separated by $\gtrsim 3-12$ kpc depending on ion~\citep[][]{Marra2022}.
+Analysis of mock absorption spectra from cosmological simulations shows that only $\sim 30-50\%$ of absorption components are composed of a single, contiguous cloud, and $\sim 50\%$ of multiple clouds contributing to a single component are separated by $\gtrsim 3-12$ kpc depending on the ion~\citep[][]{Marra2022}.
 Further, the amount of mass in common between velocity-aligned absorption from different ions varies widely, with $\sim 1/3$ of \ion{Si}{II} and \ion{C}{IV} absorbers sharing $>50\%$ of their mass~\citep[][]{Marra2022}.
 These results are expected to be enhanced for higher-resolution simulations focused on individual filaments or clouds.
 
