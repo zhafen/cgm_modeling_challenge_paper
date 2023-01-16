@@ -109,7 +109,8 @@ Our results reveal that common assumptions about ionization equilibrium and clou
 The three data samples were generated and analyzed iteratively with increasing complexity.
 \texttt{sample0} was ion column densities of uniform clouds, and revealed that constraining models to either collisional or photo-ionization equilibrium results in best estimates of metallicity being off by up to $\sim 1$ dex.
 \texttt{sample1} was mock absorption spectra of multi-cloud systems, and demonstrated that the observational modeling of individual clouds could straightforwardly be expanded to absorption systems produced by one to three clouds.
-\texttt{sample2} was spectra of a high-resolution simulation of a gas filament and associated turbulent mixing zones, and showed that despite multi-cloud modeling working well for a small number of clouds, a distribution of many clouds could lead to simulated property distributions poorly fit by observational modeling.
+\texttt{sample2} was spectra of a high-resolution simulation of a gas filament and associated turbulent mixing zones, and showed that despite multi-cloud modeling working well for a small number of clouds, absorption from a distribution of many clouds could lead to simulated property distributions poorly fit by observational modeling.
+In such a case, the low ionization, low temperature clouds are fit better than the high temperature, low column density components.
 Based on our analysis we present a list of recommendations for scientists intending to produce realistic synthetic data.
 \end{abstract}
 
@@ -139,6 +140,13 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \subsection{Outstanding Questions/Discussion Points}
 
+\textbf{To discuss w/ Sameer Tuesday 2023-01-17:}
+\begin{enumerate}
+    \item Jane: ``\texttt{sample0} was ion column densities of uniform clouds, and revealed that constraining models to either collisional or photo-ionization equilibrium results in best estimates of metallicity being off by up to $\sim 1$ dex.''
+    Can you walk me through the process used in each sample, step by step? What was done at each stage?
+    \item We have a good opportunity at Cosmic Desert --- early in the conference, and the three of us are in a row.
+\end{enumerate}
+
 % Who is the target audience?
 \textbf{Who is the target audience?}
 Imagine sitting down with the target audience.
@@ -150,7 +158,7 @@ In particular, what could they really use?
 % Baryon cycle and absorption spectra
 With the understanding that galaxies and their surrounding are part of an interconnected galactic ecosystem one of the primary goals of galaxy-scale astrophysics for the next decade is to identify the processes that drive galaxy growth~\citep{Decadal2020}.
 Central to this effort are absorption system observations~\citep[e.g.][]{Bahcall1993, Lanzetta1995, Lauroesch1996, Churchill1996}, one of the only constraints on gas outside galaxies, in the circumgalactic media (CGM) of galaxies and the intergalactic medium (IGM) between galaxies.
-Absorption system observations typically consist of a $\sim 1-50$ absorption spectra, each from a beam of background light (typically a quasar) that is partially absorbed by intermittent gas en route to the observer.
+Absorption system observations typically consist of $\sim 1$ absorption spectra per halo, each from a beam of background light (typically a quasar) that is partially absorbed by intermittent gas en route to the observer.
 Unfortunately, these observations are notoriously difficult to interpret.
 
 % Interpreting given correct properties
@@ -179,7 +187,7 @@ We invited the conference's 279 attending scientists to participate in one of tw
 The premise of the Halo21 Absorption Modeling Challenge was for the observational modelers to attempt to deduce the properties of the gas associated with the blinded spectra provided to them by the data generators, and in so doing allow us to better understand the uncertainties and systematics involved in absorption system modeling.
 The modeling challenge consisted of the following procedure:
 data generators decide on and generate the data for the modelers to analyze, modelers make their best effort at estimating the properties of the underlying data, and finally we reveal the underlying data, compare the results, and revise the observational modeling to improve agreement.
-In \S\ref{s: data generation} we describe the data samples and the process for generating them.
+In \S\ref{s: data generation} we describe the data samples, in order of increasing complexity, and the process for generating them.
 In \S\ref{s: observational modeling} we describe the absorption system modeling process.
 In \S\ref{s: results} we compare the modeled properties to the actual properties, and discuss the results in \S\ref{s: discussion}.
 We conclude in \S\ref{s: conclusions}.
