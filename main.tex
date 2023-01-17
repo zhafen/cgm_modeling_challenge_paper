@@ -109,7 +109,8 @@ Our results reveal that common assumptions about ionization equilibrium and clou
 The three data samples were generated and analyzed iteratively with increasing complexity.
 \texttt{sample0} was ion column densities of uniform clouds, and revealed that constraining models to either collisional or photo-ionization equilibrium results in best estimates of metallicity being off by up to $\sim 1$ dex.
 \texttt{sample1} was mock absorption spectra of multi-cloud systems, and demonstrated that the observational modeling of individual clouds could straightforwardly be expanded to absorption systems produced by one to three clouds.
-\texttt{sample2} was spectra of a high-resolution simulation of a gas filament and associated turbulent mixing zones, and showed that despite multi-cloud modeling working well for a small number of clouds, absorption from a distribution of many clouds could lead to simulated property distributions poorly fit by observational modeling.
+% \texttt{sample2} was spectra of a high-resolution simulation of a gas filament and associated turbulent mixing zones, and showed that despite multi-cloud modeling working well for a small number of clouds, absorption from a distribution of many clouds could lead to simulated property distributions poorly fit by observational modeling.
+\todo{\texttt{sample2} summary.}
 In such a case, the low ionization, low temperature clouds are fit better than the high temperature, low column density components.
 Based on our analysis we present a list of recommendations for scientists intending to produce realistic synthetic data.
 \end{abstract}
@@ -144,6 +145,32 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \begin{enumerate}
     \item Jane: ``\texttt{sample0} was ion column densities of uniform clouds, and revealed that constraining models to either collisional or photo-ionization equilibrium results in best estimates of metallicity being off by up to $\sim 1$ dex.''
     Can you walk me through the process used in each sample, step by step? What was done at each stage?
+    \item Sample2 revised modeling results.
+    \begin{enumerate}
+        \item Biggest change was the improvement in temperature agreement (linear-weighted). Is that due to the adjusted UVB for $z=2$?
+        \item For some of the revised models (03, 07, 11) the density disagreement is worse, with the revised density missing the peak. Any idea why?
+        \item Both the original and revised modeling really nail the los velocity of the strongest component, but struggle with the details.
+        \item Approximately same for metallicity, but even the strongest component doesn't agree altogether that well, because the peaks are not aligned. Thoughts?
+        \item Related, nH and Z do not look too great except for nH for sightlines 03, 07, 11, and maybe 16/19, and Z (linear) for sightline 08. What distinguishes these sightlines?
+        \item Areas the modeling does well with: linear vLOS, log T, linear T (revised).
+        \item Areas the modeling struggles with: log vLOS, linear T (original), nH, Z.
+    \end{enumerate}
+    \item Let's really hone our key takeaways. One sentence for each:
+    \begin{enumerate}
+        \item Default accuracy from blind modeling, and associated lessons.
+        \item Optimal accuracy for the three samples.
+        \item Expected property agreement given observables agreement.
+    \end{enumerate}
+    In addition, let's still assemble that list of recommendations.
+    \item Remaining figures, given takeaways.
+    \begin{enumerate}
+        \item Figure that summarizes default results for all three samples?
+        \item Figure that summarizes optimal results for all three samples?
+        \item Figure 3 equivalent for samples 1 and 2 (for first takeaway). Highly valuable imo---rare opportunity to figure out what type of observational error correlates with what type of simulated error.
+        \item Revised Figure 5?
+        \item Synthesized form of Figures 6+?
+    \end{enumerate}
+    \item I'm going to share the draft w/ Nir and the other primary co-authors within the next couple of days. I'll send it to everyone once we have a complete draft (excluding discussion).
     \item We have a good opportunity at Cosmic Desert --- early in the conference, and the three of us are in a row.
     Proposal: I introduce the project and give an overview, highlight some of the top level takeaways, and discuss implications for theorists.
     Sameer (and Jane?) discusses the meat of the modeling.
@@ -407,6 +434,8 @@ For example, their Figure 3 shows that they cannot well-recover complex LOS stru
     \todo{Try coloring by magnituded of the difference.}
     \todo{Reduce vertical whitespace (which is actually from hspace).}
     \todo{Add $\ell$ for revised analysis.}
+    \todo{Coming back to this after a break, this is not super readable.
+    It tries to share too much information, I think.}
     }
     \label{f: idealized}
 \end{figure*}
@@ -472,7 +501,7 @@ Anything I add in you're welcome to review, and I will do the same for you.
     \caption{
     Comparison informed by cosmological simulations.
     \todo{Do observations simultaneously get multiple properties right, or are some properties wrong while others are right?}
-    \todo{Plot peak modeled peak values.}
+    \todo{Plot modeled peak values.}
     }
     \label{f: informed}
 \end{figure}
@@ -512,27 +541,18 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     The gas probed is found along sightlines through a high-resolution simulation of turbulent mixing zones (\texttt{sample2}).
     The results of fully-blind modeling is shown in red.
     The revised results are shown in red.
+    The largest change is that the revised modeling provides a much better estimate of the temperature.
     \todo{Some of the poor disagreements are because the predicted distribution is poorly constrained, not because it outright disagrees.
-    We should find a way to show this.}
+    We should find a way to show this, maybe via comparing the MLE to the peak of the distribution?}
+    \todo{Linear/log are meaningful, but we can probably do something more straightforward to compare the same behavior but require less interpretation from the reader.}
+    \todo{Change ``modeled'' to ``original modeling''?}
     }
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/correlations_corner.png}
-    \label{f: high-res corner}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0003.png}
-    \label{f: sample2 03 original}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.4\textheight]{figures/sample2/original/sightline_0003.png}
-    \includegraphics[height=0.4\textheight]{figures/sample2/high-z/sightline_0003_full.pkl.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
     \caption{Corner plot for sightline 0003.}
     \label{f: sample2 03}
 \end{figure*}
@@ -540,57 +560,64 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0007.png}
-    \label{f: sample2 07 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0007.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0007.png}    \label{f: sample2 07}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0008.png}
-    \label{f: sample2 08 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0008.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0008.png}
+    \label{f: sample2 08}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0011.png}
-    \label{f: sample2 11 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0011.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0011.png}
+    \label{f: sample2 11}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0012.png}
-    \label{f: sample2 12 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0012.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0012.png}
+    \label{f: sample2 12}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0014.png}
-    \label{f: sample2 14 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0014.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0014.png}
+    \label{f: sample2 14}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0015.png}
-    \label{f: sample2 15 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0015.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0015.png}
+    \label{f: sample2 15}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0016.png}
-    \label{f: sample2 16 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0016.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0016.png}
+    \label{f: sample2 16}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/original/sightline_0019.png}
-    \label{f: sample2 19 original}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0019.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0019.png}
+    \label{f: sample2 19}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
 \end{figure*}
 
@@ -658,7 +685,7 @@ This is similar to what the method of estimating $f(x)$ does.
 Consider the limit of zero uncertainty but the absorption system having a distribution of properties instead of a single property.
 We hypothesize that the method of estimating $f(x)$ would in such a case trace produce an $f(x)$ that traces the distribution.
 We leave testing of this to future work \todo{Do we?}.
-As such, we use $f(x)$ as an estimate for $dfrac{da}{dx}$. Therefore we have an estimate for $\frac{dM}{dx}$ using the estimated pdfs,
+As such, we use $f(x)$ as an estimate for $\frac{da}{dx}$. Therefore we have an estimate for $\frac{dM}{dx}$ using the estimated pdfs,
 $\frac{dM}{dx} = \sum_{i=1}^{q} M_i f(x)$, and in turn $\frac{d\NHI}{dT} = \sum_{i=1}^{q} N_{\ion{H}{I},\,i} f(T)$.
 \todo{There's at least one flaw in this argument.
 When checking the fit Sameer uses the discrete properties of multiple clouds, not multiple distributions.
@@ -727,7 +754,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 % The best way to enter references is to use BibTeX:
 
 \bibliographystyle{mnras}
-\bibliography{references} % if your bibtex file is called example.bib
+\bibliography{references, hafen_references} % if your bibtex file is called example.bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
