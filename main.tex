@@ -87,7 +87,7 @@
 The Halo21 Absorption Modeling Group
 \\
 % List of institutions
-% $^{1}$TBD\\
+% $^{1}$TBD \\
 }
 
 % These dates will be filled out by the publisher
@@ -171,23 +171,23 @@ In particular, what could they really use?
 % Baryon cycle and absorption spectra
 With the understanding that galaxies and their surrounding are part of an interconnected galactic ecosystem one of the primary goals of galaxy-scale astrophysics for the next decade is to identify the processes that drive galaxy growth~\citep{Decadal2020}.
 Central to this effort are absorption system observations~\citep[e.g.][]{Bahcall1993, Lanzetta1995, Lauroesch1996, Churchill1996}, one of the only constraints on gas outside galaxies, in the circumgalactic media (CGM) of galaxies and the intergalactic medium (IGM) between galaxies.
-Absorption system observations typically consist of $\sim 1$ absorption spectra per halo, each from a beam of background light (typically a quasar) that is partially absorbed by intermittent gas en route to the observer.
+Absorption system observations typically consist of $\sim 1$ absorption spectrum per halo, each from a beam of background light (typically a quasar) that is partially absorbed by intermittent gas en route to the observer.
 Unfortunately, these observations are notoriously difficult to interpret.
 
 % Interpreting given correct properties
 The challenge in interpreting absorption spectra is in two parts.
-First, the maximum amount of information obtainable from an absorption spectra is temperature, density, and metallicity as a function of line-of-sight velocity along a skewer through a CGM.
+First, the maximum amount of information obtainable from an absorption spectrum is temperature, density, and metallicity as a function of line-of-sight velocity along a skewer through a CGM.
 If the CGM is described by a few discrete components (as proposed by earlier models for absorption system distributions, e.g.~\citealt{Srianand1994, Das2001, Maller2003}) a few sightlines per halo might be sufficient to constrain models.
 Instead, observations suggest metallicities, densities, and temperatures spanning orders of magnitude, suggestive of a complex multiphase system.
 This is consistent with analytic theory and high-resolution simulations that predict fragmentation and mixing of circumgalactic clouds~\citep[e.g.][\todo{There's ton's of work on this, let's expand these references.}]{Maller2004}.
 A complex multiphase CGM is also seen in cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{Hafen2019, Hafen2020}.
-As such, even given perfect information from each observed absorption line spectra it may be challenging to use that information to gain a clear picture of cosmic ecosystems.
+As such, even given perfect information from each observed absorption line spectrum it may be challenging to use that information to gain a clear picture of cosmic ecosystems.
 
 % Deriving accurate properties
-The second challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectra.
+The second challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectrum.
 Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must contend with line saturation, large and uncertain ionization corrections~\citep[e.g.][]{Schaye2006, Acharya2021}, and more.
 One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that absorbing gas is a cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds with variable properties~\citep[e.g.][]{Boksenberg1979, Muzahid2015, Liang2017, Liang2018, Haislmaier2021, sameer2021.cloudbycloud.bayesian.absorption.system.modeling, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{Marra2022}.
-High-resolution simulations predict a distribution of clouds instead of discrete clouds~\citep[e.g.][]{Fielding2020, Vijayan2021}, consistent with absorption lines on scales $<100$ pc that are best fit by multiple components~\citep[e.g.][]{Welsh2010}.
+High-resolution simulations predict a distribution of clouds instead of discrete clouds~\citep[e.g.][]{Fielding2020, Vijayan2021}, consistent with absorption lines on scales $<100$~pc that are best fit by multiple components~\citep[e.g.][]{Welsh2010}.
 
 % Hope for the future
 Despite the above concerns, there is reason to be optimistic.
@@ -266,15 +266,29 @@ The properties of the clouds were drawn from the distribution of properties typi
 
 % Phase space sampling procedure
 To sample the cloud properties we selected 200 random galaxies with halo masses $M_{200c} = 10^{12} - 10^{12.5} M_\odot$ from the EAGLE Ref-L100N1504 volume at $z=0.27$.
-In the gas around these galaxies, the \ion{H}{I} fraction was calculated using fitting functions that approximate the effects of self-shielding~\citep{Rahmati2013} assuming the UVB from \cite{Haardt2012}.
-We extracted 200 sub-volumes around the 200 galaxies, and in each sub-volume we performed an $n_{\ion{H}{I}}$-weighted projection of all gas with impact parameter $< R_{200c}$ and LOS distance $< 2 R_{200c}$ relative to the galaxy, with the projection orientation chosen randomly for the entire simulation.
-Each projection contained $N_{\ion{H}{I}}$ and the \ion{H}{I}-weighted temperature, density, metallicity for numerous sightlines, each corresponding to a projected area of (3.125 comoving kpc)$^2$.
+In the gas around these galaxies, the \ion{H}{I} fraction was calculated using fitting functions that approximate the effects of self-shielding~\citep{Rahmati2013} assuming the UVB from \cite{Haardt2001}.
+We extracted 200 sub-volumes around the 200 galaxies, and in each sub-volume we performed an \ion{H}{I}-weighted projection of all gas with impact parameter $< R_{200c}$ and LOS distance $< 2 R_{200c}$ relative to the galaxy, with the projection orientation chosen randomly for the entire simulation.
+%Each projection contained $N_{\ion{H}{I}}$ and the \ion{H}{I}-weighted temperature, density, metallicity for numerous sightlines, each corresponding to a projected area of (3.125 comoving kpc)$^2$.
+For each halo, we obtained  `maps' of \ion{H}{I} column density and \ion{H}{I}-weighted temperature, density, and metallicity. These maps consist of with (3.125 comoving kpc)$^2$ pixels.
 This corresponds to $\sim 10,000$ sightlines for a MW-mass galaxy.
-We then used the sightlines across all galaxies weighted to create a cosmological distribution of sightline temperature, density, metallicity, and $N_{\ion{H}{I}}$, from which we sampled our cloud properties.
+%We then used the sightlines across all galaxies weighted to create a cosmological distribution of sightline temperature, density, metallicity, and $N_{\ion{H}{I}}$, from which we sampled our cloud properties.
+We then created a histogram of these sightline properties (simply weighted by sightline count) to try to capture a physically reasonable joint distribution of temperature, density, metallicity, and \ion{H}{I} column density in UV absorbers. We sampled our cloud properties from this histogram.
 To focus on areas with multi-phase structure we weighted our sampling with $N_{\ion{H}{I}}$.
-Note that EAGLE does not include molecular cooling, so temperatures below $10^4$ K are rare, and are set by an equation of state for star-forming gas at high densities.
+Note that EAGLE does not include molecular cooling, so temperatures below $10^4$ K are rare, and the temperature of dense gas ($\mathrm{n}_{\mathrm{H}} > 10^{-1} \, \mathrm{cm}^{-3}$) is set by an equation of state and is therefore not physically realistic \citep{Schaye2015}. Therefore, when calculating the hydrogen neutral fraction we imposed a temperature of $10^4$~K on the gas on the equation of state \citep[following e.g.,][]{Rahmati2015}.
 
 \todo{Add a plot of the HI-weighted phase diagrams.}
+
+% EAGLE
+These sightlines were drawn from the EAGLE Ref-L100N1504 volume. EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Schaye2015,Crain2015,McAlpine2016} is a cosmological, hydrodynamical simulation. It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}). The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift). It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
+
+In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating, star formation and stellar feedback, and black hole seeding, growth, and AGN feedback. The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
+
+Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}. The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}. Star particles (stellar mass resolution elements) model a single-age stellar population with a \citet{Chabrier2003} initial mass function. They inject mass and metals into neighbouring SPH particles as they age following \citet{Wiersma2009}. Supernovae are modelled by stochasically heating neighbouring SPH particles by $10^{7.5}$~K, with a probability that reproduces the (calibrated) supernova energy injection rate \citep{DallaVecchia2012}. 
+
+Black holes are seeded when a halo reaches a given mass and does not already contain one. They grow through mergers and gas accretion following \citet{Rosas-Guevara2015}. AGN feedback is modelled according to \citet{Booth2009}, by stochasically heating neighbouring SPH particles by $10^{8.5}$~K. The probability of these injections is determined by the energy required for the heating, and an energy budget set by the accreted gas mass and efficiency factors.
+
+The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
+ 
 
 \atnastasha{
 Can you please provide a brief summary of the EAGLE simulations here?
@@ -376,9 +390,9 @@ For \texttt{sample0}, the initial modeling procedure involved adjustment of the 
 
 Alternatively, for \textit{sample0} we also added in the temperature, $T$, as a free parameter, no longer assuming a balance of heating and cooling.  In some of this parameter space, at higher temperature, the gas is predominantly collisionally ionized.  The distribution of the four parameters, $N_{\ion{H}{I}}$, $Z$, $n_H$, and $T$, was then evaluated as constrained by the model column densities.
 
-For the other two samples, \textit{sample1} and \textit{sample2}, model spectra were provided. The shapes of the model line profiles provide an important constraint using the methods of \cite{Sameer2021} and \cite{Sameer2022}. Though the observational modeling methods employed by \cite{Zahedy2019} and \cite{Haislmaier2021} use a cloud-by-cloud approach, they do not use profile fitting, but instead use measured column densities. The shapes of the profiles, as employed here, give more leverage to separate phases that are coincident in velocity. The important transitions that were covered by the provided  data included \ion{Mg}{II}, \ion{C}{II}, \ion{C}{III}, \ion{Si}{II}, \ion{Si}{III}, \ion{Si}{IV}, \ion{N}{V}, and \ion{O}{VI} for \textit{sample1}, and additionally \ion{C}{IV}, \ion{Ne}{VIII}, and \ion{Mg}{X} for \textit{sample2}. The given spectra are inspected for absorption in various ionization transitions. and an initial Voigt profile (VP) fit was obtained for representative unsaturated transitions for a range of ionization states.  The VP fit to the low ionization transitions is used to set a starting number of component locations for the modeling, and their initial positions in velocity space.
+For the other two samples, \textit{sample1} and \textit{sample2}, model spectra were provided. The shapes of the model line profiles provide an important constraint using the methods of \cite{Sameer2021} and \cite{Sameer2022}. Though the observational modeling methods employed by \cite{Zahedy2019} and \cite{Haislmaier2021} use a cloud-by-cloud approach, they do not use profile fitting, but instead use measured column densities. The shapes of the profiles, as employed here, give more leverage to separate phases that are coincident in velocity. The important transitions that were covered by the provided  data included \ion{Mg}{II}, \ion{C}{II}, \ion{C}{III}, \ion{Si}{II}, \ion{Si}{III}, \ion{Si}{IV}, \ion{N}{V}, and \ion{O}{VI} for \textit{sample1}, and additionally \ion{C}{IV}, \ion{Ne}{VIII}, and \ion{Mg}{X} for \textit{sample2}. The given spectra are inspected for absorption in various ionization transitions, and an initial Voigt profile (VP) fit was obtained for representative unsaturated transitions for a range of ionization states.  The VP fit to the low ionization transitions is used to set a starting number of component locations for the modeling, and their initial positions in velocity space.
 
-CLOUDY models are generated over the four parameter space defined by $N_{\ion{H}{I}}$ = [10$^{10}$,10$^{21}$], $Z$ = [10$^{-3}$,10$^{2}$], $T$ = [10$^{2}$, 10$^{6.5}$], and $n_H$ = [10$^{-6}$,10$^{2}$].  For the set of initial model clouds, a spectrum is synthesized using the superposition of all clouds.  The VP for each cloud comes from the CLOUDY output at a given grid point and a Doppler parameter which is the sum of contributions of the thermal component, and a non-thermal Doppler parameter which is a fifth free parameter of the model. The velocities of each of the clouds are also allowed to vary, making the redshift a sixth parameter for each cloud.
+CLOUDY models are generated over the four-parameter space defined by $N_{\ion{H}{I}}$ = [10$^{10}$,10$^{21}$], $Z$ = [10$^{-3}$,10$^{2}$], $T$ = [10$^{2}$, 10$^{6.5}$], and $n_H$ = [10$^{-6}$,10$^{2}$].  For the set of initial model clouds, a spectrum is synthesized using the superposition of all clouds.  The VP for each cloud comes from the CLOUDY output at a given grid point and a Doppler parameter which is the sum of contributions of the thermal component, and a non-thermal Doppler parameter which is a fifth free parameter of the model. The velocities of each of the clouds are also allowed to vary, making the redshift a sixth parameter for each cloud.
 The grid of CLOUDY models is then explored for the combination of the multiple clouds to determine the parameters for which the log-likelihood function is minimized. In this case, the log-likelihood function is computed by comparing the model spectra to the provided spectra, and summing the differences pixel by pixel.
 If the starting number of component clouds from the low ionization VP fits do not completely account for the absorption in the higher ionization transitions, then additional components are included and the procedure is repeated. It is found, for example, that \ion{O}{VI} seldom arises in the same phase as \ion{Mg}{II}. The posterior distribution of parameters for each of the clouds is then determined, again using PyMultiNest~(cite Buchner et al. 2014).
 
@@ -413,7 +427,7 @@ For example, their Figure 3 shows that they cannot well-recover complex LOS stru
     Temperature agreement is typically $<0.5$ dex for most sightlines.
     Density and absorber length are less well-constrained, with errors up to 4 dex.
     \todo{Try getting rid of the sort order.}
-    \todo{Try coloring by magnituded of the difference.}
+    \todo{Try coloring by magnitude of the difference.}
     \todo{Reduce vertical whitespace (which is actually from hspace).}
     \todo{Add $\ell$ for revised analysis.}
     \todo{Coming back to this after a break, this is not super readable.
@@ -732,7 +746,9 @@ This research was supported in part by the National Science Foundation under Gra
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Data Availability}
- 
+
+The EAGLE simulation data \citep{EagleTeam2017} and halo catalogues \citep{McAlpine2016} are publicly available. 
+
 The inclusion of a Data Availability Statement is a requirement for articles published in MNRAS. Data Availability Statements provide a standardised format for readers to understand the availability of data underlying the research results described in the article. The statement may refer to original data generated in the course of the study or to third-party data analysed in the article. The statement should describe and provide means of access, where possible, by linking to the data or providing the required accession numbers for the relevant databases or DOIs.
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
@@ -740,7 +756,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 % The best way to enter references is to use BibTeX:
 
 \bibliographystyle{mnras}
-\bibliography{references, hafen_references} % if your bibtex file is called example.bib
+\bibliography{references, hafen_references, wijers_references} % if your bibtex file is called example.bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
