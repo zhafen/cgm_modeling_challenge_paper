@@ -84,7 +84,13 @@
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
 \author[]{
-The Halo21 Absorption Modeling Group
+Zach Hafen,
+Sameer,
+Cameron Hummels,
+Jane Charlton,
+Nir Mandelker,
+Nastasha Wijers,
+\ldots
 \\
 % List of institutions
 % $^{1}$TBD \\
@@ -128,7 +134,7 @@ keyword1 -- keyword2 -- keyword3
 \subsection{Notes for Authors}
 
 % How do we refer to ourselves?
-Regarding nouns and pronouns, currently using ``we'' for the collaboration as a whole or if it's clear which group we're talking about, and otherwise ``data generators'' and ``observers''. 
+Regarding nouns and pronouns, currently using ``we'' for the collaboration as a whole or if it's unclear if we are talking about theorists or observers, and otherwise ``data generators'' and ``observers''. 
 
 \textbf{Notes for authors in the text.}
 \thoughts{If you are reading this then you, yes you, are welcome and encouraged to add in any relevant thoughts whenever you see this color.}
@@ -141,11 +147,15 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \subsection{Outstanding Questions/Discussion Points}
 
+\textbf{Discussion points for next meeting.}
+\begin{enumerate}
+    \item Language used. Modeling $\rightarrow$ parameter estimation? Modeled $\rightarrow$ estimated? Data $\rightarrow$ source?
+\end{enumerate}
+
 \textbf{Priorities:}
 \begin{enumerate}
     \item MLE comparison for samples 1 and 2, in addition to distribution comparison.
-    \item Version of Figure 3 for samples 1 and 2.
-    \atsameer{Sameer is retrieving the data for this.}
+    \item Version of Figure 3 for samples 1 and 2. \atsameer{Sameer is retrieving the data for this.}
     \item Summary plot that conveys the key point: ``accuracy for blind modeling''.
     \item Summary plot that conveys the key point: ``accuracy for optimal modeling''.
     \item Summary plot that conveys the key point: ``X error in observable properties typically results in Y error in derived properties''.
@@ -154,11 +164,19 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Secondary priorities:}
 \begin{enumerate}
+    \item Examples for individual sightlines for each sample, including for fit with observables.
+    \item Re-evaluate colors. Maybe not red and blue for blinded and revised.
+    \item Focus on other components for \texttt{sample2}, i.e. \ion{C}{IV}- and \ion{O}{VI}-weighting.
     \item \atsameer{Share total column/absorber length data for all samples missing it (e.g. \texttt{sample0}, revised.}
     \item Quantitatively estimate the expected shift in temperature from changing UVBs for \texttt{sample2}, and compare that shift to the shift in MLE values.
     \item Why is the density agreement for sightlines 03, 07, and 11 in \texttt{sample2} worse after revision?
     \item Work on the list of recommendations for modelers and the list for generators.
 \end{enumerate}
+
+\textbf{List of relevant publications yet-to-incorporate:}
+\begin{itemize}
+    \item Vijayan+Li2022: X-ray emission mock spectra.
+\end{itemize}
 
 % Who is the target audience?
 \textbf{Who is the target audience?}
@@ -288,13 +306,6 @@ Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10
 Black holes are seeded when a halo reaches a given mass and does not already contain one. They grow through mergers and gas accretion following \citet{Rosas-Guevara2015}. AGN feedback is modelled according to \citet{Booth2009}, by stochasically heating neighbouring SPH particles by $10^{8.5}$~K. The probability of these injections is determined by the energy required for the heating, and an energy budget set by the accreted gas mass and efficiency factors.
 
 The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
- 
-
-\atnastasha{
-Can you please provide a brief summary of the EAGLE simulations here?
-Also, I based the phase-space sampling discussion on your notes here \url{https://docs.google.com/document/d/1eXm_l3ecbRhdm1INuoV6QN6C7OpYxZXwN61kEi6KbbU/edit?usp=sharing}.
-Can you please review for correctness?
-}
 
 % Spectra creation
 We generated 100 sightlines of one to three clouds.
@@ -303,7 +314,7 @@ To focus on interpreting sightlines with multiple cool clouds we only allowed a 
 We determined the ion densities and column densities as described for \texttt{sample0}, using an ionization table and constraining total column via $N_{\ion{H}{I}}$.
 We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803 \AA$ to mimic complementary observations from the ground.
 Alpha element abundances relative to other elements were set to solar, e.g. \ion{C}{}/$\alpha$ is solar.
-We applied a line spread function typical of COS to each spectra, and included Gaussian noise with an SNR of 30.
+We applied a line spread function typical of COS to each spectrum, and included Gaussian noise with an SNR of 30.
 \atcameron{What exactly is AVG\_COS.txt?}
 The wavelength resolution for each spectra was set to $0.01 \AA$.
 \atcameron{Off the top of your head, this resolution is correct for COS, right?
@@ -530,8 +541,29 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
+    \includegraphics[width=\textwidth]{figures/sample2/violin.pdf}
+    \label{f: sample2 violin}
+    \caption{
+    \todo{Use consistent dimensions, fontsizes, etc between all plots.}
+    }
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components.pdf}
+    \label{f: sample2 violin vs components}
+    \caption{
+    Logscale violin plot.
+    \todo{Make visual signifier of logscale.}
+    \todo{Apply x-axis offset to other plots too.}
+    }
+\end{figure*}
+
+
+\begin{figure*}
+    \centering
     \includegraphics[width=\textwidth]{figures/sample2/correlations.pdf}
-    \label{f: high-res}
+    \label{f: sample2 correlations}
     \caption{
     Correlation coefficients between the likelihood distributions estimated by observational modeling and the actual distributions of gas properties.
     The gas probed is found along sightlines through a high-resolution simulation of turbulent mixing zones (\texttt{sample2}).
@@ -544,6 +576,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     Basically we want two quantities: one that compares disagreement in peak values, and one that compares overall match in distributions.}
     \todo{Linear/log are meaningful, but we can probably do something more straightforward to compare the same behavior but require less interpretation from the reader.}
     \todo{Change ``modeled'' to ``original modeling''?}
+    \todo{Clarify that linear/log refers to the y-axis.}
     }
 \end{figure*}
 
