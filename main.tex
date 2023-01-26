@@ -90,6 +90,7 @@ Cameron Hummels,
 Jane Charlton,
 Nir Mandelker,
 Nastasha Wijers,
+James Bullock,
 \ldots
 \\
 % List of institutions
@@ -149,17 +150,22 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Discussion points for next meeting.}
 \begin{enumerate}
+    \item Revised \texttt{sample2} plots. Both Sameer and Nastasha suggested violin plots, and indeed that's what I did.
     \item Language used. Modeling $\rightarrow$ parameter estimation? Modeled $\rightarrow$ estimated? Data $\rightarrow$ source?
+    \item Make data freely available?
+    \item What is our takeaway for blinded vs informed modeling?
 \end{enumerate}
 
 \textbf{Priorities:}
 \begin{enumerate}
-    \item MLE comparison for samples 1 and 2, in addition to distribution comparison.
+    \item MLE comparison for sample 2, in addition to distribution comparison.
+    \item Distribution comparison for sample 1.
     \item Version of Figure 3 for samples 1 and 2. \atsameer{Sameer is retrieving the data for this.}
-    \item Summary plot that conveys the key point: ``accuracy for blind modeling''.
-    \item Summary plot that conveys the key point: ``accuracy for optimal modeling''.
-    \item Summary plot that conveys the key point: ``X error in observable properties typically results in Y error in derived properties''.
+    \item Summary plot that conveys the key point: ``agreement in average quantities''.
+    \item Summary plot that conveys the key point: ``width of posteriors''.
+    \item Write up sample 2 results.
     \item Clean up text.
+    \item Discussion.
 \end{enumerate}
 
 \textbf{Secondary priorities:}
@@ -509,6 +515,7 @@ Anything I add in you're welcome to review, and I will do the same for you.
     Comparison informed by cosmological simulations.
     \todo{Do observations simultaneously get multiple properties right, or are some properties wrong while others are right?}
     \todo{Plot modeled peak values.}
+    \todo{Check if this is log or linear in width.}
     }
     \label{f: informed}
 \end{figure}
@@ -517,9 +524,8 @@ Anything I add in you're welcome to review, and I will do the same for you.
 \todo{Add Figure~\ref{f: informed} description.}
 
 % Width of posteriors and comparison to data
-In most cases the actual value resides inside the modeled distributions of possible values, i.e. the posteriors.
-In other words, the posteriors from modeling is, in most cases, sufficiently conservative.
-The posteriors can span several dex, however the actual values often lie at the peak of the posteriors.
+In most cases the source properties reside inside the modeled distributions of possible values, i.e. the posteriors.
+In other words the posteriors from modeling is, in most cases, sufficiently conservative.
 As with the blind modeling for \texttt{sample0} some actual values lie outside the priors used for modeling: some actual values have $Z > 10^{1.5} Z_\odot$, while the data was modeled with a uniform prior for $Z$ spanning $log_{10} Z/Z_\odot = [-3, 1.5]$.
 However, the actual values are within $< 0.5$ dex of the upper edge of the posterior, significantly less discrepant than blind modeling for \texttt{sample0}.
 \atsameer{Remind me why you limited the metallicity on the upper end?}
@@ -541,118 +547,84 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
+    \caption{Corner plot for sightline 0003.
+    \todo{Consider condensing this.}
+    \todo{Try log value ticks (-3, -2, -1) instead of linear values (0.001, 0.01, 0.1) for metallicity.}}
+    \label{f: sample2 03}
+\end{figure*}
+
+\begin{figure*}
+    \centering
     \includegraphics[width=\textwidth]{figures/sample2/violin.pdf}
-    \label{f: sample2 violin}
     \caption{
-    \todo{Use consistent dimensions, fontsizes, etc between all plots.}
+    The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the full posteriors from parameter estimation (blinded is red, blue is revised).
+    The width of the violin plots scales with $N_{\ion{H}{I}}$.
+    The posteriors for both the blinded and revised parameter estimations overlap with the source distributions in most cases, suggesting the parameter estimation is typically sufficiently conservative.
+    Exceptions are
+    both the blinded and revised posteriors of $Z$ for \texttt{07},
+    the blinded posteriors of $Z$ for \texttt{14} and \texttt{15},
+    most of the blinded posteriors of $T$,
+    and both the blinded and revised posteriors of $n_{\rm H}$ for \texttt{12}, \texttt{14}, and \texttt{15}.
+    \todo{Condense the last sentence?}
+    \todo{Add legend/labels.}
+    \todo{Fix ratios for this plot and others (poor use of whitespace).}
+    \todo{Use consistent dimensions, fontsizes, log vs linear scale, etc. between all plots.}
+    \todo{This plot uses logT, etc. for the ticks, but says linear T on the y-axis.}
     }
+    \label{f: sample2 violin}
+\end{figure*}
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components_alternate.pdf}
+    \caption{
+    The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the best estimates for individual components comprising the parameter estimation.
+    Each point is the maximum-likelihood estimate (MLE) of an individual component.
+    The width of the violin plots and the opacity of the points scales \textit{logarithmically} with $N_{\ion{H}{I}}$, while for the preceding figure width scales linearly.
+    The MLE of the strongest component typically aligns with the peak of the source distribution, but can be off by $\lesssim 1$ dex for $Z$ and $n_{\rm H}$, especially for the blinded estimates.
+    The best fit for parameter estimation consistently includes lower-column-density components with properties not found in the source data.
+    \todo{Make visual signifier of logscale.}
+    }
+    \label{f: sample2 violin vs components}
 \end{figure*}
 
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components.pdf}
-    \label{f: sample2 violin vs components}
     \caption{
-    Logscale violin plot.
+    Alternative version of the preceeding figure.
+    The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the best estimates for individual components comprising the parameter estimation.
+    Each horizontal line is the maximum-likelihood estimate (MLE) of an individual component.
+    The width of the violin plots and horizontal lines scales \textit{logarithmically} with $N_{\ion{H}{I}}$.
+    The MLE of the strongest component typically aligns with the peak of the source distribution, but can be off by $\lesssim 1$ dex for $Z$ and $n_{\rm H}$, especially for the blinded estimates.
+    The best fit for parameter estimation consistently includes lower-column-density components with properties not found in the source data.
     \todo{Make visual signifier of logscale.}
-    \todo{Apply x-axis offset to other plots too.}
     }
+    \label{f: sample2 violin vs components alt}
 \end{figure*}
 
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{figures/sample2/correlations.pdf}
-    \label{f: sample2 correlations}
-    \caption{
-    Correlation coefficients between the likelihood distributions estimated by observational modeling and the actual distributions of gas properties.
-    The gas probed is found along sightlines through a high-resolution simulation of turbulent mixing zones (\texttt{sample2}).
-    The results of fully-blind modeling is shown in red.
-    The revised results are shown in red.
-    The largest change is that the revised modeling provides a much better estimate of the temperature.
-    \todo{Some of the poor disagreements are because the predicted distribution is poorly constrained, not because it outright disagrees.
-    We should find a way to show this, maybe via comparing the MLE to the peak of the distribution?
-    This might also be a quantity that's easier to interpret.
-    Basically we want two quantities: one that compares disagreement in peak values, and one that compares overall match in distributions.}
-    \todo{Linear/log are meaningful, but we can probably do something more straightforward to compare the same behavior but require less interpretation from the reader.}
-    \todo{Change ``modeled'' to ``original modeling''?}
-    \todo{Clarify that linear/log refers to the y-axis.}
-    }
-\end{figure*}
 
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
-    \caption{Corner plot for sightline 0003.
-    \todo{Try log value ticks (-3, -2, -1) instead of linear values (0.001, 0.01, 0.1) for metallicity.}}
-    \label{f: sample2 03}
-\end{figure*}
-
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0007.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0007.png}
-    \label{f: sample2 07}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0008.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0008.png}
-    \label{f: sample2 08}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0011.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0011.png}
-    \label{f: sample2 11}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0012.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0012.png}
-    \label{f: sample2 12}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0014.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0014.png}
-    \label{f: sample2 14}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0015.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0015.png}
-    \label{f: sample2 15}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0016.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0016.png}
-    \label{f: sample2 16}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0019.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0019.png}
-    \label{f: sample2 19}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
-\end{figure*}
+% \begin{figure*}
+%     \centering
+%     \includegraphics[width=\textwidth]{figures/sample2/correlations.pdf}
+%     \label{f: sample2 correlations}
+%     \caption{
+%     Correlation coefficients between the likelihood distributions estimated by observational modeling and the actual distributions of gas properties.
+%     The gas probed is found along sightlines through a high-resolution simulation of turbulent mixing zones (\texttt{sample2}).
+%     The results of fully-blind modeling is shown in red.
+%     The revised results are shown in red.
+%     The largest change is that the revised modeling provides a much better estimate of the temperature.
+%     \todo{Some of the poor disagreements are because the predicted distribution is poorly constrained, not because it outright disagrees.
+%     We should find a way to show this, maybe via comparing the MLE to the peak of the distribution?
+%     This might also be a quantity that's easier to interpret.
+%     Basically we want two quantities: one that compares disagreement in peak values, and one that compares overall match in distributions.}
+%     \todo{Clarify that linear/log refers to the y-axis.}
+%     }
+% \end{figure*}
 
 % Interpreting multi-component spectra
 Absorbing gas with the same LOS-velocity is not necessarily co-spatial, but instead a single absorption component can correspond to multiple clouds of gas that are physically separated.
@@ -749,9 +721,6 @@ How does the modeling done here compare?
 The inferred line of sight thickness with the modeling in some cases is $\ll$ sub-pc scale.
 However, the simulation is only resolving clouds > 47 pc, so it could be a good idea if it is physically motivated to set an informed prior on the line of sight thickness of clouds
 
-\section{Conclusions and recommendations}
-\label{s: conclusions}
-
 \subsection{Recommendations}
 
 \subsubsection{For observational modelers}
@@ -769,8 +738,16 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
     \item Provide mock spectra when available, not just column densities. Much additional information is contained in the shape of the spectra.
 \end{enumerate}
 
-The last numbered section should briefly summarise what has been done, and describe
-the final conclusions which the authors draw from their work.
+\section{Conclusions}
+\label{s: conclusions}
+
+We draw the following conclusions regarding aspects of parameter estimation\ldots
+\begin{enumerate}
+    \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the average properties of the absorbing gas, \textit{provided} temperature and density are allowed to vary as part of the fitting process (\S\ref{s: results -- sample0}).
+    \item \textbf{Posterior distributions:} Even when the best fits do not agree with the source parameters, the source parameters typically lie within the posterior distribution, suggesting errors are typically sufficiently conservative. \todo{By how much?}
+    \item \textbf{Agreement with observable absorption vs source properties:} Average agreement of $\lesssim 0.2$ dex in ion column densities can lead to errors of $\gtrsim (0.5, 0.3, 1.5, 1)$ dex in ($Z$, $T$, $n_{\rm H}$, and $\ell$) respectively (Figure~\ref{f: error vs error}). Fits that agree to $\lesssim 0.1$ dex in ion column densities typically lead to fitting source properties to within $\lesssim 0.2$ dex. \todo{Only shown for sample0 currently.} \todo{EW would be more interpretable probably.}
+    \item \textbf{Fit components:} Component-by-component modeling works well for a few discrete clouds (Figure~\ref{f: informed}), but does not capture the properties of a distribution of clouds (Figure~\ref{f: sample2 violin vs components}).
+\end{enumerate}
 
 \section*{Acknowledgements}
 
@@ -797,16 +774,83 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 
 \appendix
 
-\section{Some extra material}
+\section{Sightline-by-sightline comparisons for \texttt{sample2}}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample0/column_den.pdf}
-    \label{f: column density agreement}
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
+    \caption{Corner plot for sightline 0003.
+    \todo{Try log value ticks (-3, -2, -1) instead of linear values (0.001, 0.01, 0.1) for metallicity.}}
+    \label{f: sample2 03}
 \end{figure*}
 
-If you want to present additional material which would interrupt the flow of the main paper,
-it can be placed in an Appendix which appears after the list of references.
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0007.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0007.png}
+    \label{f: sample2 07}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0008.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0008.png}
+    \label{f: sample2 08}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0011.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0011.png}
+    \label{f: sample2 11}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0012.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0012.png}
+    \label{f: sample2 12}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0014.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0014.png}
+    \label{f: sample2 14}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0015.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0015.png}
+    \label{f: sample2 15}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0016.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0016.png}
+    \label{f: sample2 16}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0019.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0019.png}
+    \label{f: sample2 19}
+    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
+\end{figure*}
+
+This section includes additional figures for sample2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
