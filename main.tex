@@ -155,19 +155,19 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \textbf{Discussion points for next meeting.}
 \begin{enumerate}
     \item Revised \texttt{sample2} plots. Both Sameer and Nastasha suggested violin plots, and indeed that's what I did.
+    \item New Figure 1. Figure 2 in the works.
     \item Language used. Modeling $\rightarrow$ parameter estimation? Modeled $\rightarrow$ estimated? Data $\rightarrow$ source?
     \item Make data freely available?
-    \item What is our takeaway for blinded vs informed modeling?
 \end{enumerate}
 
 \textbf{Priorities:}
 \begin{enumerate}
     \item Version of Figure 3 for samples 1 and 2. \atsameer{Sameer is retrieving the data for this.}
-    \item Summary plot that conveys the key point: ``agreement in average quantities''.
     \item Summary plot that conveys the key point: ``width of posteriors''.
     \item Write up sample 2 results.
     \item Clean up text.
     \item Discussion.
+    \item Clean up plots (including consistent sizes).
 \end{enumerate}
 
 \textbf{Secondary priorities:}
@@ -432,6 +432,22 @@ For example, their Figure 3 shows that they cannot well-recover complex LOS stru
 \section{Results}
 \label{s: results}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{figures/averages.pdf}
+    \caption{
+    The source properties (black) used to produce the synthetic absorption systems
+    compared to the best estimates from parameter estimation across all three of our samples.
+    Red are the parameter estimates from fully-blind modeling,
+    and blue are the parameter estimates following any revision.
+    The samples range from uniform clouds to a turbulent mixing zone.
+    For the turbulent mixing zone the \ion{H}{I}-weighted average of the source data is shown.
+    The agreement is generally good between the best estimates and the source properties,
+    excluding the blinded \texttt{sample0} estimates (\S\ref{s: results -- sample0}).
+    }
+    \label{f: summary--average}
+\end{figure}
+
 \subsection{Column densities of uniform clouds --- \texttt{sample0}}
 \label{s: results -- sample0}
 
@@ -543,7 +559,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \atsameer{Commentary for this sample?}
 
-\subsection{Spectra of a high resolution simulation --- \texttt{sample2}}
+\subsection{Spectra of a turbulent, high-resolution simulation --- \texttt{sample2}}
 \label{s: results -- sample2}
 
 \begin{figure*}
@@ -570,9 +586,6 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     and both the blinded and revised posteriors of $n_{\rm H}$ for \texttt{12}, \texttt{14}, and \texttt{15}.
     \todo{Condense the last sentence?}
     \todo{Add legend/labels.}
-    \todo{Fix ratios for this plot and others (poor use of whitespace).}
-    \todo{Use consistent dimensions, fontsizes, log vs linear scale, etc. between all plots.}
-    \todo{This plot uses logT, etc. for the ticks, but says linear T on the y-axis.}
     }
     \label{f: sample2 violin}
 \end{figure*}
