@@ -117,7 +117,8 @@ James Bullock,
 \begin{abstract}
 In the Halo21 circumgalactic medium (CGM) modeling challenge we presented experts in interpreting absorption spectra with three blinded sets of synthetic observations and asked them to estimate the properties of the associated gas.
 The three data samples were generated and analyzed iteratively, with increasing complexity.
-\texttt{sample0} was ion column densities of uniform clouds, and revealed that requiring clouds to have heating balanced by cooling results in $\sim 1$ dex errors in estimated metallicity.
+\texttt{sample0} was ion column densities of uniform clouds, and revealed that requiring clouds to have heating balanced by cooling results in $\sim 1$ dex errors in estimated metallicity,
+although the most extreme errors were for absorption systems atypical of the CGM.
 Poor recovery of source parameters can be difficult to detect---matching the provided column densities to $\lesssim 0.2$ dex can produce disagreement in $Z$, $T$, and $n_{\rm H}$ by $\sim$ 0.8, 0.4, and 2 dex respectively.
 Allowing temperature and density to freely vary during fitting produced good agreement between the parameter estimates and the source properties.
 \texttt{sample1} was mock absorption spectra of multi-cloud systems,
@@ -290,7 +291,7 @@ The properties of the clouds were drawn from the distribution of properties typi
 % Phase space sampling procedure
 To sample the cloud properties we selected 200 random galaxies with halo masses $M_{200c} = 10^{12} - 10^{12.5} M_\odot$ from the EAGLE Ref-L100N1504 volume at $z=0.27$, where $M_{200c}$ is the halo mass s.t. the average enclosed density is 200$\times$ the critical density of the universe at that redshift.
 In the gas around these galaxies, the \ion{H}{I} fraction was calculated using fitting functions that approximate the effects of self-shielding~\citep{Rahmati2013} assuming the UVB from \cite{Haardt2001}.
-We extracted 200 sub-volumes around the 200 galaxies, and in each sub-volume we performed an \ion{H}{I}-mass-weighted projection of all gas with impact parameter $< R_{200c}$ and LOS distance $< 2 R_{200c}$ relative to the galaxy, with the projection orientation chosen randomly.
+We extracted 200 sub-volumes around the 200 galaxies, and in each sub-volume we performed an \ion{H}{I}-mass-weighted projection of all gas with impact parameter $< R_{200c}$ and LOS distance $< 2 R_{200c}$ relative to the galaxy. The projection was done along the z-axis of the simulation, which is random with respect to the galaxy orientation.
 For each halo, we obtained  `maps' of \ion{H}{I} column density and \ion{H}{I}-weighted temperature, density, and metallicity, with a pixel size of (3.125 comoving kpc)$^2$.
 This corresponds to $\sim 10,000$ sightlines for a MW-mass galaxy.
 %We then used the sightlines across all galaxies weighted to create a cosmological distribution of sightline temperature, density, metallicity, and $N_{\ion{H}{I}}$, from which we sampled our cloud properties.
@@ -483,13 +484,8 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
     with the exception of the \texttt{sample2}-revised $n_{\rm H}$ posteriors.
     For \texttt{sample0} the parameter estimation methodology had to be adapted to work with a set of provided column densities instead of full spectra,
     limiting the extent and interpretation of the provided errors.
-    \atsameer{
-    For sample0 I used the errors you provided.
-    However they seem suspiciously small, and I'm not sure how they relate to percentiles from the posterior.}
     \atsameer{I do not have errors for sample0 $n_{\rm H}$ and blinded sample0 $T$.
     How difficult would it be to procure those?}
-    \atsameer{I am somewhat surprised that the 16th-84th percentiles do not enclose the full distributions in some cases. Thoughts?}
-    \atsameer{Related, do you know why the posteriors for sample1 are so much wider than for sample2?}
     }
     \label{f: summary--widths}
 \end{figure}
@@ -573,7 +569,7 @@ Even still, in four of the ten sightlines (\textsc{01}, \textsc{02}, \textsc{06}
 
 % Degenerate column densities
 The above suggests reasonable agreement between modeled and actual ion column densities is possible, even when the modeled temperature, density, and metallicity are inconsistent with the actual values.
-We demonstrate this in Figure~\ref{f: column density agreement},
+We demonstrate this in Figure~\ref{f: error vs error},
 which compares the per-sightline disagreement in estimated properties to the disagreement between the estimated and provided column densities, averaged across all fit ions. 
 The revised estimates are in much better agreement with the actual properties, but the revised ion column densities are adjusted by $\lesssim 0.2$ dex relative to the column densities modeled blind.
 % A complicating element is that the errors data generators applied to the column densities were independent, e.g. $N_{\ion{H}{I},\,{\rm provided}} > N_{\ion{H}{I},{\rm ,actual}}$ does not mean $N_{\ion{Mg}{II},\,{\rm provided}} > N_{\ion{Mg}{II},\,{\rm actual}}$.
@@ -601,13 +597,21 @@ This is particularly true for higher ionization gas (at higher temperatures and/
     \label{f: sample1 violin}
 \end{figure}
 
-% Width of posteriors and comparison to data
+% Comparison to data
 Figure~\ref{f: sample1 violin} compares the posteriors from parameter estimation to the properties of the source clouds.
 In most cases the source properties reside inside the modeled distributions of possible values, i.e. the posteriors.
 In other words the posteriors from modeling is, in most cases, sufficiently conservative.
 As with the blind modeling for \texttt{sample0} some actual values lie outside the priors used for modeling: some actual values have $Z > 10^{1.5} Z_\odot$, while the data was modeled with a uniform prior for $Z$ spanning $log_{10} Z/Z_\odot = [-3, 1.5]$ (where $\log_{10} Z/Z_\odot = 1.5$ is the default metallicity range for Cloudy).
 However, the actual values are within $< 0.5$ dex of the upper edge of the posterior, significantly less discrepant than blind modeling for \texttt{sample0}.
-Typically temperature is well-constrained with the posterior often spanning $<0.1$ dex, while for the higher ions the metallicity and density are more poorly constrained.
+
+% Wide posteriors.
+The widest posteriors in sample1 are often associated with a hotter phase tracing the OVI for a few reasons.
+First, the cooling of such a gas phase resembles that of collisional time-dependent gas cooling with no external radiation, and hence is independent of density.
+In two cases we also see large uncertainties in temperature, which may be due to the overlapping posteriors of two different clouds.
+Second, particularly applicable for these two cases, following the lessons learnt from \texttt{sample0}, the parameter-estimation team relaxed the priors such that the lowest temperature could be $10^3$ K, while the source data has a lower bound of $10^4$.
+A potential second mode is being reflected in the parameter estimates, which may not be realistic. 
+Additional potential contributing factors to the wide posteriors include the absence of \ion{C}{IV} lines from in the provided spectra, 
+and the stated error in the provided spectra.
 
 % Number of components
 The modeling identifies the correct number of components in 9 of 10 sightlines.
