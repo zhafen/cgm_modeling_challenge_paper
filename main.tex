@@ -105,7 +105,7 @@ James Bullock,
 \date{Accepted XXX. Received YYY; in original form ZZZ}
 
 % Enter the current year, for the copyright statements etc.
-\pubyear{2015}
+\pubyear{2023}
 
 % Don't change these lines
 \begin{document}
@@ -154,19 +154,17 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \atnastasha{this color.}
 \atnir{this color.}
 
-\textbf{Discussion points for next meeting.}
-\begin{enumerate}
-    \item Identified a bug in the violin plots. Made the vlos distributions way too wide. Fixed.
-    \item Do you agree with the conclusions drawn? Are there additional conclusions?
-    \item What would be good to include in the discussion section?
-    \item Use ``temperature equilibrium'' to refer to an assumed balance of heating and cooling? This is for gas that is often in photoionization equilibrium and where photoheating is a significant source of heating.
-\end{enumerate}
+% \textbf{Discussion points for next meeting.}
+% \begin{enumerate}
+% \end{enumerate}
 
 \textbf{Priorities:}
 \begin{enumerate}
-    \item Detailed demonstration of the point of Figure~\ref{f: error vs error} for one sightline.
+    \item Add asymmetric error bars to Figure 9.
+    \item Use ``thermal equilibrium'' to refer to an assumed balance of heating and cooling
     \item Discussion.
     \item Clean up plots (including consistent sizes and notation).
+    \item Detailed demonstration of the point of Figure~\ref{f: error vs error} for one sightline. (Slash emphasize the results less).
 \end{enumerate}
 
 \textbf{Secondary priorities:}
@@ -258,7 +256,7 @@ The physical properties of the 10 clouds were sampled from $Z$ = [ 0.01, 1.5 ] $
 The values of density, temperature, metallicity, and \ion{H}{I} column density were chosen to be uncorrelated, which plays a role in the analysis (\S\ref{s: results -- sample0}).
 We set the redshift for our mock sample to $z=0.25$ (typical for many CGM samples observed with the Cosmic Origins Spectrograph; COS, \citealt{Green2012}), and we included all ions present in the instrument window of COS G130M at $z=0.25$, including \ion{C}{II}, \ion{C}{III}, \ion{N}{II}, \ion{N}{III}, \ion{N}{V}, \ion{O}{I}, \ion{O}{VI},  \ion{Si}{II}, \ion{Si}{III}, and \ion{Si}{IV}.
 For each ion we looked up the ion densities according to photo-ionization equilibrium, as tabulated by \textsc{trident} for single zone simulations produced with \textsc{cloudy}~\citep{Ferland2013} using the \cite{Haardt2012} UV background.
-Note that photo-ionization equilibrium does not assume temperature equilibrium (i.e. gas is neither heating or cooling),
+Note that photo-ionization equilibrium does not assume thermal equilibrium (i.e. gas is neither heating or cooling),
 an assumption often employed in parameter estimation.
 To determine the total amount of absorbing gas given its properties we calculated the length of the absorber from the \ion{H}{I} column density and its ionization state, $\ell = N_{\ion{H}{I}} / n_{\ion{H}{I}}$).
 Note that the tabulated ion densities used to calculate ionization state do not assume a size for the cloud, which is acceptable assuming the effects of self-shielding are small.
@@ -518,7 +516,7 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
     Metallicities have agree on a better than $<0.5$ dex level for approximately half the sightlines, all of which have $Z > 0.1 Z_\odot$.
     Temperature agreement is typically $<0.5$ dex for most sightlines.
     Density and absorber length are less well-constrained, with errors up to 4 dex.
-    The blind parameter estimates consistently underestimate the actual temperature and density due to the assumption of temperature equilibrium.
+    The blind parameter estimates consistently underestimate the actual temperature and density due to the assumption of thermal equilibrium.
     \todo{Try getting rid of the sort order?}
     \todo{Reduce vertical whitespace (which is actually from hspace).}
     \todo{Add $\ell$ for revised analysis.}
@@ -533,10 +531,10 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
     \includegraphics[width=\columnwidth]{figures/sample0/phase_space.png}
     \caption{
     Comparison between estimated and actual properties of \texttt{sample0} in the context of the phase-space distribution of CGM gas in a FIRE-2 cosmological simulation (background distribution; includes satellite ISM).
-    The solid black line shows the range of temperatures and densities where gas is in temperature equilibrium via photoheating.
+    The solid black line shows the range of temperatures and densities where gas is in thermal equilibrium via photoheating.
     \atsameer{Can you confirm this? This is the file PIEdata.csv you provided.}
-    If temperature equilibrium is assumed during parameter estimation then when the assumption is inaccurate the estimated metallicity tends to be inaccurate.
-    However, there is a large population of CGM gas that is in approximate temperature equilibrium.
+    If thermal equilibrium is assumed during parameter estimation then when the assumption is inaccurate the estimated metallicity tends to be inaccurate.
+    However, there is a large population of CGM gas that is in approximate thermal equilibrium.
     \todo{If this is going to be a single-column plot the font needs to be larger.}
     }
     \label{f: idealized explanation}
@@ -549,7 +547,7 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
     Error in properties of the absorbing gas vs error in column densities for \texttt{sample0}.
     The x-axis shows average log-space difference between column densities across all ions, weighted by the provided uncertainty.
     The original models fit the data decently (mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert < 0.3$), but do not accurately recover the properties of the absorbing gas (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \gtrsim 0.4$).
-    The revised models (which do not assume temperature equilibrium) recover the properties of the gas much better (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \lesssim 0.1$), and typically fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.05$.
+    The revised models (which do not assume thermal equilibrium) recover the properties of the gas much better (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \lesssim 0.1$), and typically fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.05$.
     }
     \label{f: error vs error}
 \end{figure*}
@@ -560,7 +558,7 @@ Data generators created \texttt{sample0} by randomly sampling properties from a 
 However, in combination the properties were often inconsistent with common expectations of CGM gas.
 This is seen in Figure~\ref{f: idealized explanation}, which compares the temperatures and densities of the source clouds to temperatures and densities typical for the CGM in a cosmological simulation.
 On the other hand, the parameter-estimation team modeled \texttt{sample0} with priors constrained to regions of parameter space consistent with current knowledge of the CGM.
-For example, the observers tested if the column densities were consistent with temperature equilibrium driven by photo-ionization equilibrium, in which case estimated temperature is a calculated from the estimated metallicity and density parameters, and found reasonable fits for sightlines \texttt{06} through \texttt{10}.
+For example, the observers tested if the column densities were consistent with thermal equilibrium driven by photo-ionization equilibrium, in which case estimated temperature is a calculated from the estimated metallicity and density parameters, and found reasonable fits for sightlines \texttt{06} through \texttt{10}.
 Observers found reasonable fits for three of the other sightlines after fixing the density to $n_{\rm H} = 10^{-3.9}$ cm$^{-3}$ and assuming collisional ionization at the model temeprature.
 In this case, the temperature can be determined, but the metallicity also depends on the density,
 which was not actually close to the assumed value.
@@ -770,6 +768,8 @@ while the revised estimates agree better.
 
 \todo{What data is necessary to reproduce the simulated logspace distributions?}
 
+\todo{What are some scenarios where you simply do not have the data to model them successfully?}
+
 \subsection{What level of agreement is necessary for modeling to be representative?}
 
 \S\ref{s: results -- sample0} shows that reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties.
@@ -865,10 +865,11 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
 
 We conclude the following\ldots
 \begin{enumerate}
-    \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the average properties of the absorbing gas (Figure~\ref{f: summary--average}), \textit{provided} temperature and density are allowed to vary as part of the fitting process (\S\ref{s: results -- sample0}).
-    \item \textbf{Posterior distributions:} Even when the best fits do not agree with the source parameters, the source parameters typically lie within the posterior distribution, suggesting errors are typically sufficiently conservative (Figure~\ref{f: summary--widths}). \todo{This conclusion is pending following some remaining questions.}
-    \item \textbf{Agreement with observable absorption vs source properties:} Average agreement of $\lesssim 0.2$ dex in ion column densities can lead to errors of $\gtrsim (0.5, 0.3, 1.5, 1)$ dex in ($Z$, $T$, $n_{\rm H}$, and $\ell$) respectively (Figure~\ref{f: error vs error}). Fits that agree to $\lesssim 0.1$ dex in ion column densities typically lead to fitting source properties to within $\lesssim 0.2$ dex.
-    \item \textbf{Fit components:} Component-by-component modeling works well for a few discrete clouds (Figure~\ref{f: sample1 violin}), but does not capture the properties of a distribution of clouds (Figure~\ref{f: sample2 violin vs components}).
+    \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the average properties of the absorbing gas (Figure~\ref{f: summary--average}), \textit{provided} temperature and density are allowed to vary independently as part of the fitting process (\S\ref{s: results -- sample0}).
+    \item \textbf{Posterior distributions:} Even when the best fits do not agree with the source parameters, the source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative (Figure~\ref{f: summary--widths}).
+    \item \textbf{Agreement with observable absorption vs source properties:} Average agreement of $\lesssim 0.2$ dex in ion column densities can lead to errors of $\gtrsim (0.5, 0.3, 1.5, 1)$ dex in ($Z$, $T$, $n_{\rm H}$, and $\ell$) respectively (Figure~\ref{f: error vs error}). Fits that agree to $\lesssim 0.1$ dex in ion column densities typically lead to fitting source properties to within $\lesssim 0.2$ dex. \todo{Revise this to emphasize that it's for sample0, and that sample0 is limited to only column densities.}
+    \item \textbf{Fit components:} Component-by-component modeling works well for a few discrete clouds (Figure~\ref{f: sample1 violin}), but does not capture the properties of a distribution of clouds (Figure~\ref{f: sample2 violin vs components}). \todo{What clouds are recovered well, and which aren't?}
+    \todo{Emphasize that velocity structure can be recovered.}
     \item \thoughts{Additional key conclusions?}
 \end{enumerate}
 
