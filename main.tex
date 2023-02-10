@@ -620,13 +620,16 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
-    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
-    \caption{Corner plot for sightline 0003.
-    \todo{Condense this, both by plotting only the 1D distributions and by considering a way to show the blinded and revised estimates on a single plot.}
-    \todo{Remove the correlation coefficients.}
-    \todo{Try log value ticks (-3, -2, -1) instead of linear values (0.001, 0.01, 0.1).}}
-    \label{f: sample2 03}
+    \includegraphics[width=\textwidth]{figures/sample2/high-z/sightline_0012.pdf}
+    \caption{
+    Estimated and source properties of gas along a sightline through a turbulent mixing zone.
+    Black shows the source properties used to produce the mock spectra.
+    Red and blue show the posteriors from the blinded and revised parameter estimations respectively. 
+    The combined posteriors are indicated by thick lines.
+    For the revised parameter estimation we also show the posteriors for the individual clouds as blue lines outlined in black,
+    limiting the display to the region enclosing 99.7\% of the posterior for a given cloud.
+    }
+    \label{f: sample2 12}
 \end{figure*}
 
 \begin{figure*}
@@ -697,16 +700,15 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 % \end{figure*}
 
 % Individual example
-Figure~\ref{f: sample2 03} shows parameter estimation for a single spectra, sightline 03, which is best fit by one low-column-density component and one high-column-density component.
+Figure~\ref{f: sample2 12} shows parameter estimation for a single sightline, sightline 12, which is best fit by four clouds.
 Both the source data and the posteriors are normalized by associated \ion{H}{I} column density.
 Integrating over the source data for any property yields the total \ion{H}{I} column density.
 Integrating over any property posterior for a component yields the median estimated \ion{H}{I} column for that component.
 The combined posterior is the result of co-adding the normalized single-component distributions.
 The maximum likelihood estimate of the combined distribution is usually dominated by the strongest component,
 agrees relatively well with the peak values of the source data.
-The lower-column-density components are not necessarily representative of the source distribution,
-but do sometimes appear to correlate with the source data.
-For example, the temperature MLE for the lower-column-density component lies within the high-temperature tail of the source data for both the blinded and revised estimates.
+The lower-column-density components are not perfect tracers of the source distribution, but still capture some features.
+For example, the four peaks (MLEs) of the individual cloud posteriors approximately span the high-$T$ and low-$n_{\rm H}$ source data.
 
 % Strongest component
 Figure~\ref{f: sample2 violin} compares the parameter-estimation posteriors to the source data property distributions.
@@ -900,20 +902,19 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 
 \section{Sightline-by-sightline comparisons for \texttt{sample2}}
 
-% \begin{figure*}
-%     \centering
-%     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
-%     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
-%     \caption{Corner plot for sightline 0003.
-%     \todo{Try log value ticks (-3, -2, -1) instead of linear values (0.001, 0.01, 0.1) for metallicity.}}
-%     \label{f: sample2 03}
-% \end{figure*}
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
+    \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
+    \caption{Corner plot for sightline 0003.}
+    \label{f: sample2 03 corner}
+\end{figure*}
 
 \begin{figure*}
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0007.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0007.png}
-    \label{f: sample2 07}
+    \label{f: sample2 07 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
 \end{figure*}
 
@@ -921,7 +922,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0008.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0008.png}
-    \label{f: sample2 08}
+    \label{f: sample2 08 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
 \end{figure*}
 
@@ -929,7 +930,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0011.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0011.png}
-    \label{f: sample2 11}
+    \label{f: sample2 11 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
 \end{figure*}
 
@@ -937,7 +938,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0012.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0012.png}
-    \label{f: sample2 12}
+    \label{f: sample2 12 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
 \end{figure*}
 
@@ -945,7 +946,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0014.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0014.png}
-    \label{f: sample2 14}
+    \label{f: sample2 14 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
 \end{figure*}
 
@@ -953,7 +954,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0015.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0015.png}
-    \label{f: sample2 15}
+    \label{f: sample2 15 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
 \end{figure*}
 
@@ -961,7 +962,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0016.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0016.png}
-    \label{f: sample2 16}
+    \label{f: sample2 16 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
 \end{figure*}
 
@@ -969,7 +970,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0019.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0019.png}
-    \label{f: sample2 19}
+    \label{f: sample2 19 corner}
     \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
 \end{figure*}
 
