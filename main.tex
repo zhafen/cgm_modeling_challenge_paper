@@ -160,10 +160,10 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Priorities:}
 \begin{enumerate}
-    \item Add asymmetric error bars to Figure 9.
-    \item Use ``thermal equilibrium'' to refer to an assumed balance of heating and cooling
-    \item Discussion.
-    \item Clean up plots (including consistent sizes and notation).
+    \item \atsameer{Respond to questions in discussion section.}
+    \item Clean up discussion section (e.g. decrease duplication, snip single-paragraph-long subsubsections).
+    \item Clean up plots (including consistent sizes and notation, legends/labels).
+    \item Review for consistent language (e.g. ``parameter-estimation team'', ``data-generation team''.
     \item Detailed demonstration of the point of Figure~\ref{f: error vs error} for one sightline. (Slash emphasize the results less).
 \end{enumerate}
 
@@ -856,40 +856,37 @@ However, in some cases non-equilibrium chemistry can have a significant effect o
 
 \subsubsection{Absorption modeling ``by hand''}
 
-There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{Lacki2010}.
-How does the modeling done here compare?
-\atsameer{This is a question especially for you.}
-
-Jane:
-I should provide more references for this.   From my group over the  years I'd say 
-2021MNRAS.506.5640N Norris et al.; 
-2018MNRAS.476.2258R Rosenwasser et al.;  
-2008ApJ...679..220M Misawa et al.
-The last one is simple systems at z~1.7 so a similar redshift.
-Sameer's methods are based on these earlier models but with significant improvements: 1) they automate things in a way that leads to a substantial advance in speed to model a system (a factor of 10-100 faster I'd say); 2) they provide the range of properties and not just a best value and a rough idea of the allowed range; 3) they now allow temperature to be a free parameter; 4) they consider all transitions as equally important weighted by their noise level and eliminated regions with blends.
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{misawa2008Supersolar, Lacki2010, rosenwasser2018Understanding, norris2021Discovery}.
+The methods employed by the parameter-estimation team are based on these earlier models but with significant improvements:
+\begin{enumerate*}
+    \item They are automated, leading to a $\sim 10-100 \times$ decrease in time to model a system.
+    \item They provide full posteriors for parameters, not just an estimate of the most-likely value a range of viable values.
+    \item Temperature can be varied independently.
+    \item All transitions are considered, weighted by noise level.
+\end{enumerate*}
+\atsameer{The above is modified text from a comment from Jane. A few questions:
+Regarding the last point, Jane mentioned eliminating regions with blends. Can you elaborate?}
 
 \subsection{Comparison to similar analyses}
 
 % Interpreting multi-component spectra
-Absorbing gas with the same LOS-velocity is not necessarily co-spatial, but instead a single absorption component can correspond to multiple clouds of gas that are physically separated.
-Analysis of mock absorption spectra from cosmological simulations shows that only $\sim 30-50\%$ of absorption components are composed of a single, contiguous cloud, and $\sim 50\%$ of multiple clouds contributing to a single component are separated by $\gtrsim 3-12$ kpc depending on the ion~\citep[][]{Marra2022}.
-Further, the amount of mass in common between velocity-aligned absorption from different ions varies widely, with $\sim 1/3$ of \ion{Si}{II} and \ion{C}{IV} absorbers sharing $>50\%$ of their mass~\citep[][]{Marra2022}.
-These results are expected to be enhanced for higher-resolution simulations focused on individual filaments or clouds.
+Absorbing gas with the same LOS velocity is not necessarily co-spatial, but instead a single absorption component can correspond to multiple clouds of gas that are physically separated.
+In an analysis of mock absorption spectra from cosmological simulations, \cite{Marra2022} show that only $\sim 30-50\%$ of absorption components are composed of a single, contiguous cloud, and $\sim 50\%$ of multiple clouds contributing to a single component are separated by $\gtrsim 3-12$ kpc depending on the ion.
+Further, \cite{Marra2022} find that the amount of mass in common between velocity-aligned absorption from different ions varies widely, with $\sim 1/3$ of \ion{Si}{II} and \ion{C}{IV} absorbers sharing $>50\%$ of their mass.
+Note that multiple well-separated clouds giving rise to absorption at the same LOS velocity is a physically-distinct scenario than a mist of clouds or a turbulent mixing zone, and corresponds more closely to \texttt{sample1} than \texttt{sample2}.
 
 % Mock CGM analyses of robustness of modeling.
-\cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS mass-weighted average properties.
-\cite{Marra2021} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
+Regarding estimates of the bulk properties of gas along a LOS,
+\cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS \ion{H}{I} mass-weighted average properties.
+\cite{marra2021.cosmo.sims.test.observational.modeling} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
 \cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
-\cite{Sameer2021} 
+\atsameer{In addition to other locations it shows up in the paper, do you want to mention Sameer2021 here?} 
 
 \subsection{Other questions}
 
-1). The adopted priors for the modelers are quite large. So, portions of the parameter space that are not present in the simulation space could also be picked up during the modeling.
-2). The highest resolution in the simulation is ~ 47 pc. Should there be a consideration of the size scales when modeling? For observational data, though, we don't have such a luxury of imposing constraints.
-3). How does the cloud-in-cell interpolation affect the results, particularly volume-weighted density and mass-weighted temperature? Can't they be left variable from cell-to-cell instead of weighting in certain ways?
-
-The inferred line of sight thickness with the modeling in some cases is $\ll$ sub-pc scale.
-However, the simulation is only resolving clouds > 47 pc, so it could be a good idea if it is physically motivated to set an informed prior on the line of sight thickness of clouds
+The highest resolution in the simulation is $\sim$ 47 pc.
+Should there be a consideration of the size scales when modeling synthetic data?
+For observational data, though, we don't have such a luxury of imposing constraints.
 
 \subsection{Recommendations}
 
@@ -905,11 +902,13 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
 
 \begin{enumerate}
     \item Avoid generating spectra that are overly pathological. While testing the limits of  parameter estimation is useful, unusual spectra are disproportionately likely to be poorly modeled (Figure~\ref{f: idealized explanation}).
-    \item Provide mock spectra when available, not just column densities. Much additional information is contained in the shape of the spectra.
+    \item Provide mock spectra when available, not just column densities, which contain much less data.
 \end{enumerate}
 
 \section{Conclusions}
 \label{s: conclusions}
+
+\todo{Summarize methods here.}
 
 We conclude the following\ldots
 \begin{enumerate}
