@@ -482,8 +482,6 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
     with the exception of the \texttt{sample2}-revised $n_{\rm H}$ posteriors.
     For \texttt{sample0} the parameter estimation methodology had to be adapted to work with a set of provided column densities instead of full spectra,
     limiting the extent and interpretation of the provided errors.
-    \atsameer{I do not have errors for sample0 $n_{\rm H}$ and blinded sample0 $T$.
-    How difficult would it be to procure those?}
     }
     \label{f: summary--widths}
 \end{figure}
@@ -506,9 +504,9 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
 \subsection{Column densities of uniform clouds --- \texttt{sample0}}
 \label{s: results -- sample0}
 
-\begin{figure*}
+\begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample0/comparison.pdf}
+    \includegraphics[width=\columnwidth]{figures/sample0/comparison.pdf}
     \caption{
     Comparison between estimated and actual properties of highly-idealized absorption systems (\texttt{sample0}).
     Sightlines are ordered from left to right according to agreement between the original modeled metallicity and the actual metallicity, and the background color indicates the level of agreement for each property.
@@ -517,14 +515,9 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
     Temperature agreement is typically $<0.5$ dex for most sightlines.
     Density and absorber length are less well-constrained, with errors up to 4 dex.
     The blind parameter estimates consistently underestimate the actual temperature and density due to the assumption of thermal equilibrium.
-    \todo{Try getting rid of the sort order?}
-    \todo{Reduce vertical whitespace (which is actually from hspace).}
-    \todo{Add $\ell$ for revised analysis.}
-    \todo{Coming back to this after a break, this is not super readable.
-    Suggestion from Nastasha is to remove the background colors.}
     }
     \label{f: idealized}
-\end{figure*}
+\end{figure}
 
 \begin{figure}
     \centering
@@ -626,8 +619,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     Black shows the source properties used to produce the mock spectra.
     Red and blue show the posteriors from the blinded and revised parameter estimations respectively. 
     The combined posteriors are indicated by thick lines.
-    For the revised parameter estimation we also show the posteriors for the individual clouds as blue lines outlined in black,
-    limiting the display to the region enclosing 99.7\% of the posterior for a given cloud.
+    For the revised parameter estimation we also show the posteriors for the individual clouds as blue lines outlined in thick (thin) black, for the regions enclosing 68\% (99.7\%) of the posterior for a given cloud.
     }
     \label{f: sample2 12}
 \end{figure*}
@@ -656,12 +648,14 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components.pdf}
     \caption{
     The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the best estimates for individual components comprising the parameter estimation.
-    Each point is the maximum-likelihood estimate (MLE) of an individual component.
+    Each point is the maximum-likelihood estimate (MLE) of an individual component,
+    and the associated bars enclose the the 16th to 84th percentiles of the posterior.
     The width of the violin plots and the opacity of the points are scaled \textit{logarithmically} with $N_{\ion{H}{I}}$,
     such that if the parameter estimation perfectly agreed with the data all visible MLE points would lie within the source data violins.
     The MLE of the strongest component typically aligns with the peak of the source distribution, but can be off by $\lesssim 1$ dex for $Z$ and $n_{\rm H}$, especially for the blinded estimates.
     The best fit for parameter estimation consistently includes lower-column-density components with properties not found in the source data.
     \todo{Make visual signifier of logscale.}
+    \todo{Ensure the vlos distribution has sufficiently small bins.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
@@ -766,61 +760,113 @@ while the revised estimates agree better.
 
 \subsection{What data is required for accurate modeling?}
 
+% Column densities vs spectra
+Following a survey of the potential participating observers we provided ion column densities for \texttt{sample0}, instead of providing ion spectra.
+The motivation was to decrease the barrier for participation in the challenge by skipping the extraction of column densities from the spectra.
+However, the observers that did participate employed a parameter-estimation pipeline built to accept spectra as input.
+Therefore providing the column densities as the synthetic data both required the parameter estimation team to adapt their pipeline, and limited the information we could extract.
+\atsameer{In the single uniform cloud scenario, what information is contained in the profile shapes that is not contained in the column densities? Just the $b$ values?}
+\atsameer{Given that it's often not possible to extract any substructure beyond different velocity components (Figure~\ref{f: sample2 violin vs components}), does that lessen the requirements to have good profile shapes?}
+
+% High ionization absorbers
+Throughout the analysis, the properties of $T \gtrsim 10^5$ K gas are more poorly-constrained than lower-temperature gas---a consequence of the parameter-estimation team not having access to high-ionization states.
+Modeling of the full phase space of CGM gas requires ions such as \ion{Ne}{VIII} and \ion{Mg}{X}.
+Intermediate ionization states,  especially strong ions such as \ion{C}{IV}, play an important role in separating gas phases.
+Lyman series lines also improve the ability to separate phases.
+\atsameer{Here I've transferred comments from Jane, re: the utility of intermediate ions and Lyman series lines. Can you talk about how you use the lines to separate phases?}
+
+% Data necessary to get the distributions right
+For \texttt{sample2} the lines available to the parameter-estimation team provided extensive coverage of $T \sim 10^4$ K gas.
+The provided data also had a high S/N, and no contamination from gas separated in physical space but overlapping in velocity space.
+To that end, the data may trace a best-case scenario for detailed modeling of cloud properties.
+This suggests that it may be difficult to distinguish absorption from many small clouds vs absorption from one large one.
+However, parameter estimation may be more successful at this task if the many small clouds are more widely distributed in velocity space than they are in the \texttt{sample2} TMZ.
+\atsameer{Is there any data you can think of where you may be able to constrain the substructure better than in Figure~\ref{f: sample2 violin vs components}?}
+
 \todo{What data is necessary in order to get the average properties right?}
-
-\todo{What data is necessary to reproduce the simulated logspace distributions?}
-
-\todo{What are some scenarios where you simply do not have the data to model them successfully?}
-
-\subsection{What level of agreement is necessary for modeling to be representative?}
-
-\S\ref{s: results -- sample0} shows that reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties.
 
 \subsection{Implications for existing results}
 
 % For analyses that infer a physical picture from individual sightlines
-Some works argue that detailed information about the physical nature of the absorbing gas can be suggested, often with the aid of additional observations regarding the associated galaxy such as via IFU instruments (e.g. \citealt{Peroux2013}, who identify some of their systems as outflows; or \citealt{Peroux2017}, who exclude outflows).
-Do our results throw any doubt into the mix about these models, or are they safe?
+Some works argue that it is possible to extract detailed information about the origin of absorbing gas, often with the aid of additional observations of the galaxy associated with the absorption system.
+For example, \cite{Peroux2013} argue that one of their identified absorption systems is dominated by gas originating in and outflow, and \cite{Peroux2017} suggest that a separate absorption system has little contribution from outflows.
+Making statements regarding the origin or fate of absorbing gas requires being able to identify and separate multiple clouds along a given line of sight.
+Our results indicate that clouds with distinct, uniform properties can indeed be distinguished from one another successfully (Figure~\ref{f: sample1 violin}).
+On the other hand, \texttt{sample2} is spectra of a filament falling in from the IGM and passing through a metal-enriched halo.
+Individual clouds cannot be easily identified in the provided spectra,
+but the average properties of the filament can be identified clearly,
+and these properties may allow observers to constrain the \ion{H}{I}-weighted origin of absorbing gas if constraining origin via e.g. metallicity.
 
 % For analyses that infer total masses or mass profiles
-Some works aim to constrain total masses or mass profiles~\citep[e.g.][]{Zahedy2019a}.
-Are these estimates affected?
+Some analyses aim to constrain total masses or mass profiles~\citep[e.g.][]{Zahedy2019a}~\todo{Lots of work on this, add a few more citations}.
+Such analyses typically rely on the average properties of the gas and the total columns,
+and therefore should not be especially sensitive to errors in parameter estimation.
 
 \subsection{Modeling choices}
 
 \subsubsection{Discrete components versus a distributions of cloud properties}
 
-% Interpreting posteriors of single clouds as distributions.
-Absorbers in reality are likely composed of infinitely many clouds with a distribution of properties.
-One method of estimating this distribution may be the same method, or very similar, as used to estimate the PDF for a finite number of uniform clouds.
-The argument is as follows.
-When interpreting multiple components in an absorption system the classic interpretation is discrete clouds with uniform ($Z$, $n_{\rm H}$, $T$, $\NHI$), and uncertainty reflecting data noise.
-However, we argue we can estimate $\frac{d\NHI}{dT}$ ( or $\frac{d\NHI}{dv_{\rm LOS}}$, etc.) using posteriors produced during  parameter estimation.
-For simplicity and generality of discussion during the following we will be referring to $\frac{dM}{dx}$, where $M$ is an extrinsic mass quantity (e.g. $\NHI$) and $x$ is an intrinsic property (e.g. temperature).
-Assume the total $\frac{dM}{dx}$ is well described by $q$ different distributions, i.e. $\frac{dM}{dx} = \sum_{i=1}^{q} \frac{dM_i}{dx}$.
-If we had a way to estimate each individual $\frac{dM_i}{dx}$ we could therefore estimate the total $\frac{dM}{dx}$.
-We note that $\frac{dM_i}{dx}$ is equivalently $\frac{dM_i}{dx} = M_i \frac{da}{dx}$, where $M_i$ is the total mass of component $i$ and $\frac{da}{dx}$ is defined as the fraction of mass with a given x, s.t. $\int dx \frac{da}{dx} = 1$.
-Note that while $\frac{da}{dx}$ has similar properties as the posterior $f(x)$, we have not yet argued that $f(x)$ may be a good representation of it.
-To estimate $\frac{da}{dx}$ I would argue we would want to use some method that estimates fraction of $M_i$ at a given $x$ based on
-(a) the actual fraction of $M_i$ at x, and
-(b) uncertainties in the estimation of $\frac{da}{dx}$.
-This is similar to what the method of estimating $f(x)$ does.
-Consider the limit of zero uncertainty but the absorption system having a distribution of properties instead of a single property.
-We hypothesize that the method of estimating $f(x)$ would in such a case trace produce an $f(x)$ that traces the distribution.
-We leave testing of this to future work \todo{Do we?}.
-As such, we use $f(x)$ as an estimate for $\frac{da}{dx}$. Therefore we have an estimate for $\frac{dM}{dx}$ using the estimated pdfs,
-$\frac{dM}{dx} = \sum_{i=1}^{q} M_i f(x)$, and in turn $\frac{d\NHI}{dT} = \sum_{i=1}^{q} N_{\ion{H}{I},\,i} f(T)$.
-\todo{There's at least one flaw in this argument.
-When checking the fit Sameer uses the discrete properties of multiple clouds, not multiple distributions.
-As such some of the individual clouds may "try" to balance missing data from the other clouds.
-Zach --- reread this section to understand the argument.
-}
+The most realistic among our samples, \texttt{sample2}, consists not of discrete clouds, but of a distribution of clouds.
+Therefore any fully-successful model of the absorption system must also be of a distribution of clouds.
+Such models exist~\citep[e.g.][]{stern2016Universal}, but are not commonly employed in parameter estimation.
+However, because it is difficult to extract anything other than the ion-weighted averages of absorbing gas (as stated above) parameter estimation using a more-sophisticated model than individual clouds may not provide a clear improvement.
+
+% % Interpreting posteriors of single clouds as distributions.
+% Absorbers in reality are likely composed of infinitely many clouds with a distribution of properties.
+% One method of estimating this distribution may be the same method, or very similar, as used to estimate the PDF for a finite number of uniform clouds.
+% The argument is as follows.
+% When interpreting multiple components in an absorption system the classic interpretation is discrete clouds with uniform ($Z$, $n_{\rm H}$, $T$, $\NHI$), and uncertainty reflecting data noise.
+% However, we argue we can estimate $\frac{d\NHI}{dT}$ ( or $\frac{d\NHI}{dv_{\rm LOS}}$, etc.) using posteriors produced during  parameter estimation.
+% For simplicity and generality of discussion during the following we will be referring to $\frac{dM}{dx}$, where $M$ is an extrinsic mass quantity (e.g. $\NHI$) and $x$ is an intrinsic property (e.g. temperature).
+% Assume the total $\frac{dM}{dx}$ is well described by $q$ different distributions, i.e. $\frac{dM}{dx} = \sum_{i=1}^{q} \frac{dM_i}{dx}$.
+% If we had a way to estimate each individual $\frac{dM_i}{dx}$ we could therefore estimate the total $\frac{dM}{dx}$.
+% We note that $\frac{dM_i}{dx}$ is equivalently $\frac{dM_i}{dx} = M_i \frac{da}{dx}$, where $M_i$ is the total mass of component $i$ and $\frac{da}{dx}$ is defined as the fraction of mass with a given x, s.t. $\int dx \frac{da}{dx} = 1$.
+% Note that while $\frac{da}{dx}$ has similar properties as the posterior $f(x)$, we have not yet argued that $f(x)$ may be a good representation of it.
+% To estimate $\frac{da}{dx}$ I would argue we would want to use some method that estimates fraction of $M_i$ at a given $x$ based on
+% (a) the actual fraction of $M_i$ at x, and
+% (b) uncertainties in the estimation of $\frac{da}{dx}$.
+% This is similar to what the method of estimating $f(x)$ does.
+% Consider the limit of zero uncertainty but the absorption system having a distribution of properties instead of a single property.
+% We hypothesize that the method of estimating $f(x)$ would in such a case trace produce an $f(x)$ that traces the distribution.
+% We leave testing of this to future work \todo{Do we?}.
+% As such, we use $f(x)$ as an estimate for $\frac{da}{dx}$. Therefore we have an estimate for $\frac{dM}{dx}$ using the estimated pdfs,
+% $\frac{dM}{dx} = \sum_{i=1}^{q} M_i f(x)$, and in turn $\frac{d\NHI}{dT} = \sum_{i=1}^{q} N_{\ion{H}{I},\,i} f(T)$.
+% \todo{There's at least one flaw in this argument.
+% When checking the fit Sameer uses the discrete properties of multiple clouds, not multiple distributions.
+% As such some of the individual clouds may "try" to balance missing data from the other clouds.
+% Zach --- reread this section to understand the argument.
+% }
+
+\subsubsection{Assumptions about thermal, pressure, and ionization equilibrium}
+
+% Thermal equilibrium
+At the first step of our analysis our parameter-estimation team assumed thermal equilibrium.
+This assumption resulted in inaccurate estimates of the parameters of \texttt{sample0}, though the magnitude of the errors was significantly exacerbated by providing source properties with unusual temperatures and densities.
+Removing this assumption produced very good fits to the data regardless of temperature-density phase-space location.
+Assuming thermal equilibrium for ease of modeling is therefore, at minimum, a risky assumption.
+
+% Pressure equilibrium
+\atsameer{Does your analysis assume anything about pressure equilibrium between different phases?}
+
+% Ionization equilibrium
+Both the parameter-estimation team and the data-generation team assumed ionization equilibrium, with contributions from both collisional- and photo-ionization.
+On the data-generation side, this is a common assumption in cosmological and idealized hydrodynamical simulations, largely driven by the challenge in modeling non-equilibrium chemistry~\citep[e.g.][]{richings2014Nonequilibrium}.
+However, in some cases non-equilibrium chemistry can have a significant effect on the properties of absorbing gas in the CGM, including providing one explanation for the observed bimodality in \ion{O}{VI} around low-redshift galaxies~\citep{oppenheimer2016Bimodality}.
+\atsameer{Anything you want to say regarding ionization equilibrium in the parameter estimation community?}
 
 \subsubsection{Absorption modeling ``by hand''}
 
 There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{Lacki2010}.
 How does the modeling done here compare?
 \atsameer{This is a question especially for you.}
+
+Jane:
+I should provide more references for this.   From my group over the  years I'd say 
+2021MNRAS.506.5640N Norris et al.; 
+2018MNRAS.476.2258R Rosenwasser et al.;  
+2008ApJ...679..220M Misawa et al.
+The last one is simple systems at z~1.7 so a similar redshift.
+Sameer's methods are based on these earlier models but with significant improvements: 1) they automate things in a way that leads to a substantial advance in speed to model a system (a factor of 10-100 faster I'd say); 2) they provide the range of properties and not just a best value and a rough idea of the allowed range; 3) they now allow temperature to be a free parameter; 4) they consider all transitions as equally important weighted by their noise level and eliminated regions with blends.
 
 \subsection{Comparison to similar analyses}
 
@@ -868,12 +914,18 @@ However, the simulation is only resolving clouds > 47 pc, so it could be a good 
 We conclude the following\ldots
 \begin{enumerate}
     \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the average properties of the absorbing gas (Figure~\ref{f: summary--average}), \textit{provided} temperature and density are allowed to vary independently as part of the fitting process (\S\ref{s: results -- sample0}).
-    \item \textbf{Posterior distributions:} Even when the best fits do not agree with the source parameters, the source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative (Figure~\ref{f: summary--widths}).
+    \item \textbf{Posterior distributions:} Even when the best fits do not agree with the average source parameters, the source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative (Figure~\ref{f: summary--widths}).
     \item \textbf{Agreement with observable absorption vs source properties:} Average agreement of $\lesssim 0.2$ dex in ion column densities can lead to errors of $\gtrsim (0.5, 0.3, 1.5, 1)$ dex in ($Z$, $T$, $n_{\rm H}$, and $\ell$) respectively (Figure~\ref{f: error vs error}). Fits that agree to $\lesssim 0.1$ dex in ion column densities typically lead to fitting source properties to within $\lesssim 0.2$ dex. \todo{Revise this to emphasize that it's for sample0, and that sample0 is limited to only column densities.}
     \item \textbf{Fit components:} Component-by-component modeling works well for a few discrete clouds (Figure~\ref{f: sample1 violin}), but does not capture the properties of a distribution of clouds (Figure~\ref{f: sample2 violin vs components}). \todo{What clouds are recovered well, and which aren't?}
     \todo{Emphasize that velocity structure can be recovered.}
     \item \thoughts{Additional key conclusions?}
 \end{enumerate}
+
+% Future work
+\S\ref{s: results -- sample0} shows that reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties.
+However, this results is found under unusual circumstances---the parameter-estimation team was only provided with ion column densities rather than spectra, and the source data lay in a region of parameter space not typically occupied by CGM gas.
+Future work might compare fit in observable parameters to fit in derived parameters for full synthetic spectra,
+\todo{such as those made available following this work}.
 
 \section*{Acknowledgements}
 
