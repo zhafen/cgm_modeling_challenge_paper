@@ -127,7 +127,7 @@ and demonstrated that parameter estimation of individual clouds could straightfo
 and showed that the average properties of the absorbing gas can typically be extracted but the detailed $Z$, $T$, and $n_{\rm H}$ structure of the source is lost.
 Following each sample the parameter-estimation team revised their approach,
 and across all three samples the revised best estimates agree with the source average to $\lesssim 0.5, 0.3,$ and $1$ dex in $Z$, $T$, and $n_{\rm H}$ respectively.
-When there is disagreement between the source data and the modeling the 16th-84th percentiles of the parameter-estimation posterior typically include the actual value.
+When there is a disagreement between the source data and the modeling the 16th-84th percentiles of the parameter-estimation posterior typically include the actual value.
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -143,7 +143,7 @@ keyword1 -- keyword2 -- keyword3
 \subsection{Notes for Authors}
 
 % How do we refer to ourselves?
-Regarding nouns and pronouns, currently using ``we'' for the collaboration as a whole or if it's unclear if we are talking about theorists or observers, and otherwise ``data generators'' and ``observers''. 
+Regarding nouns and pronouns, currently using ``we'' for the collaboration as a whole or if it's unclear if we are talking about theorists or observers, and otherwise ``theorists'' and ``observers''. 
 
 \textbf{Notes for authors in the text.}
 \thoughts{If you are reading this then you, yes you, are welcome and encouraged to add in any relevant thoughts whenever you see this color.}
@@ -235,7 +235,7 @@ As such, even given perfect information from each observed absorption line spect
 
 % Deriving accurate properties
 The second challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectrum.
-Observational modelers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must contend with line saturation, large and uncertain ionization corrections~\citep[e.g.][]{Schaye2006, Acharya2021}, and more.
+Observers aiming to derive the properties of the gas work with spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and must contend with line saturation, large and uncertain ionization corrections~\citep[e.g.][]{Schaye2006, Acharya2021}, and more.
 One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that absorbing gas is a cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds spanning a range of properties~\citep[e.g.][]{Boksenberg1979, Muzahid2015, Liang2017, Liang2018, Haislmaier2021, sameer2021.cloudbycloud.bayesian.absorption.system.modeling, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{Marra2022}.
 High-resolution simulations predict a distribution of many small clouds instead of a few larger clouds~\citep[e.g.][]{Fielding2020, Vijayan2021},
 consistent with nearby ($\lesssim 100$~pc to the sun) interstellar absorption systems best fit by multiple components~\citep[e.g.][]{Welsh2010}.
@@ -251,10 +251,12 @@ Attendees of the Halo21 KITP virtual conference\footnote{Halo21 was a ten-week o
 % Comment from Cameron: 
 % I also added acknowledgements at the end.  Yes, I am finishing up a KITP Halo21 paper now, and we can reference that here.  Stay tuned.  
 showed significant support in addressing the above issues, and subsequently we organized the Halo21 Absorption Modeling Challenge.
-We invited the conference's 279 attending scientists to participate in one of two groups: ``data generators'' or ``observational modelers''.
-The premise of the Halo21 Absorption Modeling Challenge was for the observational modelers to attempt to deduce the properties of the gas associated with the blinded spectra provided to them by the data generators, and in so doing allow us to better understand the uncertainties and systematics involved in absorption system modeling.
+We invited the conference's 279 attending scientists to participate in one of two groups:
+theorists and observers.
+The premise of the Halo21 Absorption Modeling Challenge was for the theorists to generate mock data (ion column densities and spectra), and for the observers to estimate the source metallicity, density, and temperature of the provided mock data.
+By doing so we aimed to improve our understanding of the uncertainties and systematics involved in absorption-system parameter estimation.
 The modeling challenge consisted of the following procedure:
-(1) data generators decide on and generate the synthetic spectra for the modelers to analyze; (2) modelers make their best effort at estimating the properties of the underlying gas which produced the spectra; and (3) finally we reveal the underlying gas properties, compare the results, and revise the  parameter estimation to improve agreement.
+(1) theorists decide on and generate the synthetic spectra for the modelers to analyze; (2) modelers make their best effort at estimating the parameters of the underlying gas which produced the spectra; and (3) finally we reveal the underlying gas properties, compare the results, and revise the parameter estimation to improve agreement.
 In \S\ref{s: data generation} we describe the data samples, in order of increasing complexity, and the process for generating them.
 In \S\ref{s:  parameter estimation} we describe the absorption system modeling process.
 In \S\ref{s: results} we compare the modeled properties to the actual properties, and discuss the results in \S\ref{s: discussion}.
@@ -267,8 +269,8 @@ and blue with revised parameter estimation.
 \label{s: data generation}
 
 % Summary
-Data generators consisted largely of CGM theorists with a variety of backgrounds, including cosmological and idealized simulations and analytic models, as well as some observers.
-Drawing on this expertise, data generators produced three mock data samples of increasing sophistication for observers to model:
+Participating theorists came from a wide variety of CGM-related backgrounds, from cosmological and idealized simulations to analytic models.
+Drawing on this expertise, theorists produced three mock data samples of increasing sophistication for observers to model:
 a sample of ion column densities for uniform clouds,
 a sample of multi-phase spectra intersecting one to three clouds per absorption system,
 and a sample of spectra drawn from a high-resolution simulation of a $T \sim 10^4$ K filament embedded in a $T \sim 10^6$ K halo.
@@ -286,7 +288,7 @@ The data products made available to modelers were total ion column densities cov
 The motivation for \texttt{sample0} was to set a baseline for interpreting the subsequent data samples, absent complications from multiphase structure or interpreting spectra.
 
 % Sample details
-The physical properties of the 10 clouds were sampled from $Z$ = [ 0.01, 1.5 ] $Z_\odot$ (where $Z_\odot = 0.014$; \citealt{Asplund2009}), $n_{\rm H}$ = [ $10^{-6}$, 0.1 ] cm$^{-3}$, $T$ = [ $10^4$, $10^6$ ] K, and $N_{\ion{H}{I}}$ = [ $10^{15}$, $10^{17}$ ].
+The physical properties of the 10 clouds were sampled from $Z$ = [ 0.01, 1.5 ] $Z_\odot$ (where $Z_\odot = 0.014$; \citealt{Asplund2009}), $n_{\rm H}$ = [ $10^{-6}$, 0.1 ] cm$^{-3}$, $T$ = [ $10^4$, $10^6$ ] K, and $N_{\ion{H}{I}}$ = [ $10^{15}$, $10^{17}$ ] cm$^{-2}$.
 The values of density, temperature, metallicity, and \ion{H}{I} column density were chosen to be uncorrelated, which plays a role in the analysis (\S\ref{s: results -- sample0}).
 We set the redshift for our mock sample to $z=0.25$ (typical for many CGM samples observed with the Cosmic Origins Spectrograph; COS, \citealt{Green2012}), and we included all ions present in the instrument window of COS G130M at $z=0.25$, including \ion{C}{II}, \ion{C}{III}, \ion{N}{II}, \ion{N}{III}, \ion{N}{V}, \ion{O}{I}, \ion{O}{VI},  \ion{Si}{II}, \ion{Si}{III}, and \ion{Si}{IV}.
 For each ion we looked up the ion densities according to photo-ionization equilibrium, as tabulated by \textsc{trident} for single zone simulations produced with \textsc{cloudy}~\citep{Ferland2013} using the \cite{Haardt2012} UV background.
@@ -298,13 +300,13 @@ Using an ionization table that includes self-shielding reveals that self-shieldi
 To avoid unphysically large absorbers we discarded absorbers with length $> 1$ Mpc.
 
 % Noising of data
-Prior to making the ion column densities available to the obserservational modelers, we modified them to reflect uncertainty typical of similar real observations.
+Prior to making the ion column densities available to the observers, we modified them to reflect uncertainty typical of similar real observations.
 The mock errors for each ion, $e_{\log N_{\rm ion}}$, were estimated by sampling a gamma function fit to the distribution of errors estimated as part of the COS-Halos survey~\citep{Werk2013}.
 Errors a factor of $1.5\times$ beyond the COS-Halos range of errors were re-sampled.
 The ion column density made available to observers was then modified to be $\log N_{\rm ion,\,provided} = \log N_{\rm ion} + U(-e_{\log N_{\rm ion}}, e_{\log N_{\rm ion}} )$, where $U$ is a value drawn from a uniform distribution spanning $\pm e_{\log N_{\rm ion}}$.
 
 % Directions to modelers
-We requested the observational modelers to derive their best estimate for the metallicity.
+We requested the observers to derive their best estimate for the metallicity, temperature, and density.
 Beyond providing the columns and errors on the columns, we informed the observers they may assume each sightline pierced the CGM of a MW-mass galaxy at $z=0.25$, and we suggested using the \cite{Haardt2012} UVB.
 
 \subsection[Spectra of multi-cloud systems --- \texttt{sample1}]{Spectra of multi-cloud systems --- \texttt{sample1}\footnote{
@@ -331,15 +333,49 @@ Note that EAGLE does not include molecular cooling, so temperatures below $10^4$
 Therefore, when calculating the hydrogen neutral fraction we imposed a temperature of $10^4$~K on the gas on the equation of state \citep[following e.g.,][]{rahmati2016Cosmic}.
 
 % EAGLE
-These cloud characteristics were drawn from the EAGLE Ref-L100N1504 volume. EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Schaye2015,Crain2015,McAlpine2016} is a cosmological, hydrodynamical simulation. It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}). The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift). It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
+These cloud characteristics were drawn from the EAGLE Ref-L100N1504 volume.
+EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Schaye2015,Crain2015,McAlpine2016} is a cosmological, hydrodynamical simulation.
+It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}).
+The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift).
+% It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
+In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating, star formation and stellar feedback, and black hole seeding, growth, and AGN feedback.
+% The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
+% Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}.
+% The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}.
+% Star particles (stellar mass resolution elements) model a single-age stellar population with a \citet{Chabrier2003} initial mass function.
+% They inject mass and metals into neighbouring SPH particles as they age following \citet{Wiersma2009}.
+% Supernovae are modelled by stochasically heating neighbouring SPH particles by $10^{7.5}$~K, with a probability that reproduces the (calibrated) supernova energy injection rate \citep{DallaVecchia2012}. 
+% Black holes are seeded when a halo reaches a given mass and does not already contain one.
+% They grow through mergers and gas accretion following \citet{Rosas-Guevara2015}.
+% AGN feedback is modelled according to \citet{Booth2009}, by stochasically heating SPH particles adjacent to BH particles by $10^{8.5}$~K.
+% The probability of these injections is determined by the energy required for the heating, and an energy budget set by the accreted gas mass and efficiency factors.
+% The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
+For more details, see the EAGLE core papers~\citep{Schaye2015,Crain2015,McAlpine2016}.
+\atnastasha{Following feedback from co-authors I cut down on the EAGLE details. Your original text is commented out below. Please feel free to restore anything you think essential.}
 
-In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating, star formation and stellar feedback, and black hole seeding, growth, and AGN feedback. The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
+%% Original EAGLE text
+% % EAGLE
+% These cloud characteristics were drawn from the EAGLE Ref-L100N1504 volume.
+% EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Schaye2015,Crain2015,McAlpine2016} is a cosmological, hydrodynamical simulation.
+% It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}).
+% The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift).
+% It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
 
-Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}. The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}. Star particles (stellar mass resolution elements) model a single-age stellar population with a \citet{Chabrier2003} initial mass function. They inject mass and metals into neighbouring SPH particles as they age following \citet{Wiersma2009}. Supernovae are modelled by stochasically heating neighbouring SPH particles by $10^{7.5}$~K, with a probability that reproduces the (calibrated) supernova energy injection rate \citep{DallaVecchia2012}. 
+% In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating, star formation and stellar feedback, and black hole seeding, growth, and AGN feedback.
+% The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
 
-Black holes are seeded when a halo reaches a given mass and does not already contain one. They grow through mergers and gas accretion following \citet{Rosas-Guevara2015}. AGN feedback is modelled according to \citet{Booth2009}, by stochasically heating neighbouring SPH particles by $10^{8.5}$~K. The probability of these injections is determined by the energy required for the heating, and an energy budget set by the accreted gas mass and efficiency factors.
+% Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}.
+% The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}.
+% Star particles (stellar mass resolution elements) model a single-age stellar population with a \citet{Chabrier2003} initial mass function.
+% They inject mass and metals into neighbouring SPH particles as they age following \citet{Wiersma2009}.
+% Supernovae are modelled by stochasically heating neighbouring SPH particles by $10^{7.5}$~K, with a probability that reproduces the (calibrated) supernova energy injection rate \citep{DallaVecchia2012}. 
 
-The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
+% Black holes are seeded when a halo reaches a given mass and does not already contain one.
+% They grow through mergers and gas accretion following \citet{Rosas-Guevara2015}.
+% AGN feedback is modelled according to \citet{Booth2009}, by stochasically heating neighbouring SPH particles by $10^{8.5}$~K.
+% The probability of these injections is determined by the energy required for the heating, and an energy budget set by the accreted gas mass and efficiency factors.
+
+% The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
 
 % Spectra creation
 We generated 100 sightlines of one to three clouds selected from the EAGLE sample.
@@ -349,9 +385,6 @@ We determined the ion densities and column densities as described for \texttt{sa
 We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803 \AA$ to mimic complementary observations from the ground.
 Alpha element abundances relative to other elements were set to solar, e.g. \ion{C}{}/$\alpha$ is solar.
 We applied the COS line spread function to each spectrum and included Gaussian noise with an SNR of 30.
-\atcameron{What exactly is AVG\_COS.txt? Response in Comment}
-% Cameron response:
-% It's the line-spread function for the COS instrument.  Most spectrographs just have a simple gaussian convolution kernel that applies at all wavelengths, but COS has a wavelength-specific line-spread function that is an analytic function, so it is encoded numerically in AVG\_COS.txt.  I think what you've written is fine. 
 The wavelength resolution for each spectra was set to $0.01 \AA$.
 \atcameron{What is the motivation for choosing this to be the default value for trident? response in comment}
 % Comments from Cameron: I believe it is the pixel resolution of COS, and after applying the COS LSF, it gives the appropriate spectral resolution of COS.
@@ -361,9 +394,6 @@ The wavelength resolution for each spectra was set to $0.01 \AA$.
 The spectra flux does not have any inherent error, but the log-likelihood is calculated utilizing the per-pixel difference between the spectra and the model, normalized by the per-pixel error.
 Therefore in a typical scenario the per-pixel error would determine how important discrepancies between model and data are in certain regions of the spectrum relative to others.
 \textsc{trident} provides a zeroth-order approximation of the flux error as arising from a stochastic process normalized by the SNR, $\sqrt{{\rm flux}/{\rm SNR}}$.
-\atcameron{The explanation of why Trident sets the flux error to $\sqrt{{\rm flux}/{\rm SNR}}$ is based on the docstring of \textsc{AbsorptionSpectrum.error\_func}.
-Is this consistent with your reasoning? response in comment}
-% Yes, this is good.
 While we generated 100 sightlines, it is challenging to model that many.
 Accordingly observers sampled 10 random sightlines to focus on, excluding any damped Ly $\alpha$ absorbers to mitigate the effect of self-shielding.
 The only additional information provided to observers was that they could assume the absorbers were found in a galaxy-targeted survey with the host galaxies located at $z=0.25$.
@@ -432,8 +462,7 @@ The revised synthetic data used a $z=2$ UVB for calculating the ionization fract
 \textsc{trident} uses absorption-line properties archived by the National Institute for Standards and Technology as a default, and we kept this default for the first two samples.
 For the third sample we aimed for greater consistency with the parameter estimation methodology by retrieving absorption line information from the commonly-used spectra analysis package \textsc{linetools}~\citep{Prochaska2016}.
 Between these two datasets the oscillator strengths could disagree by up to $\sim 2$ dex for the lines \ion{O}{I} 922, 925, 930, and 989, \ion{N}{I} 1200, \ion{Si}{II} 1304, and \ion{S}{IV} 1073.
-\atcameron{Anything you'd like to add about the switch in linelists? Response in comment}
-% Comment from Cameron: Not really?  I'd like to switch the default behavior before your paper gets published, so maybe then we can include a comment about how the default behavior is now to work with linetools?
+In the future the default behavior for \textsc{trident} will be to use the \textsc{linetools} dataset.
 
 % Modified flux errors
 % \todo{Note that we forced the flux error (typically 0.1) to 0.01 for this sample of spectra, and describe why.}
@@ -523,7 +552,7 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
 
 % Summary of averages
 We discuss the per-sample results in the following subsections,
-while Figures~\ref{f: summary--average} and~\ref{f: summary--widths} summarize some of the key results in how well the observational modelers were able to correctly obtain the underlying properties of the gas used to generate the synthetic observations.
+while Figures~\ref{f: summary--average} and~\ref{f: summary--widths} summarize some of the key results in how well the observers were able to estimate the underlying, source properties of the gas used to generate the synthetic observations.
 The agreement between the parameter-estimation best estimates and the average source properties is summarized for all three samples in Figure~\ref{f: summary--average}.
 For \texttt{sample0} and \texttt{sample1} we show one value per cloud for both the source and parameter estimations.
 For \texttt{sample2} the source data is a distribution of clouds, and therefore we show the \ion{H}{I}-weighted average of the source distributions compared to the \ion{H}{I}-weighted maximum likelihood estimates from parameter estimation.
@@ -582,10 +611,10 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
 
 % A tale of priors
 The discrepancies between the modeled properties and the actual properties can be understood in the context of priors.
-Data generators created \texttt{sample0} by randomly sampling properties from a uniform prior for each property, independent of other properties.
+Theorists created \texttt{sample0} by randomly sampling properties from a uniform prior for each property, independent of other properties.
 However, in combination the properties were often inconsistent with common expectations of CGM gas.
 This is seen in Figure~\ref{f: idealized explanation}, which compares the temperatures and densities of the source clouds to temperatures and densities typical for the CGM in a cosmological simulation.
-On the other hand, the parameter-estimation team modeled \texttt{sample0} with priors constrained to regions of parameter space consistent with current knowledge of the CGM.
+On the other hand, the observers modeled \texttt{sample0} with priors constrained to regions of parameter space consistent with current knowledge of the CGM.
 For example, the observers tested if the column densities were consistent with thermal equilibrium driven by photo-ionization equilibrium, in which case estimated temperature is a calculated from the estimated metallicity and density parameters, and found reasonable fits for sightlines \texttt{06} through \texttt{10}.
 Observers found reasonable fits for three of the other sightlines after fixing the density to $n_{\rm H} = 10^{-3.9}$ cm$^{-3}$ and assuming collisional ionization at the model temeprature.
 In this case, the temperature can be determined, but the metallicity also depends on the density,
@@ -598,11 +627,11 @@ The above suggests reasonable agreement between modeled and actual ion column de
 We demonstrate this in Figure~\ref{f: error vs error},
 which compares the per-sightline disagreement in estimated properties to the disagreement between the estimated and provided column densities, averaged across all fit ions. 
 The revised estimates are in much better agreement with the actual properties, but the revised ion column densities are adjusted by $\lesssim 0.2$ dex relative to the column densities modeled blind.
-% A complicating element is that the errors data generators applied to the column densities were independent, e.g. $N_{\ion{H}{I},\,{\rm provided}} > N_{\ion{H}{I},{\rm ,actual}}$ does not mean $N_{\ion{Mg}{II},\,{\rm provided}} > N_{\ion{Mg}{II},\,{\rm actual}}$.
+% A complicating element is that the errors theorists applied to the column densities were independent, e.g. $N_{\ion{H}{I},\,{\rm provided}} > N_{\ion{H}{I},{\rm ,actual}}$ does not mean $N_{\ion{Mg}{II},\,{\rm provided}} > N_{\ion{Mg}{II},\,{\rm actual}}$.
 
 To summarize,
-although the \texttt{sample0} models were not realistic based on the parts of parameter space occupied by simulated data, the observational modelers were initially too rigid in their assumptions.
-The lesson learned is that there will be places in the real universe where heating and cooling do not balance, and the solution that observational modelers obtain may not be unique.
+although the \texttt{sample0} models were not realistic based on the parts of parameter space occupied by simulated data, the observers were initially too rigid in their assumptions.
+The lesson learned is that there will be places in the real universe where heating and cooling do not balance, and the solution that observers obtain may not be unique.
 This is particularly true for higher ionization gas (at higher temperatures and/or lower densities).
 
 \atcameron{Given you generated the data, do you have additional thoughts? Yes--in comment}
@@ -637,14 +666,14 @@ However, the actual values are within $< 0.5$ dex of the upper edge of the poste
 The widest posteriors in sample1 are often associated with a hotter phase tracing the OVI for a few reasons.
 First, the cooling of such a gas phase resembles that of collisional time-dependent gas cooling with no external radiation, and hence is independent of density.
 In two cases we also see large uncertainties in temperature, which may be due to the overlapping posteriors of two different clouds.
-Second, particularly applicable for these two cases, following the lessons learnt from \texttt{sample0}, the parameter-estimation team relaxed the priors such that the lowest temperature could be $10^3$ K, while the source data has a lower bound of $10^4$.
+Second, particularly applicable for these two cases, following the lessons learnt from \texttt{sample0}, the observers relaxed the priors such that the lowest temperature could be $10^3$ K, while the source data has a lower bound of $10^4$.
 A potential second mode is being reflected in the parameter estimates, which may not be realistic. 
 Additional potential contributing factors to the wide posteriors include the absence of \ion{C}{IV} lines from in the provided spectra, 
 and the stated error in the provided spectra.
 
 % Number of components
 The modeling identifies the correct number of components in 9 of 10 sightlines.
-The exception is sightline 050, which has a hot, low-density, low-metallicity absorber that produces little absorption in the ions provided to the parameter-estimation team.
+The exception is sightline 050, which has a hot, low-density, low-metallicity absorber that produces little absorption in the ions provided to the observers.
 
 \subsection{Spectra of high-resolution turbulent mixing --- \texttt{sample2}}
 \label{s: results -- sample2}
@@ -786,7 +815,7 @@ had a wavelength resolution of 0.05 \AA,
 a line spread function with a FWHM of 7 km/s,
 and included the ions \ion{H}{I}, \ion{Si}{II}, \ion{Si}{III}, \ion{Si}{IV}, \ion{C}{II}, \ion{C}{III}, \ion{C}{IV}, \ion{O}{I}, \ion{O}{VI}, \ion{N}{II}, \ion{N}{V}, \ion{Fe}{II}, \ion{Mg}{X}, and \ion{Ne}{VIII}.
 The ($Z$, $n_{\rm H}$, $T$, $\NHI$) of the source data were not modified.
-These changes followed discussion between the data-generation and parameter-estimation teams.
+These changes followed discussion between the theorists and observers.
 The better agreement between the revised parameter estimation and the source properties is likely related to the changes in the provided spectra.
 For example, the blinded estimates of $T$ are consistently high by $\sim 0.1$ dex,
 while the revised estimates agree better.
@@ -896,7 +925,7 @@ However, in some cases non-equilibrium chemistry can have a significant effect o
 
 \subsubsection{Absorption modeling ``by hand''}
 
-There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{misawa2008Supersolar, Lacki2010, rosenwasser2018Understanding, norris2021Discovery}.
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple,charlton2000anticipating,ding2003quadruple,charlton2003high,ding2003multiphase,zonak2004absorption,ding2005absorption,masiero2005models,lynch2007physical,misawa2008supersolar,lacki2010z,jones2010bare,muzahid2015extreme,richter2018,rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the parameter-estimation team are based on these earlier models but with significant improvements:
 \begin{enumerate*}
     \item They are automated, leading to a $\sim 10-100 \times$ decrease in time to model a system.
@@ -930,7 +959,7 @@ For observational data, though, we don't have such a luxury of imposing constrai
 
 \subsection{Recommendations}
 
-\subsubsection{For observational modelers}
+\subsubsection{For observers}
 
 \begin{enumerate}
     \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. 
@@ -939,7 +968,7 @@ For observational data, though, we don't have such a luxury of imposing constrai
     \item Be cautious when identifying multiple contributing clouds---often only the ion-weighted averages of well-separated clouds can accurately be recovered.
 \end{enumerate}
 
-\subsubsection{For synthetic-data generators}
+\subsubsection{For theorists}
 
 \begin{enumerate}
     \item Avoid source properties that are overly pathological. While testing the limits of  parameter estimation is useful, unusual source properties are disproportionately likely to be poorly modeled (Figure~\ref{f: idealized explanation}).
