@@ -115,25 +115,36 @@ James Bullock,
 
 % Abstract of the paper
 \begin{abstract}
-In the Halo21 circumgalactic medium (CGM) modeling challenge we presented experts in interpreting absorption spectra with three blinded sets of synthetic observations and asked them to estimate the properties of the associated gas.
-The three data samples were generated and analyzed iteratively, with increasing complexity.
-\texttt{sample0} was ion column densities of uniform clouds, and revealed that requiring clouds to have heating balanced by cooling results in $\sim 1$ dex errors in estimated metallicity,
-although the most extreme errors were for absorption systems atypical of the CGM.
-Poor recovery of source parameters can be difficult to detect---matching the provided column densities to $\lesssim 0.2$ dex can produce disagreement in $Z$, $T$, and $n_{\rm H}$ by $\sim$ 0.8, 0.4, and 2 dex respectively.
-Allowing temperature and density to freely vary during fitting produced good agreement between the parameter estimates and the source properties.
-\texttt{sample1} was mock absorption spectra of multi-cloud systems,
-and demonstrated that parameter estimation of individual clouds could straightforwardly be expanded to absorption systems produced by one to three clouds.
-\texttt{sample2} was spectra of a high-resolution simulation of a gas filament and associated turbulent mixing zones,
-and showed that the average properties of the absorbing gas can typically be extracted but the detailed $Z$, $T$, and $n_{\rm H}$ structure of the source is lost.
-Following each sample the parameter-estimation team revised their approach,
-and across all three samples the revised best estimates agree with the source average to $\lesssim 0.5, 0.3,$ and $1$ dex in $Z$, $T$, and $n_{\rm H}$ respectively.
-When there is a disagreement between the source data and the modeling the 16th-84th percentiles of the parameter-estimation posterior typically include the actual value.
+In \textit{the Halo21 absorption modeling challenge} we generated synthetic circumgalactic (CGM) absorption spectra, presented the spectra to observers, and challenged them to estimate the metallicity, temperature, and density ($Z$, $T$, and $n_{\rm H}$) of the underlying gas.
+We iteratively generated and analyzed three increasingly-complex data samples:
+ion column densities of isolated uniform clouds,
+mock spectra of 1-3 uniform clouds,
+and mock spectra of high-resolution turbulent mixing.
+In $\gtrsim 90\%$ of the absorption systems the best-estimate $Z$, $T$, and $n_{\rm H}$ were within $\lesssim0.1$ dex of the source values.
+The high-level of recovery held across all three samples, provided
+(a) thermal equilibrium was not assumed and
+(b) in the turbulent-mixing scenario the best estimates were compared to the source average quantities.
+However, parameter estimation did not recover well the per-absorption-system distribution of source properties in the turbulent-mixing scenario,
+both because parameter estimation employed a finite number of discrete clouds
+and because the spectra did not provide strong constraints on lower-column-density contributions.
+% Old abstract:
+% \texttt{sample0} was ion column densities of uniform clouds, and revealed that requiring clouds to have heating balanced by cooling results in $\sim 1$ dex errors in estimated metallicity,
+% although the most extreme errors were for absorption systems atypical of the CGM.
+% Poor recovery of source parameters can be difficult to detect---matching the provided column densities to $\lesssim 0.2$ dex can produce disagreement in $Z$, $T$, and $n_{\rm H}$ by $\sim$ 0.8, 0.4, and 2 dex respectively.
+% Allowing temperature and density to freely vary during fitting produced good agreement between the parameter estimates and the source properties.
+% \texttt{sample1} was mock absorption spectra of multi-cloud systems,
+% and demonstrated that parameter estimation of individual clouds could straightforwardly be expanded to absorption systems produced by one to three clouds.
+% \texttt{sample2} was spectra of a high-resolution simulation 
+% and showed that the average properties of the absorbing gas can typically be extracted but the detailed $Z$, $T$, and $n_{\rm H}$ structure of the source is lost.
+% Following each sample the parameter-estimation team revised their approach,
+% and across all three samples the revised best estimates agree with the source average to $\lesssim 0.5, 0.3,$ and $1$ dex in $Z$, $T$, and $n_{\rm H}$ respectively.
+% When there is a disagreement between the source data and the modeling, the 16th-84th percentiles of the parameter-estimation posterior typically include the actual value.
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
 % Don't make up new ones.
 \begin{keywords}
-keyword1 -- keyword2 -- keyword3
+galaxies: absorption lines -- galaxies: haloes -- methods: data analysis
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,9 +152,6 @@ keyword1 -- keyword2 -- keyword3
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \subsection{Notes for Authors}
-
-% How do we refer to ourselves?
-Regarding nouns and pronouns, currently using ``we'' for the collaboration as a whole or if it's unclear if we are talking about theorists or observers, and otherwise ``theorists'' and ``observers''. 
 
 \textbf{Notes for authors in the text.}
 \thoughts{If you are reading this then you, yes you, are welcome and encouraged to add in any relevant thoughts whenever you see this color.}
@@ -154,16 +162,13 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \atnastasha{this color.}
 \atnir{this color.}
 
-% \textbf{Discussion points for next meeting.}
-% \begin{enumerate}
-% \end{enumerate}
-
 \textbf{Priorities:}
 \begin{enumerate}
-    \item \atsameer{Respond to questions in discussion section.}
+    \item Plots showing spectra for sample1.
+    \item Plots showing spectra for sample2.
     \item Clean up discussion section (e.g. decrease duplication, snip single-paragraph-long subsubsections).
     \item Clean up plots (including consistent sizes and notation, legends/labels).
-    \item Detailed demonstration of the point of Figure~\ref{f: error vs error} for one sightline. (Slash emphasize the results less).
+    \item Detailed demonstration of the point of Figure~\ref{f: error vs error} for one sightline. (and/or emphasize the results less).
 \end{enumerate}
 
 \textbf{Secondary priorities:}
@@ -185,12 +190,11 @@ Priors are that are not inclusive enough, and priors that are too inclusive.
 It may be worth exploring multiple priors.
 ``There are many ways to explain the data.'' -- true for both sample0 and for sample2.
     \item Add more plots showing spectra, especially for sample2.
-    \item Check if the binning for sample2 properties is too fine.
 \end{itemize}
 
 \textbf{Sameer:}
 Replace sightline 0012 example in sample2 w/ sightline 0015.
-Move blinded to appendix for sample2.
+The mismatch in sample0 is overly highlighted. (Zach's phrasing.)
 
 \textbf{Yakov:}
 \begin{itemize}
@@ -208,7 +212,7 @@ Move blinded to appendix for sample2.
 
 \textbf{Cameron:}
 Avoid Bayesian jargon when possible.
-Change data generators and parameter estimators to theorists and observers.
+I think for an abstract, it might be worthwhile to focus on the big picture results as opposed to getting bogged down in the details.  I think talking about the primary results of sample2 might be best, as that was the most representative of an actual physical dataset that an observer is likely to see.  It might be justified to reduce the conversation about sample0 and sample1 to focusing on the difficulty that observers had in matching datasets that were physically unrealistic given the context in which they were finding them, so perhaps something about priors built into how observers process those data?  In all, I think the abstract might benefit from being made a little bit more high level and not so detail oriented.
 
 \textbf{Nastasha:}
 Incorporate Vijayan+Li2022: X-ray emission mock spectra.
@@ -220,16 +224,16 @@ Incorporate provided citation recommendations.
 
 % Baryon cycle and absorption spectra
 With the understanding that galaxies and their environments are part of an interconnected galactic ecosystem, one of the primary goals of galaxy-scale astrophysics for the next decade is to identify the processes that drive galaxy growth~\citep{Decadal2020}.
-Central to this effort are absorption system observations~\citep[e.g.][]{Bahcall1993, Lanzetta1995, Lauroesch1996, Churchill1996}, one of the only constraints on gas outside galaxies, in the circumgalactic media (CGM) of galaxies and the intergalactic medium (IGM) between galaxies.
+Central to this effort are absorption system observations~\citep[e.g.][]{Bahcall1993, Lanzetta1995, Lauroesch1996, Churchill1996}, one of the only constraints on the gaseous atmospheres of galaxies (the circumgalactic medium; CGM) as well as the intergalactic medium (IGM) between galaxies.
 Absorption system observations typically consist of $\sim 1$ absorption spectrum per halo, each from a beam of background light (typically a quasar) that is partially absorbed by intervening gas en route to the observer.
 Unfortunately, these observations are notoriously difficult to interpret.
 
 % Interpreting given correct properties
 The challenge in interpreting absorption spectra arises in two ways.
-First, the maximum amount of information obtainable from an absorption spectrum is temperature, density, and metallicity as a function of line-of-sight velocity along a skewer through a CGM.
-If the CGM is described by a few discrete clouds (as proposed by earlier models for absorption system distributions, e.g.~\citealt{Srianand1994, Das2001, Maller2003}) a small number nof sightlines per halo might be sufficient to constrain models of the CGM.
+First, the information obtainable from an absorption spectrum is typically limited to the temperature, density, and metallicity as a function of line-of-sight velocity along a spectral skewer through the CGM.
+If the CGM is described by a few discrete clouds (as proposed by earlier models for absorption system distributions, e.g.~\citealt{Srianand1994, Das2001, Maller2003}) a small number of sightlines per halo might be sufficient to constrain models of the CGM.
 Instead, observations suggest metallicities, densities, and temperatures continuously varying, and spanning orders of magnitude, suggestive of a complex multiphase system.
-This is consistent with analytic theory and high-resolution simulations that predict fragmentation and mixing of circumgalactic clouds~\citep[e.g.][\todo{There's ton's of work on this, let's expand these references:}]{Maller2004}.
+This is consistent with analytic theory and high-resolution simulations that predict fragmentation and mixing of circumgalactic clouds~\citep[e.g.][]{Maller2004, mccourt2018Characteristic, hummels2019Impact, vandevoort2019Cosmological, peeples2019Figuring}.
 A complex multiphase CGM is also seen in cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{Hafen2019, Hafen2020}.
 As such, even given perfect information from each observed absorption line spectrum it may be challenging to use that information to gain a clear picture of cosmic ecosystems.
 
@@ -322,7 +326,7 @@ The properties of the clouds were drawn from the distribution of properties typi
 
 % Phase space sampling procedure
 To sample the cloud properties we selected 200 random galaxies with halo masses $M_{200c} = 10^{12} - 10^{12.5} M_\odot$ from the EAGLE Ref-L100N1504 volume at $z=0.27$, where $M_{200c}$ is the halo mass s.t. the average enclosed density is 200$\times$ the critical density of the universe at that redshift.
-In the gas around these galaxies, the \ion{H}{I} fraction was calculated using fitting functions that approximate the effects of self-shielding~\citep{Rahmati2013} assuming the UVB from \cite{Haardt2001}.
+In the gas around these galaxies, the \ion{H}{I} fraction was calculated using fitting functions that approximate the effects of self-shielding~\citep{Rahmati2013} assuming the UVB from \citet{Haardt2001}.
 We extracted 200 sub-volumes around the 200 galaxies, and in each sub-volume we performed an \ion{H}{I}-mass-weighted projection of all gas with impact parameter $< R_{200c}$ and LOS distance $< 2 R_{200c}$ relative to the galaxy. The projection was done along the z-axis of the simulation, which is random with respect to the galaxy orientation.
 For each halo, we obtained  `maps' of \ion{H}{I} column density and \ion{H}{I}-weighted temperature, density, and metallicity, with a pixel size of (3.125 comoving kpc)$^2$.
 This corresponds to $\sim 10,000$ sightlines for a MW-mass galaxy.
@@ -330,7 +334,7 @@ This corresponds to $\sim 10,000$ sightlines for a MW-mass galaxy.
 We then created a histogram of these sightline properties (simply weighted by sightline count) to try to capture a physically reasonable joint distribution of temperature, density, metallicity, and \ion{H}{I} column density in UV absorbers.
 We randomly chose to place one, two, or three clouds along each sightline, and sampled our cloud properties from this histogram.
 Note that EAGLE does not include molecular cooling, so temperatures below $10^4$ K are rare, and the temperature of dense gas ($\mathrm{n}_{\mathrm{H}} > 10^{-1} \, \mathrm{cm}^{-3}$) is set by an equation of state and is therefore not physically realistic \citep{Schaye2015}.
-Therefore, when calculating the hydrogen neutral fraction we imposed a temperature of $10^4$~K on the gas on the equation of state \citep[following e.g.,][]{rahmati2016Cosmic}.
+Therefore, when calculating the hydrogen neutral fraction we imposed a temperature of $10^4$~K on the gas on the equation of state \citep[following e.g.,][]{Rahmati2016}.
 
 % EAGLE
 These cloud characteristics were drawn from the EAGLE Ref-L100N1504 volume.
@@ -338,7 +342,7 @@ EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Sch
 It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}).
 The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift).
 % It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
-In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating, star formation and stellar feedback, and black hole seeding, growth, and AGN feedback.
+In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating \citep{Wiersma2009a}, star formation \citep{Schaye2004, Schaye2008}, stellar feedback \citep{DallaVecchia2012}, and metal enrichment by stars \citet{Wiersma2009}, as well as black hole seeding, growth \citet{Rosas-Guevara2015}, and AGN feedback \citet{Booth2009}.
 % The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
 % Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}.
 % The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}.
@@ -352,6 +356,7 @@ In addition to gravity and hydrodynamics, the EAGLE simulations include radiativ
 % The stellar and AGN feedback were calibrated to reproduce the $z=0.1$ galaxy stellar mass function and stellar mass-black hole mass relation, and to produce reasonable galaxy sizes \citep{Crain2015}. 
 For more details, see the EAGLE core papers~\citep{Schaye2015,Crain2015,McAlpine2016}.
 \atnastasha{Following feedback from co-authors I cut down on the EAGLE details. Your original text is commented out below. Please feel free to restore anything you think essential.}
+\todo{I mostly added a bunch of the references back in; shortening it does seem like a good idea.}
 
 %% Original EAGLE text
 % % EAGLE
@@ -531,6 +536,7 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
     For the turbulent mixing zone the \ion{H}{I}-weighted average of the source data is shown.
     The parameter-estimation best estimates and the source data typically agree to $\lesssim$ ( 0.5 dex in $Z$, 0.3 dex in $T$, 1 dex in $n_{\rm H}$),
     excluding the blinded \texttt{sample0} estimates (\S\ref{s: results -- sample0}).
+    \todo{Remove blinded sample2.}
     }
     \label{f: summary--average}
 \end{figure}
@@ -689,15 +695,16 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     For the revised parameter estimation we also show the posteriors for the individual clouds as blue lines outlined in thick (thin) black, for the regions enclosing 68\% (99.7\%) of the posterior for a given cloud.
     \todo{Add 1 sigma for vlos, or comment for vlos 1 sigma.}
     \todo{Add total column.}
+    \todo{Increase number of bins for parameter estimates.}
     }
     \label{f: sample2 12}
 \end{figure*}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/violin.pdf}
+    \includegraphics[width=\textwidth]{figures/sample2/violin_revised.pdf}
     \caption{
-    The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the full posteriors from parameter estimation (blinded is red, blue is revised).
+    The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the full posteriors from parameter estimation (revised only; blinded in Appendix~\ref{a: sample2 blinded}).
     The width of the violin plots scales with $N_{\ion{H}{I}}$.
     The posteriors for both the blinded and revised parameter estimations overlap with the source distributions in most cases, suggesting the parameter estimation is typically sufficiently conservative.
     Exceptions are
@@ -714,7 +721,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components.pdf}
+    \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components_revised.pdf}
     \caption{
     The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the best estimates for individual components comprising the parameter estimation.
     Each point is the maximum-likelihood estimate (MLE) of an individual component,
@@ -724,7 +731,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     The MLE of the strongest component typically aligns with the peak of the source distribution, but can be off by $\lesssim 1$ dex for $Z$ and $n_{\rm H}$, especially for the blinded estimates.
     The best fit for parameter estimation consistently includes lower-column-density components with properties not found in the source data.
     \todo{Make visual signifier of logscale.}
-    \todo{Ensure the vlos distribution has sufficiently small bins.}
+    \todo{Reduce y scale when possible.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
@@ -927,12 +934,12 @@ However, in some cases non-equilibrium chemistry can have a significant effect o
 
 There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple,charlton2000anticipating,ding2003quadruple,charlton2003high,ding2003multiphase,zonak2004absorption,ding2005absorption,masiero2005models,lynch2007physical,misawa2008supersolar,lacki2010z,jones2010bare,muzahid2015extreme,richter2018,rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the parameter-estimation team are based on these earlier models but with significant improvements:
-\begin{enumerate*}
+\begin{enumerate}
     \item They are automated, leading to a $\sim 10-100 \times$ decrease in time to model a system.
     \item They provide full posteriors for parameters, not just an estimate of the most-likely value a range of viable values.
     \item Temperature can be varied independently.
     \item All transitions are considered, weighted by noise level.
-\end{enumerate*}
+\end{enumerate}
 \atsameer{The above is modified text from a comment from Jane. A few questions:
 Regarding the last point, Jane mentioned eliminating regions with blends. Can you elaborate?}
 
@@ -1014,7 +1021,7 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 % The best way to enter references is to use BibTeX:
 
 \bibliographystyle{mnras}
-\bibliography{references, hafen_references, wijers_references} % if your bibtex file is called example.bib
+\bibliography{references, hafen_references, wijers_references, newerref} % if your bibtex file is called example.bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1022,7 +1029,13 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
 
 \appendix
 
+\section{\texttt{sample2} blinded parameter estimation}
+\label{a: sample2 blinded}
+
+\todo{Fill this out.}
+
 \section{Sightline-by-sightline comparisons for \texttt{sample2}}
+\label{a: all sightlines for sample2}
 
 \begin{figure*}
     \centering
