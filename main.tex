@@ -162,9 +162,14 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \atnastasha{this color.}
 \atnir{this color.}
 
+\textbf{Meeting agenda:}
+\begin{enumerate}
+    \item Time for another pass.
+    \item Given the challenge in recovering the shape of cloud distributions, how important is it for simulators to resolve parsec-scale gas?
+\end{enumerate}
+
 \textbf{Priorities:}
 \begin{enumerate}
-    \item Plots showing spectra for sample1.
     \item Plots showing spectra for sample2.
     \item Clean up discussion section (e.g. decrease duplication, snip single-paragraph-long subsubsections).
     \item Clean up plots (including consistent sizes and notation, legends/labels).
@@ -721,7 +726,23 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/high-z/sightline_0015.pdf}
+    \includegraphics[width=\textwidth]{figures/sample2/projections/projection_0015.jpg}
+    \includegraphics[width=\textwidth]{figures/sample2/best_fits/0015.pdf}
+    \caption{
+    \textbf{Top:}
+    Density in a slice through the simulation used to generate \texttt{sample2}~~\citep{Mandelker2020a}.
+    The dashed white line shows the location of a sightline (0015) forward-modeled to produce mock spectra.
+    \textbf{Bottom:}
+    Mock spectra for the sightline shown in the top panel,
+    best fit absorption profiles found by observers,
+    and the parameters of the best fits.
+    }
+    \label{f: sample2 spectrum 15}
+    \end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/high-z/sightline_0012.pdf}
     \caption{
     Estimated and source properties of gas along a sightline through a turbulent mixing zone.
     Black shows the source properties used to produce the mock spectra.
@@ -767,7 +788,12 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 \end{figure*}
 
 % Individual example description
-Figure~\ref{f: sample2 15} shows parameter-estimation posteriors for a single sightline, sightline 15, which is best fit by five clouds.
+Figure~\ref{f: sample2 spectrum 15} shows an example sightline (sightline 0015) passing through the simulation used to generate \texttt{sample2},
+along with the resulting mock spectra,
+the best fit from parameter estimation,
+and the posteriors for derived properties.
+The best fit for sightline 0015 uses five clouds.
+Figure~\ref{f: sample2 15} compares the parameter-estimation posteriors for the sightline to the source property distributions. 
 Both the source data and the posteriors are normalized by associated \ion{H}{I} column density.
 Integrating over the source data for any property yields the total \ion{H}{I} column density.
 Integrating over any property posterior for a component yields the median estimated \ion{H}{I} column for that component.
@@ -995,11 +1021,11 @@ It is possible that at a given ($Z$, $T$, $n_{\rm H}$) some ions are ionization 
 There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple, charlton2000anticipating, ding2003quadruple, charlton2003high, ding2003multiphase, zonak2004absorption, ding2005absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015extreme, richter2018, rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the observers (CMBM; \citealt{Sameer2021, Sameer2022}) are based on these earlier models but with significant improvements.
 CMBM selects a set of possible properties, generates spectra, and repeats the process based on agreement with the observed spectra.
-This is an improvement over previous work that measured a column density and used it to
-Previous work typically measured some column densities and used those as a st
+This algorithmic approach covers a wider range of parameter space than feasible when modeling ``by-hand'', including testing multi-cloud models.
 Additional beneficial features include
 a $\sim 10-100 \times$ automation-enabled decrease in human hours,
 the ability to vary all parameters independently (including temperature),
+the output includes the full posterior for each cloud,
 and the self-consistent inclusion of all transitions, weighted by noise level.
 CMBM also handles blending well, an issue in real observations that is largely not present here
 (the only line with slight blending was \ion{Si}{II} 989 from \ion{N}{III} 989, and this was included in the modeling).
@@ -1017,8 +1043,11 @@ Note that multiple well-separated clouds giving rise to absorption at the same L
 Regarding estimates of the bulk properties of gas along a LOS,
 \cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS \ion{H}{I} mass-weighted average properties.
 \cite{marra2021.cosmo.sims.test.observational.modeling} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
-\cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
-\atsameer{In addition to other locations it shows up in the paper, do you want to mention Sameer2021 here?} 
+Approaching this problem from the observer side yields similar results:
+\cite{Sameer2021} showed that the \ion{H}{I}-weighted properties agree with the single valued properties determined by averaging over components and phases.
+\atsameer{Sameer, do you mind clarifying this? (Copied in from a comment.) My current reading is that the HI-weighted averages agree with the averages done in a different way}
+However, a single valued property washes out the different physical processes that could be responsible for those different properties.
+\cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.}
 
 \subsection{Recommendations}
 
@@ -1028,7 +1057,7 @@ Regarding estimates of the bulk properties of gas along a LOS,
     \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. 
     % \item When possible, models should fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.1$, but even then the derived properties of the absorbing gas can be inaccurate to $\gtrsim 0.5$ dex ( Figure~\ref{f: error vs error}). \todo{Probably scratch this.}
     \item The distribution of possible values is more informative than a single best value. Even when the best estimated value and the real value are not the same, the real value is typically among the likely values (Figure~\ref{f: sample1 violin}).
-    \item Be cautious when identifying multiple contributing clouds---often only the ion-weighted averages of well-separated clouds can accurately be recovered.
+    \item Be cautious when identifying multiple contributing clouds---while the \ion{H}{I}-weighted averages can reliably be recovered, successful parameter estimation of multiple clouds depends on how distinct the cloud properties are and the per-cloud contribution to observable ion absorption (Figure~\ref{sample2 violin vs components}).
 \end{enumerate}
 
 \subsubsection{For theorists}
