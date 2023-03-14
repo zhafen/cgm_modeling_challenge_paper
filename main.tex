@@ -344,7 +344,7 @@ EAGLE \citep[`Evolution and Assembly of GaLaxies and their Environments';][]{Sch
 It uses the Gadget3 Tree-PM scheme for gravity \citep[][]{Springel2005} and the Anarchy implementation of SPH for hydrodynamics (\citeauthor{Schaye2015} \citeyear{Schaye2015}, appendix~A; \citeauthor{Schaller2015} \citeyear{Schaller2015}).
 The Ref-L100N1504 simulation was run in a $(100\,\mathrm{cMpc})^3$ periodic volume, with a mass resolution of $9.70 \times 10^6 \,\mathrm{M}_{\odot}$ for dark matter, an initial SPH particle mass of $1.81 \times 10^6 \,\mathrm{M}_{\odot}$, and a Plummer-equivalent gravitational softening length of $0.70$~pkpc (at low redshift).
 % It assumed a $\Lambda$CDM cosmogony with the \citet{PlanckCollaboration2013} parameters: $(\Omega_m,\Omega_\Lambda,\Omega_b, h, \sigma_8, n_s, Y) = (0.307, 0.693, 0.04825, 0.6777, 0.8288, 0.9611, 0.248)$.
-In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating \citep{Wiersma2009a}, star formation \citep{Schaye2004, Schaye2008}, stellar feedback \citep{DallaVecchia2012}, and metal enrichment by stars \citet{Wiersma2009}, as well as black hole seeding, growth \citet{Rosas-Guevara2015}, and AGN feedback \citet{Booth2009}.
+In addition to gravity and hydrodynamics, the EAGLE simulations include radiative cooling and heating \citep{Wiersma2009a}, star formation \citep{Schaye2004, Schaye2008}, stellar feedback \citep{DallaVecchia2012}, and metal enrichment by stars \citep{Wiersma2009}, as well as black hole seeding, growth \citep{Rosas-Guevara2015}, and AGN feedback \citep{Booth2009}.
 % The radiative cooling and heating rates depend on eleven individual element abundances and were calculated assuming optically thin gas in ionization equilibrium in a \citet{Haardt2001} UV/X-ray background radiation field \citep{Wiersma2009a}. 
 % Stars form in dense gas, with a minimum density $\mathrm{n}_{\mathrm{H}} \sim 10^{-1} \mathrm{cm}^{-3}$ which decreases with metallicity \citep{Schaye2004}.
 % The star formation rate depends on gas pressure such that the Kennicutt–Schmidt relation is reproduced by construction \citep{Schaye2008}.
@@ -871,14 +871,14 @@ Therefore, the inferred properties for high temperature gas are generally more u
 % Distributions of clouds --- shapes
 Finally, regarding the shapes of the property distributions,
 the employed parameter estimation approximates the absorption as arising in several uniform clouds,
-and as such fundamentally cannot constrain cloud structure regarding distribution shape.
-This is an area of future work that some alternative parameter-estimation methods address this~\citep[e.g.][]{stern2016Universal}.
+and as such fundamentally cannot constrain distribution shape.
+This is an area of future work that some alternative parameter-estimation methods address~\citep[e.g.][]{stern2016Universal}.
 
 \subsubsection{Conditions needed for constraining cloud structure}
 
 % Ions
 The ions available for fitting determine much of how well cloud structure can be retrieved.
-Utilizing multiple Lyman-series lines reduces the contamination of noise in identifying coincident-in-velocity-absorption.
+Utilizing multiple Lyman-series lines reduces the contamination from noise during identification of coincident-in-velocity-absorption.
 Intermediate ionization states, especially strong ions such as \ion{C}{IV}, play an important role in separating gas phases.
 \atsameer{Why are intermediate ionization states in particular useful for separating components? (This is a more-precise version of a previous question I asked, with your response commented out below.)}
 % Sameer:
@@ -899,7 +899,13 @@ To that end, the data may describe a best-case scenario for detailed modeling of
 This suggests that it may be difficult to distinguish absorption from many small clouds vs absorption from one large one.
 However, parameter estimation may be more successful at this task if the many small clouds are more widely distributed in velocity space than they are in \texttt{sample2}.
 
-\subsection{Implications for existing results}
+\subsubsection{Implications for existing results}
+
+Recent work has suggested that small, dense clouds are required to explain observed absorption profiles \atsameer{Jane, this is a point you suggested we make in your comments. Did you want to include particular papers?}.
+Across all samples the density of the strongest absorbing component is not overestimated,
+in support of these observations.
+However in 4 / 10 of the sightlines of \texttt{sample2} there exists a lower-$N_{\ion{H}{I}}$ component with a density $\sim 1-2$ dex higher than found in the source data.
+\atsameer{Jane, how do you interpret the 4 / 10 sample2 sightlines with higher densities in this context?}
 
 % For analyses that infer a physical picture from individual sightlines
 Some works argue that it is possible to extract detailed information about the origin of absorbing gas, often with the aid of additional observations of the galaxy associated with the absorption system.
@@ -915,9 +921,9 @@ and these properties may allow observers to constrain the \ion{H}{I}-weighted or
 Some analyses aim to constrain total masses or mass profiles~\citep[e.g.][]{Zahedy2019a}~\todo{Lots of work on this, add a few more citations}, typically rely on the average properties of the gas and the total columns.
 This modeling challenge suggests that these bulk properties are well-recovered for low-ionization $T \sim 10^4$ K gas.
 
-\subsection{Modeling choices}
+\subsection{Choices in parameter estimation}
 
-\subsubsection{Discrete components versus a distributions of clouds}
+\subsubsection{Discrete uniform clouds versus distributions of clouds}
 
 % Motivations
 Modeling absorption as arising in discrete components is in part motivated by observed profiles that are often quite symmetrical,
@@ -930,10 +936,11 @@ The former is plausible:
 idealized simulations, analytic theory, and cosmological simulations suggest that mixing and perturbations from cold gas may be primary drivers of further cold gas growth~\citep[e.g.][]{esmerian2021Thermal, gronke2021Survival, gronke2022Cooling},
 suggesting that cool cloud distributions may be limited to regions of the CGM with adjacent or already-present cool gas.
 
+% Sample2
 The most realistic among our samples, \texttt{sample2}, consists not of discrete clouds, but of a distribution of clouds.
 This suggests any fully-successful model of absorption systems should also describe a distribution of clouds.
 Such models exist~\citep[e.g.][]{stern2016Universal}, but are not commonly employed in parameter estimation.
-However, because it is difficult to extract anything other than the ion-weighted averages of absorbing gas (as stated above) parameter estimation using a more-sophisticated model than individual clouds may not provide a clear improvement.
+However, because it is difficult to extract information beyond the ion-weighted averages of absorbing gas (as stated above) parameter estimation using a more-sophisticated model than individual clouds may not provide a clear improvement.
 
 % % Interpreting posteriors of single clouds as distributions.
 % Absorbers in reality are likely composed of infinitely many clouds with a distribution of properties.
@@ -961,35 +968,42 @@ However, because it is difficult to extract anything other than the ion-weighted
 % Zach --- reread this section to understand the argument.
 % }
 
-\subsubsection{Assumptions about thermal, pressure, and ionization equilibrium}
+\subsubsection{Assumptions about thermal and ionization equilibrium}
 
 % Thermal equilibrium
-At the first step of our analysis our parameter-estimation team assumed thermal equilibrium.
-This assumption resulted in inaccurate estimates of the parameters of \texttt{sample0}, though the magnitude of the errors was significantly exacerbated by providing source properties with unusual temperatures and densities.
+At the first step of our analysis the observers assumed thermal equilibrium.
+This assumption resulted in inaccurate estimates of the parameters of \texttt{sample0}, though the magnitude of the errors was significantly exacerbated by source properties with unusual temperatures and densities.
 Removing this assumption produced very good fits to the data regardless of temperature-density phase-space location.
-Assuming thermal equilibrium for ease of modeling is therefore, at minimum, a risky assumption.
-
-% Pressure equilibrium
-\atsameer{Does your analysis assume anything about pressure equilibrium between different phases?}
+In \texttt{sample2}, gas in the source simulation is allowed to cool below $T \sim 10^4$ K,
+but photo-heating from the UVB provides an effective temperature floor.
+The estimated components with the strongest absorption have estimated $T \sim 10^4$ K,
+consistent with the source data despite not assuming thermal equilibrium.
+This suggests that, for the modeling the majority of absorbing gas, the safest option is to forgo assumptions of thermal equilibrium.
+However, in approximately half the \texttt{sample2} sightlines the parameter-estimation best estimates for some individual, lower-$N_{\ion{H}{I}}$ components falls below the effective temperature floor (Figure~\ref{f: sample2 violin vs components}),
+inconsistent with the source data.
+This may suggest that estimating the parameters of poorly-constrained clouds without requiring the clouds to exist in a physically-expected region of parameter space can result in unlikely-to-be-real estimated values.
 
 % Ionization equilibrium
-Both the parameter-estimation team and the data-generation team assumed ionization equilibrium, with contributions from both collisional- and photo-ionization.
+Throughout the analysis, the participating observers and theorists assumed ionization equilibrium, with contributions from both collisional- and photo-ionization.
 On the data-generation side, this is a common assumption in cosmological and idealized hydrodynamical simulations, largely driven by the challenge in modeling non-equilibrium chemistry~\citep[e.g.][]{richings2014Nonequilibrium}.
 However, in some cases non-equilibrium chemistry can have a significant effect on the properties of absorbing gas in the CGM, including providing one explanation for the observed bimodality in \ion{O}{VI} around low-redshift galaxies~\citep{oppenheimer2016Bimodality}.
-\atsameer{Anything you want to say regarding ionization equilibrium in the parameter estimation community?}
+Note that the ionization and recombination timescales are different for every ion.
+It is possible that at a given ($Z$, $T$, $n_{\rm H}$) some ions are ionization equilibrium while others are not.
 
 \subsubsection{Absorption modeling ``by hand''}
 
-There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple,charlton2000anticipating,ding2003quadruple,charlton2003high,ding2003multiphase,zonak2004absorption,ding2005absorption,masiero2005models,lynch2007physical,misawa2008supersolar,lacki2010z,jones2010bare,muzahid2015extreme,richter2018,rosenwasser2018understanding, norris2021Discovery}.
-The methods employed by the parameter-estimation team are based on these earlier models but with significant improvements:
-\begin{enumerate}
-    \item They are automated, leading to a $\sim 10-100 \times$ decrease in time to model a system.
-    \item They provide full posteriors for parameters, not just an estimate of the most-likely value a range of viable values.
-    \item Temperature can be varied independently.
-    \item All transitions are considered, weighted by noise level.
-\end{enumerate}
-\atsameer{The above is modified text from a comment from Jane. A few questions:
-Regarding the last point, Jane mentioned eliminating regions with blends. Can you elaborate?}
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple, charlton2000anticipating, ding2003quadruple, charlton2003high, ding2003multiphase, zonak2004absorption, ding2005absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015extreme, richter2018, rosenwasser2018understanding, norris2021Discovery}.
+The methods employed by the observers (CMBM; \citealt{Sameer2021, Sameer2022}) are based on these earlier models but with significant improvements.
+CMBM selects a set of possible properties, generates spectra, and repeats the process based on agreement with the observed spectra.
+This is an improvement over previous work that measured a column density and used it to
+Previous work typically measured some column densities and used those as a st
+Additional beneficial features include
+a $\sim 10-100 \times$ automation-enabled decrease in human hours,
+the ability to vary all parameters independently (including temperature),
+and the self-consistent inclusion of all transitions, weighted by noise level.
+CMBM also handles blending well, an issue in real observations that is largely not present here
+(the only line with slight blending was \ion{Si}{II} 989 from \ion{N}{III} 989, and this was included in the modeling).
+\atsameer{Worth adding a quick blurb on why CMBM handles blending well?}
 
 \subsection{Comparison to similar analyses}
 
@@ -1006,12 +1020,6 @@ Regarding estimates of the bulk properties of gas along a LOS,
 \cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
 \atsameer{In addition to other locations it shows up in the paper, do you want to mention Sameer2021 here?} 
 
-\subsection{Other questions}
-
-The highest resolution in the simulation is $\sim$ 47 pc.
-Should there be a consideration of the size scales when modeling synthetic data?
-For observational data, though, we don't have such a luxury of imposing constraints.
-
 \subsection{Recommendations}
 
 \subsubsection{For observers}
@@ -1019,7 +1027,7 @@ For observational data, though, we don't have such a luxury of imposing constrai
 \begin{enumerate}
     \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. 
     % \item When possible, models should fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.1$, but even then the derived properties of the absorbing gas can be inaccurate to $\gtrsim 0.5$ dex ( Figure~\ref{f: error vs error}). \todo{Probably scratch this.}
-    \item The distribution of possible values is more informative than a single best value. Even when the best estimated value and the real value disagree, the real value is typically among the likely values (Figure~\ref{f: sample1 violin}).
+    \item The distribution of possible values is more informative than a single best value. Even when the best estimated value and the real value are not the same, the real value is typically among the likely values (Figure~\ref{f: sample1 violin}).
     \item Be cautious when identifying multiple contributing clouds---often only the ion-weighted averages of well-separated clouds can accurately be recovered.
 \end{enumerate}
 
