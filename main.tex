@@ -164,7 +164,8 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Meeting agenda:}
 \begin{enumerate}
-    \item Time for another pass.
+    \item New Figure 6 and Figure 8.
+    \item Time for another pass. Sameer and Jane in particular.
     \item Given the challenge in recovering the shape of cloud distributions, how important is it for simulators to resolve parsec-scale gas?
 \end{enumerate}
 
@@ -595,6 +596,7 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
    The blinded parameter estimates assumed thermal equilibrium,
    while the revised estimates removed this assumption and had excellent recovery of the source properties.
    The revised recovery of the source properties is despite many of the source quantities having unusual combinations of density and temperature (Figure~\ref{f: idealized explanation}).
+   \todo{Add legend.}
     }
     \label{f: idealized}
 \end{figure}
@@ -620,6 +622,8 @@ and the colored lines span the 16th to 84th percentiles of the combined \ion{H}{
     The x-axis shows average log-space difference between column densities across all ions, weighted by the provided uncertainty.
     The original models fit the data decently (mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert < 0.3$), but do not accurately recover the properties of the absorbing gas (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \gtrsim 0.4$).
     The revised models (which do not assume thermal equilibrium) recover the properties of the gas much better (e.g. $\vert \log_{10}( Z_{\rm modeled} / Z_{\rm actual}) \vert \lesssim 0.1$), and typically fit the data to mean $\vert \log_{10}( N_{X,\,{\rm modeled}}$ / $N_{X,\,{\rm actual}}) \vert \lesssim 0.05$.
+    \todo{Move to appendix?}
+    \todo{Add legend.}
     }
     \label{f: error vs error}
 \end{figure*}
@@ -683,9 +687,8 @@ but the effects may also be stronger in because only ion column densities were p
     Synthetic data properties for multiple uniform clouds (\texttt{sample1}, black) compared to posteriors from parameter estimation (red).
     The numbers above each sightline indicate the number of source clouds and the estimated number of clouds.
     The maximum likelihood estimates (the peak values of the posteriors) typically align with the source parameters.
-    % \todo{Do observations simultaneously get multiple properties right, or are some properties wrong while others are right?}
-    \todo{Suggestion from Sameer: Instead of displaying the whole distribution as one shade, it might be better to shade region within ~1sigma as a darker shade, and the rest as a lighter shade.
-    Suggestion from Cameron: Add information about what the width of the profiles mean in the caption.}
+    \todo{Suggestion from Cameron: Add information about what the width of the profiles mean in the caption.}
+    \todo{Add legend.}
     }
     \label{f: sample1 violin}
 \end{figure}
@@ -1142,8 +1145,6 @@ The inclusion of a Data Availability Statement is a requirement for articles pub
     such that if the parameter estimation perfectly agreed with the data all visible MLE points would lie within the source data violins.
     The MLE of the strongest component typically aligns with the peak of the source distribution, but can be off by $\lesssim 1$ dex for $Z$ and $n_{\rm H}$, especially for the blinded estimates.
     The best fit for parameter estimation consistently includes lower-column-density components with properties not found in the source data.
-    \todo{Reduce y scale when possible.}
-    \todo{Add ``source'' before ``width''.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
