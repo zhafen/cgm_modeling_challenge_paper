@@ -726,17 +726,27 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/sample2/projections/projection_0015.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/density_projection_maps_SL_15.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/temperature_projection_maps_SL_15.jpg} \\
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/metallicity_projection_maps_SL_15.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/velocity_projection_maps_SL_15.jpg}
+    \caption{
+    Density, temperature, metallicity, and line-of-sight velocity in a slice of the simulation used to generate \texttt{sample2}~\citep{Mandelker2020a}.
+    The dashed white line shows the location of one of the sightlines (sightline 15) forward-modeled to produce mock spectra.
+    The simulation includes a turbulent mixing zone, and shows highly complex cloud structure.
+    }
+    \label{f: sample2 ray 15}
+\end{figure*}
+
+\begin{figure*}
+    \centering
     \includegraphics[width=\textwidth]{figures/sample2/best_fits/0015.pdf}
     \caption{
-    \textbf{Top:}
-    Density in a slice through the simulation used to generate \texttt{sample2}~~\citep{Mandelker2020a}.
-    The dashed white line shows the location of a sightline (0015) forward-modeled to produce mock spectra.
-    \textbf{Bottom:}
-    Mock spectra for the sightline shown in the top panel,
+    Mock spectra for the sightline shown in Figure~\ref{f: sample2 ray 15},
     best fit absorption profiles found by observers,
     and the parameters of the best fits.
-    \todo{The wrong sightline is currently labeled because Zach gave Nir the wrong mapping between sightline number and ray coordinates.}
+    The absorption along this sightline is best fit by five components.
+    \atsameer{Are the stars MLEs? If so, why are some not at the distribution peak?}
     }
     \label{f: sample2 spectrum 15}
     \end{figure*}
@@ -745,7 +755,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     \centering
     \includegraphics[width=\textwidth]{figures/sample2/high-z/sightline_0015.pdf}
     \caption{
-    Estimated and source properties of gas along a sightline through a turbulent mixing zone.
+    Estimated and source properties of gas along the sightline shown in Figures~\ref{f: sample2 ray 15} and \ref{f: sample2 spectrum 15}.
     Black shows the source properties used to produce the mock spectra.
     Red and blue show the posteriors from the blinded and revised parameter estimations respectively. 
     The combined posteriors are indicated by thick lines.
@@ -753,6 +763,24 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     }
     \label{f: sample2 15}
 \end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{figures/sample2/high-z/component_structure_0015.pdf}
+    \caption{
+    Physical- and velocity-space cloud structure for the sightline shown in Figures~\ref{f: sample2 ray 15}, \ref{f: sample2 spectrum 15}, and \ref{f: sample2 15}.
+    The top left panel shows the relationship between position along the line of sight ($x$) and the line-of-sight velocity of the gas.
+    Source properties are plotted with black 2D histograms,
+    while the different colors correspond to different estimated components.
+    The estimated components accurately describe the gas responsible for the vast majority of the absorption.
+    However, gas aligned in velocity but physically separated can introduce confusion to the interpretation,
+    and it is challenging to constrain the shape of the cloud property distributions.
+    \todo{Remove the current top left panel (caption will be correct still).}
+    \todo{Move lines to the front. Later, maybe add some transparency to the histogram image.}
+    \todo{Change fontsize.}
+    }
+    \label{f: sample2 structure 15}
+\end{figure}
 
 \begin{figure*}
     \centering
@@ -1208,10 +1236,58 @@ while the revised estimates agree better.
 
 \begin{figure*}
     \centering
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/density_projection_maps_SL_03.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/temperature_projection_maps_SL_03.jpg} \\
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/metallicity_projection_maps_SL_03.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/velocity_projection_maps_SL_03.jpg}
+    \caption{
+    Density, temperature, metallicity, and line-of-sight velocity in a slice of the simulation used to generate \texttt{sample2}~\citep{Mandelker2020a}.
+    The dashed white line shows the location of one of the sightlines (sightline 03) forward-modeled to produce mock spectra.
+    }
+    \label{f: sample2 ray 03}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/best_fits/0003.pdf}
+    \caption{
+    Mock spectra for sightline 03,
+    best fit absorption profiles found by observers,
+    and the parameters of the best fits.
+    }
+    \label{f: sample2 spectrum 03}
+\end{figure*}
+
+\begin{figure*}
+    \centering
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
-    \caption{Corner plot for sightline 0003.}
+    \caption{Corner plot for sightline 03.}
     \label{f: sample2 03 corner}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/density_projection_maps_SL_07.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/temperature_projection_maps_SL_07.jpg} \\
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/metallicity_projection_maps_SL_07.jpg}
+    \includegraphics[width=0.49\textwidth]{figures/sample2/projections/velocity_projection_maps_SL_07.jpg}
+    \caption{
+    Density, temperature, metallicity, and line-of-sight velocity in a slice of the simulation used to generate \texttt{sample2}~\citep{Mandelker2020a}.
+    The dashed white line shows the location of one of the sightlines (sightline 07) forward-modeled to produce mock spectra.
+    }
+    \label{f: sample2 ray 07}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/sample2/best_fits/0007.pdf}
+    \caption{
+    Mock spectra for sightline 07,
+    best fit absorption profiles found by observers,
+    and the parameters of the best fits.
+    }
+    \label{f: sample2 spectrum 07}
 \end{figure*}
 
 \begin{figure*}
