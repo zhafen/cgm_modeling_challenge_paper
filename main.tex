@@ -396,16 +396,15 @@ We determined the ion densities and column densities as described for \texttt{sa
 We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803 \AA$ to mimic complementary observations from the ground.
 Alpha element abundances relative to other elements were set to solar, e.g. \ion{C}{}/$\alpha$ is solar.
 We applied the COS line spread function to each spectrum and included Gaussian noise with an SNR of 30.
-The wavelength resolution for each spectra was set to $0.01 \AA$.
+The wavelength resolution for each spectrum was set to $0.01 \AA$.
 % \atcameron{What is the motivation for choosing this to be the default value for trident? response in comment}
 % Comments from Cameron: I believe it is the pixel resolution of COS, and after applying the COS LSF, it gives the appropriate spectral resolution of COS.
 % Comments from Jane on COS attributes:
 % 0.1A resoluttion is an approximate value for wavelength resolution. It is a little bit higher than that and is wavelength dependent, increasing from 1150A to 1450A for G130M.  The situation is similar for G160M.   Just to demonstrate - R=12,100 at 1150A so lamba/deltalambda = 1150/delta lambda so deltalambda is 0.1 and not 0.01A.
 % Also it is appropriate to specify the number of pixels per resolution element. For G130M it is between 7 and 13 pixels.   It is oversampled so sometimes people bin when displaying the data.
-The spectra flux does not have any inherent error, but the log-likelihood is calculated utilizing the per-pixel difference between the spectra and the model, normalized by the per-pixel error.
-\atsameer{In response to this sentence you left a comment: ``Based on S/N calculation using the continuum portion of the spectrum. S/N comes out to be ~30 for all the transitions for phase 2 data.'' Would you mind clarifying?}
+The log-likelihood is calculated utilizing the per-pixel difference between the spectra and the model, normalized by the per-pixel error.
 Therefore in a typical scenario the per-pixel error would determine how important discrepancies between model and data are in certain regions of the spectrum relative to others.
-\textsc{trident} provides a zeroth-order approximation of the flux error as arising from a stochastic process normalized by the SNR, $\sqrt{{\rm flux}/{\rm SNR}}$.
+% \textsc{trident} provides a zeroth-order approximation of the flux error as arising from a stochastic process normalized by the SNR, $\sqrt{{\rm flux}/{\rm SNR}}$.
 While we generated 100 sightlines, it is challenging to model that many.
 Accordingly observers sampled 10 random sightlines to focus on, excluding any damped Ly $\alpha$ absorbers to mitigate the effect of self-shielding.
 The only additional information provided to observers was that they could assume the absorbers were found in a galaxy-targeted survey with the host galaxies located at $z=0.25$.
@@ -631,8 +630,8 @@ Figure~\ref{f: idealized} shows the results of parameter estimation for \texttt{
 The blinded estimates (red)  are the observers' first estimates given the data and no additional information.
 After the observers compared the blinded estimates to the revealed source properties they made adjustments to their methodology and performed parameter estimation again.
 The results are the revised estimates (blue).
-For \texttt{sample0} the primary revisions to methodology were removing the assumption of thermal equilibrium and no longer treating the sightlines on a case-by-case basis.
-\atsameer{Any other adjustments?}
+For \texttt{sample0} the primary revision to methodology was removing the assumption of thermal equilibrium.
+The same procedure was also applied to all sightlines, instead of adapting the methodology to the sightline.
 
 % A tale of priors
 The discrepancies between the estimated properties and the source properties are driven by the assumptions made by both observers and theorists.
@@ -669,9 +668,10 @@ but the effects may also be stronger in because only ion column densities were p
     \includegraphics[width=\textwidth]{figures/sample1/Models_076.pdf}
     \caption{
     The source spectrum (grey steps) and the parameter-estimation best fit spectrum (dashed black) for sightline 076 in \texttt{sample1}.
-    The data is best fit by a two-cloud model, and the Voigt profiles of the individual components are shown in dark blue and red.
+    The data are best fit by a two-cloud model, and the Voigt profiles of the individual components are shown in dark blue and red.
     The spectrum wavelength was converted to line-of-sight velocity in this image,
     and the velocity of each component is indicated by a vertical dash.
+    The grey bands show the portion of the spectrum with no influence on parameter estimation.
     \atsameer{What do the grey bands indicate?}
     }
     \label{f: sample1 spectrum}
@@ -693,6 +693,7 @@ but the effects may also be stronger in because only ion column densities were p
 % Spectra
 In Figure~\ref{f: sample1 spectrum} we show an example spectrum provided to observers as part of \texttt{sample1},
 as well Voigt profiles from the parameter-estimation best fits.
+The grey bands indicate areas that are masked and do not contribute to parameter estimation because there is a blend known to contaminate the spectrum or because there is no detected absorption in the region.
 For \texttt{sample1} the parameter-estimation best fit was selected from models with varying numbers of clouds.
 In this example the data is best fit by a sightline piercing two clouds, one with significant low-ion absorption (e.g. \ion{C}{II})  and one with significant high-ion absorption (e.g. \ion{O}{VI}).
 In \texttt{sample1} the observers did not perform a revised parameter estimation because the blinded parameter estimates agreed well with the source data.
@@ -831,7 +832,7 @@ For example, the four peaks (MLEs) of the individual cloud posteriors approximat
 
 % Strongest component
 Figure~\ref{f: sample2 violin} compares the parameter-estimation posteriors to the source data property distributions.
-Each violin shape is a 1D distribution like those shown in Figure~\ref{f: sample2 03}, rotated 90 degrees and scaled linearly.
+Each violin shape is a 1D distribution like those shown in Figure~\ref{f: sample2 15}, rotated 90 degrees and scaled linearly.
 The linear scale emphasizes the dominant $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for both the source and parameter estimation.
 The shape of the $v_{\rm LOS}$ posteriors closely traces the actual distribution of $v_{\rm LOS}$ for both parameter estimations.
 The metallicity is accurate to within $\lesssim 1$ dex,
@@ -914,9 +915,10 @@ Of the sightlines in Figure~\ref{f: sample2 violin vs components},
 all sightlines identify the $T \sim 10^4$ K gas,
 4 / 10 sightlines identify an intermediate $T \sim 10^5$ K component,
 and 3 / 10 sightlines identify a high-ionization component.
-In addition, roughly half the sightlines identify a $T \sim 10^3$ K gas component, which are not present in the source data.
-Difficulty recovering higher-temperature gas is partially a consequence of the observers not having access to high-ionization absorption lines.
-Modeling of the full phase space of CGM gas requires ions such as \ion{Ne}{VIII} and \ion{Mg}{X}.
+In addition, roughly half the sightlines identify a low-absorption $T \sim 10^3$ K gas component, which is a value not present in the simulation due to heating from the UVB.
+It is especially difficult to estimate the parameters of the high-ionization gas in \texttt{sample2} because the pathlength necessary to accrue significant absorption is longer than any sightline through the \texttt{sample2} simulations.
+Difficulty recovering higher-temperature gas can also result from lack of access to high-ionization absorption lines such as \ion{Ne}{VIII} and \ion{Mg}{X},
+although in \texttt{sample2} the observers had access to these lines.
 \atsameer{The prior sentence was copied in from a comment left previously, however for sample2 you had access to \ion{Ne}{VIII} and \ion{Mg}{X}. Was this insufficient?}
 In addition, at $T \gtrsim 10^5$ K, gas cooling becomes independent of radiation field, and hence the density. 
 Therefore, the inferred properties for high temperature gas are generally more uncertain and independent of the profile shapes.
@@ -937,14 +939,14 @@ All sightlines in \texttt{sample2} had very similar source $Z$, $T$, and $n_{\rm
 similar column densities ($N_{\ion{H}{I}} \sim 10^{17}-10^{18}$ cm$^{-2}$),
 and widely varying source $v_{\rm LOS}$ distributions. 
 As such, \texttt{sample2} provides a test of how line-of-sight velocities affect parameter estimation.
-From Figure~\ref{f: sample2 violin vs components} we can see that varying $v_{\rm LOS}$ distributions drive significant variety in recovery of $Z$, $T$, and $n_{\rm H}$.
+From Figure~\ref{f: sample2 violin vs components} we can see that varying $v_{\rm LOS}$ distributions drive significant variety in recovery of $Z$, $T$, and $n_{\rm H}$, particularly for weak, low density, high temperature components.
 
 % Best-case scenario
 For \texttt{sample2} the lines available to the observers provided extensive coverage of $T \sim 10^4$ K gas.
 The provided data also had a high S/N and no contamination from gas separated in physical space but overlapping in velocity space.
 To that end, the data may describe a best-case scenario for detailed modeling of cloud properties.
-This suggests that it may be difficult to distinguish absorption from many small clouds vs absorption from one large one.
-However, parameter estimation may be more successful at this task if the many small clouds are more widely distributed in velocity space than they are in \texttt{sample2}.
+This suggests that it may be difficult to distinguish absorption from many small clouds from absorption from one large one.
+However, parameter estimation may be more successful if the many small clouds have narrower profiles or are more widely distributed in velocity space than in \texttt{sample2}.
 
 % Column densities vs spectra
 Related, following a survey of potential participating observers the theorists provided ion column densities for \texttt{sample0}, instead of providing ion spectra.
@@ -956,19 +958,15 @@ For example, in \texttt{sample1} the observers used the spectra profile shapes t
 % Ions
 The ions available for fitting determine much of how well cloud structure can be retrieved.
 Utilizing multiple Lyman-series lines reduces the contamination from noise during identification of coincident-in-velocity-absorption.
-Intermediate ionization states, especially strong ions such as \ion{C}{IV}, play an important role in separating gas phases.
-\atsameer{Why are intermediate ionization states in particular useful for separating components? (This is a more-precise version of a previous question I asked, with your response commented out below.)}
-% Sameer:
-% Absorption clouds manifested in transitions that differ by at least few tens of eV, generally, arise in gas with different properties.
-% For a gas parcel determined to have its characteristic properties, and knowing where it is centered, with access to absorption in multiple ionization states of the given element, one is able to constrain the density.
+Intermediate ionization states, especially strong ions such as \ion{C}{IV}, play an important role in separating gas phases because they often have contributions from both a lower and a higher ionization transition.
+This is shown with the \ion{C}{III} absorption in Figure~\ref{f: sample1 spectrum}.
 
 \subsubsection{Implications for existing results}
 
-Recent work has suggested that small, dense clouds are required to explain observed absorption profiles \atsameer{Jane, this is a point you suggested we make in your comments. Did you want to include particular papers?}.
-Across all samples the density of the strongest absorbing component is not overestimated,
-in support of these observations.
-However in 4 / 10 of the sightlines of \texttt{sample2} there exists a lower-$N_{\ion{H}{I}}$ component with a density $\sim 1-2$ dex higher than found in the source data.
-\atsameer{Jane, how do you interpret the 4 / 10 sample2 sightlines with higher densities in this context?}
+In several studies, it has been found that small, dense clouds are required to explain observed absorption profiles~\citep{Rigby2002, Narayanan2008, Muzahid2018}.
+Across all samples in the present study the density of the strongest absorbing component is not overestimated,
+in support of observational constraints requiring small, dense clouds.
+However, some of the poorly-constrained components or components nonessential for a good fit can have overestimated densities---in 4 / 10 of the sightlines of \texttt{sample2} there exists such a component with a density $\sim 1-2$ dex higher than found in the source data.
 
 % For analyses that infer a physical picture from individual sightlines
 Some works argue that it is possible to extract detailed information about the origin of absorbing gas, often with the aid of additional observations of the galaxy associated with the absorption system.
@@ -991,10 +989,11 @@ This modeling challenge suggests that these bulk properties are well-recovered f
 % Motivations
 Modeling absorption as arising in discrete components is in part motivated by observed profiles that are often quite symmetrical,
 suggesting a single region with a given density and temperature. 
+This is especially relevant for colder clouds traced with low ionization absorption.
 Some components are also observed to be quite narrow, 
 which requires cloud distributions to either be confined to specific regions of the CGM,
 or for separate regions to coincidentally have similar $v_{\rm LOS}$.
-\atsameer{The preceding is a paraphrased version of Jane's comment on reasons for modeling with discrete components. Do you have references on hand?}
+\todo{Add in references suggested by Jane: Anything showing many low ionization systems at high resolution, e.g. \url{ https://ui.adsabs.harvard.edu/abs/2001AJ....122..679C/abstract},\url{https://ui.adsabs.harvard.edu/abs/1999ApJS..120...51C/abstract}.}
 The former is plausible:
 idealized simulations, analytic theory, and cosmological simulations suggest that mixing and perturbations from cold gas may be primary drivers of further cold gas growth~\citep[e.g.][]{esmerian2021Thermal, gronke2021Survival, gronke2022Cooling},
 suggesting that cool cloud distributions may be limited to regions of the CGM with adjacent or already-present cool gas.
@@ -1096,8 +1095,7 @@ Regarding estimates of the bulk properties of gas along a LOS,
 \cite{Liang2018} determined that a Bayesian method of modeling absorption lines was able to derive LOS \ion{H}{I} mass-weighted average properties.
 \cite{marra2021.cosmo.sims.test.observational.modeling} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
 Approaching this problem from the observer side yields similar results:
-\cite{Sameer2021} showed that the \ion{H}{I}-weighted properties agree with the single valued properties determined by averaging over components and phases.
-\atsameer{Sameer, do you mind clarifying this? (Copied in from a comment.) My current reading is that the HI-weighted averages agree with the averages done in a different way}
+\cite{Sameer2021} showed that the HI-weighted average metallicities of multiple components agree with the single values that earlier modeling had found by using total column densities as constraints.
 However, a single valued property washes out the different physical processes that could be responsible for those different properties.
 \cite{Acharya2021} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
 
@@ -1120,6 +1118,7 @@ Based on our analysis we provide recommendations for observers estimating the pa
     \item Avoid source properties that are overly pathological. While testing the limits of  parameter estimation is useful, unusual source properties are disproportionately likely to be poorly modeled (Figure~\ref{f: idealized explanation}).
     \item Provide mock spectra when available, not just column densities.
     \item Be aware that forward-modeling simulation output using a different UVB than the one used to produce the simulation can have undesirable consequences.
+    \item \todo{Depending on what we settle on, comment on the possible need for high spatial resolution.}
 \end{enumerate}
 
 \section{Conclusions}
@@ -1263,7 +1262,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0003.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0003.png}
     \caption{Corner plot for sightline 03.}
-    \label{f: sample2 03 corner}
+    \label{f: sample2 corner 03}
 \end{figure*}
 
 \begin{figure*}
@@ -1295,7 +1294,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0007.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0007.png}
     \label{f: sample2 07 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 07.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 07.}
 \end{figure*}
 
 \begin{figure*}
@@ -1326,7 +1325,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0008.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0008.png}
     \label{f: sample2 08 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 08.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 08.}
 \end{figure*}
 
 \begin{figure*}
@@ -1358,7 +1357,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0011.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0011.png}
     \label{f: sample2 11 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 11.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 11.}
 \end{figure*}
 
 \begin{figure*}
@@ -1390,7 +1389,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0012.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0012.png}
     \label{f: sample2 12 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 12.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 12.}
 \end{figure*}
 
 \begin{figure*}
@@ -1422,7 +1421,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0014.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0014.png}
     \label{f: sample2 14 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 14.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 14.}
 \end{figure*}
 
 \begin{figure*}
@@ -1435,7 +1434,7 @@ while the revised estimates agree better.
     Density, temperature, metallicity, and line-of-sight velocity in a slice of the simulation used to generate \texttt{sample2}~\citep{Mandelker2020a}.
     The dashed white line shows the location of one of the sightlines (sightline 15) forward-modeled to produce mock spectra.
     }
-    \label{f: sample2 ray 15}
+    \label{f: sample2 ray 15 appendix}
 \end{figure*}
 
 \begin{figure*}
@@ -1446,7 +1445,7 @@ while the revised estimates agree better.
     best fit absorption profiles found by observers,
     and the parameters of the best fits.
     }
-    \label{f: sample2 spectrum 15}
+    \label{f: sample2 spectrum 15 appendix}
 \end{figure*}
 
 \begin{figure*}
@@ -1454,7 +1453,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0015.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0015.png}
     \label{f: sample2 15 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 15.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 15.}
 \end{figure*}
 
 \begin{figure*}
@@ -1486,7 +1485,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0016.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0016.png}
     \label{f: sample2 16 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 16.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 16.}
 \end{figure*}
 
 \begin{figure*}
@@ -1518,7 +1517,7 @@ while the revised estimates agree better.
     \includegraphics[height=0.45\textheight]{figures/sample2/original/sightline_0019.png}
     \includegraphics[height=0.45\textheight]{figures/sample2/high-z/sightline_0019.png}
     \label{f: sample2 19 corner}
-    \caption{Same as Fig.~\ref{f: sample2 03}, but for sightline 19.}
+    \caption{Same as Fig.~\ref{f: sample2 corner 03}, but for sightline 19.}
 \end{figure*}
 
 This section includes additional figures for sample2.
