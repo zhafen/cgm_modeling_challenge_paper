@@ -165,11 +165,12 @@ For scientists who so far have contributed data or analysis, look out for the fo
 \textbf{Priorities:}
 \begin{enumerate}
     \item \atsameer{Address questions in text.}
-    \item Make visualization showing physical correspondence between components and structures.
     \item Include comparison of derived to actual cloud sizes for sample2.
     \item De-emphasize Figure~\ref{f: error vs error} results.
+    \item Implement feedback.
     \item Fix final few ``address this'' flags.
     \item Fix broken citations.
+    \item Run no-weighting plot for Jane and Sameer.
     \item Send out for final round of feedback!
 \end{enumerate}
 
@@ -747,7 +748,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     best fit absorption profiles found by observers,
     and the parameters of the best fits.
     The absorption along this sightline is best fit by five components.
-    \atsameer{Are the stars MLEs? If so, why are some not at the distribution peak?}
+    \atsameer{Are the stars MLEs? If so, why are some not at the distribution peak? Thanks for your answer, I've added further questions in the response.}
     }
     \label{f: sample2 spectrum 15}
     \end{figure*}
@@ -772,12 +773,12 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     Physical- and velocity-space cloud structure for the sightline shown in Figures~\ref{f: sample2 ray 15}, \ref{f: sample2 spectrum 15}, and \ref{f: sample2 15}.
     The top left panel shows the relationship between position along the line of sight ($x$) and the line-of-sight velocity of the gas.
     Source properties are plotted with black 2D histograms,
-    while the different colors correspond to different estimated components.
+    while the colors correspond to estimated components.
     The estimated components accurately describe the gas responsible for the vast majority of the absorption.
     However, gas aligned in velocity but physically separated can introduce confusion to the interpretation,
     and it is challenging to constrain the shape of the cloud property distributions.
-    \todo{Remove the current top left panel (caption will be correct still).}
     \todo{Move lines to the front. Later, maybe add some transparency to the histogram image.}
+    \todo{Debug bottom right...}
     \todo{Change fontsize.}
     }
     \label{f: sample2 structure 15}
@@ -790,6 +791,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     The distributions of $v_{\rm LOS}$, $Z$, $T$ and $n_{\rm H}$ for the synthetic source data (black) compared to the full posteriors from parameter estimation (revised only; blinded in Appendix~\ref{a: sample2 blinded}).
     The width of the violin plots scales with $N_{\ion{H}{I}}$.
     \todo{Add takeaway.}
+    \todo{Change label to ``estimated---rerun''.}
     }
     \label{f: sample2 violin}
 \end{figure*}
@@ -804,9 +806,10 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     and the associated bars enclose the 16th to 84th percentiles of the posterior.
     The width of the violin plots and the opacity of the points are scaled \textit{logarithmically} with $N_{\ion{H}{I}}$,
     such that if the parameter estimation perfectly agreed with the data all visible MLE points would lie within the source data violins.
-    The MLE of the strongest-$N_{\ion{H}{I}}$ component typically aligns well with the peak of the source---the largest errors are in $Z$ and at a $\lesssim 1$ dex level.
+    The MLE of the strongest-$N_{\ion{H}{I}}$ component typically describes the parameters of most of the absorbing gas---the largest errors are in $Z$ and at a $\lesssim 1$ dex level.
     The lower-$N_{\ion{H}{I}}$ components trace some features of the underlying distribution,
     but arguably the lower-$N_{\ion{H}{I}}$ structure present in the source data is not retrieved.
+    \todo{Change label to ``estimated---rerun''.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
