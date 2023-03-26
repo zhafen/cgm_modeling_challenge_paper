@@ -217,7 +217,7 @@ As such, even given perfect information from each observed absorption line spect
 % Deriving accurate properties
 The second challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectrum.
 In observations the properties of the gas are derived based on spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and their interpretation is hampered by line saturation, large and uncertain ionization corrections~\citep[e.g.][]{schaye2006Importance, acharya2021How}, and more.
-One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that the absorbing gas is a single cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds spanning a range of properties~\citep[e.g.][]{boksenberg1979Multiple, muzahid2015Extreme, liang2017BayesVP, liang2018Model, Haislmaier2021, sameer2021.cloudbycloud.bayesian.absorption.system.modeling, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{marra2022Examining}.
+One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that the absorbing gas is a single cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds spanning a range of properties~\citep[e.g.][]{boksenberg1979Multiple, muzahid2015Extreme, liang2017BayesVP, liang2018Model, haislmaier2021COS, sameer2021Cloudbycloud, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{marra2022Examining}.
 High-resolution simulations predict a distribution of many small clouds instead of a few larger clouds~\citep[e.g.][]{fielding2020Multiphase, vijayan2021Xray},
 consistent with nearby ($\lesssim 100$~pc to the sun) interstellar absorption systems best fit by multiple components~\citep[e.g.][]{welsh2010HighResolution}.
 
@@ -335,10 +335,10 @@ We generated 100 sightlines of one to three clouds selected from the EAGLE sampl
 We set $v_{\rm LOS}$ for each cloud to be within $\pm150$ km/s of $z=0.25$, and randomly sampled temperature, density, metallicity, and $N_{\ion{H}{I}}$ from the cosmological distribution.
 To focus on interpreting sightlines with multiple cool clouds we only allowed a single cloud per sightline to have $T>10^5$ K.
 We determined the ion densities and column densities as described for \texttt{sample0}, using an ionization table and constraining total column via $N_{\ion{H}{I}}$.
-We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803 \AA$ to mimic complementary observations from the ground.
+We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803$ \AA to mimic complementary observations from the ground.
 The $\alpha$ element abundances relative to other elements were set to solar, e.g. \ion{C}{}/$\alpha$ is solar.
 We applied the COS line spread function to each spectrum and included Gaussian noise with an SNR of 30.
-The wavelength resolution for each spectrum was set to $0.01 \AA$.
+The wavelength resolution for each spectrum was set to $0.01$ \AA.
 The log-likelihood is calculated utilizing the per-pixel difference between the spectra and the model, normalized by the per-pixel error.
 Therefore in a typical scenario the per-pixel error would determine how important discrepancies between model and data are in certain regions of the spectrum relative to others.
 % \textsc{trident} provides a zeroth-order approximation of the flux error as arising from a stochastic process normalized by the SNR, $\sqrt{{\rm flux}/{\rm SNR}}$.
@@ -419,7 +419,7 @@ In the future the default behavior for \textsc{trident} will be to use the \text
 \label{s:  parameter estimation}
 
  Parameter estimation employed the cloud-by-cloud, multiphase, Bayesian ionization modeling (CMBM) methods introduced in \cite{sameer2021Cloudbycloud}, and further refined in \cite{sameer2022Probing}.
- It was demonstrated by \cite{Zahedy2019} that the metallicity can vary substantially in velocity space across an observed absorption line system, and thus that cloud-by-cloud modeling is important.
+ It was demonstrated by \cite{zahedy2019Probing} that the metallicity can vary substantially in velocity space across an observed absorption line system, and thus that cloud-by-cloud modeling is important.
  As with the synthetic data generation, the  parameter estimation used \textsc{cloudy}~\citep{ferland20132013} with the \cite{haardt2012RADIATIVE} UV background.
 
 For \texttt{sample0}, the initial modeling procedure involved adjustment of the three free parameters:
@@ -994,7 +994,7 @@ The effect of assuming ionization equilibrium on parameter estimation is a promi
 
 \subsubsection{Absorption modeling ``by hand''}
 
-There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple, charlton2000anticipating, ding2003quadruple, charlton2003high, ding2003multiphase, zonak2004absorption, ding2005absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015extreme, richter2018New, rosenwasser2018understanding, norris2021Discovery}.
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999multiple, charlton2000anticipating, charlton2003high, ding2003quadruple, ding2003multiphase, ding2005absorption, zonak2004absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015Extreme, richter2018New, rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the observers (CMBM; \citealt{sameer2021Cloudbycloud, sameer2022Probing}) are based on these earlier models but with significant improvements.
 CMBM selects a set of possible properties, generates spectra, and repeats the process based on agreement with the observed spectra.
 This algorithmic approach covers a wider range of parameter space than feasible when modeling ``by-hand'', including testing multi-cloud models.
@@ -1051,7 +1051,7 @@ In \textit{the Halo21 absorption modeling challenge} we generated ``observed'' c
 and tested the ability of parameter estimation to derive the source properties ($Z$, $T$, $n_{\rm H}$, and $v_{\rm LOS}$) of the underlying gas.
 We started with simple source data and ramped up the complexity over the course of the challenge.
 For \texttt{sample0} theorists provided the column densities of uniform clouds, with the properties randomly selected from ($Z$, $T$, $n_{\rm H}$) expected to be typical of the CGM, though the combined properties were not necessarily typical.
-For \texttt{sample1} theorists provided absorption spectra of multiple uniform clouds, with properties drawn from gas found in the CGM of the EAGLE cosmological simulations~\citep[e.g.][]{Schaye2015}.
+For \texttt{sample1} theorists provided absorption spectra of multiple uniform clouds, with properties drawn from gas found in the CGM of the EAGLE cosmological simulations~\citep[e.g.][]{schaye2015EAGLE}.
 For \texttt{sample2} theorists provided absorption spectra of a high-resolution simulation of a $T \sim 10^4$ K filament embedded in a $T \sim 10^6$ K halo~\citep{mandelker2020Instability}.
 The sample2 spectra piereced turbulent-mixing zones, and subsequently had a complex cloud structure.
 For all three samples the observers estimated parameters via cloud-by-cloud, multiphase, Bayesian ionization modeling (CMBM) methods~\citep{sameer2021Cloudbycloud, sameer2022Probing}.
@@ -1077,9 +1077,9 @@ The challenge in recovering cloud structure suggests that this may only require 
 However this warrants further analysis.
 
 % Future work -- error vs error
-Reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties (\S\ref{s: results -- sample0}, Appendix\ref{a: error vs error}).
+Reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties (\S\ref{s: results -- sample0}, Appendix \ref{a: error vs error}).
 However, this results is found under unusual circumstances---observers were only provided with ion column densities rather than spectra, and the source data lay in a region of parameter space not typically occupied by CGM gas.
-A promising future direction may be to evaluate spectra goodness-of-fit as a predictor of accuracy of and uncertainty in $Z$, $T$, and $n_{rm H}$.
+A promising future direction may be to evaluate spectra goodness-of-fit as a predictor of accuracy of and uncertainty in $Z$, $T$, and $n_{\rm H}$.
 
 \section*{Acknowledgements}
 
