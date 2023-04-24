@@ -129,12 +129,10 @@ We iteratively generated and analyzed three increasingly-complex data samples:
 ion column densities of isolated uniform clouds,
 mock spectra of 1-3 uniform clouds,
 and mock spectra of high-resolution turbulent mixing zones.
-In $\gtrsim 90\%$ of the absorption systems the best-estimate $Z$, $T$, and $n_{\rm H}$ were within $\lesssim0.1$ dex of the source values.
-The high-level of recovery held across all three samples, provided thermal equilibrium was not assumed.
-In the turbulent-mixing scenario, where the sources were distributions of clouds instead of uniform clouds, the estimated parameters traced single-valued approximations of the one or two clouds that dominated the absorption.
-Employing additional hot or cool components beyond the dominant components improved the fit,
-consistent with the complex cloud structure.
-However, the spectra provided limited constraints on the parameters of the additional components.
+We find that the observational estimates were accurate for both uniform cloud samples, with $Z$, $T$, and $n_{\rm H}$ retrieved within $0.1$ dex of the source value for $\gtrsim 90\%$ of absorption systems.
+In the turbulent-mixing scenario, the average mass, temperature, and metallicty of the strongest absorbers were also retrieved with high accuracy.   However, details of the subdominant components were poorly constrained. On the other hand, including
+additional components beyond the dominant ones did improve the fit, consistent with the true existence of complex cloud structures in the source. 
+%Employing additional hot or cool components beyond the dominant components improved the fit, consistent with the underlying existence of complex cloud structure. 
 % Sameer's suggested text: In the turbulent-mixing scenario, the estimated parameters were able to accurately capture the properties of the cool clouds using one or two dominant clouds that contributed significantly to the absorption. However, the hotter phase was captured with larger uncertainties, indicating that the best estimates were less reliable for this phase. The parameter estimation for the hotter phase provided limited information on the $Z$, $T$, and $n_{\rm H}$ because the spectra did not provide strong constraints on lower-column-density contributions.
 \atsameer{I rewrote the end of the paragraph. Check if you agree.}
 \end{abstract}
@@ -162,10 +160,14 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Discuss at next meeting}
 \begin{enumerate}
+    \item I am very much running out of time to work on this project. So all revisions should be aimed at reaching a point/language we agree on enough to publish, and pointing out where the future work could settle questions we still have.
     \item TML absorption profiles. Discussion regarding sample2 cloud structure has been refined, drawing on Tan\&Oh2021: absorption profiles of TMLs. (Nir, do you have additions?) Important takeaways: the gas pierced by a sightline in sample2 is expected to fall into one of three categories: $T \sim 10^4$ K, $T \sim 10^6$ K, and the interface of the two (TMLs). The TML a) provides significant absorption and b) has a fractal structure s.t. a (derivable) distribution of temperatures is present down to arbitrarily small scales. This is how different velocity components have similar temperature distributions---as long as a TML provides significant contribution then that TML temp distribution will not change. This is actually really exciting, because it provides a clear path forward for modeling: a background hot distribution, and a linear combination of absorption from T = 1e4 K gas and absorption from TMLs at a 1 cold gas:2 TML ratio (one for either side). This takes care of the fact that there's a fractal distribution with infinitely many clouds, and allows for search for different components, where a component is defined as a cool gas mass separated from other cool gas by at least a TML.
-    \item Violin plot normalization. I changed the normalization. Previously the violins cut off source gas with a column density low enough to not contribute when integrated over the entire dist. Now they cut off gas with a column density low enough to not contribute per-bin. Much more apples-to-apples. Now if you see a violin with non-zero width then it should be observable at that value alone. This brings down the apparent disagreement in observations and theory for the T and n violins. 
-    \item Broadening. What shows up in spectra: thermal+turbulent broadening. What shows up in velocity space: turbulent broadening only. Thermal broadening affects how gas appears, but does not actually affect the velocity distribution. As such, when comparing the distributions of cloud velocities I use the raw data, with no change, compared to the turbulent-broadened absorption profiles.
+    \item Violin plot normalization. I changed the normalization. Previously the violins included all gas with a large enough NHI to be detectable when integrated over the full range. Now they only include gas bins where each bin contains a large enough NHI to be detectable (NHI > 1e12.5). This brings down the apparent disagreement in observations and theory for the T and n violins. Arguably the per-bin is too extreme in the opposite direction, eliminating gas that may be visible.
+    \item Broadening. What shows up in spectra: thermal+turbulent broadening. What shows up in pure velocity space: turbulent broadening only. Thermal broadening affects how gas appears, but does not actually affect the velocity distribution. Therefore the comparison between sims and parameter estimation most relevant to what is physically going on is estimated vlos with turbulent broadening, sims with no additional broadening applied.  This is what I've been doing to date, as well as the reasoning for this choice. Jane, you argued pretty emphatically in the text that we should use thermal broadening too, so I want to make sure we're on the same page. It's my understanding that your insight to include thermal broadening was because estimated components that don't appear to account for all the gas in velocity space. If I broaden both model and simulation data thermally the agreement is better, but it's not clear this is physically meaningful.
     \item MLEs in Figure 15. I thought MLEs trace the peaks of the distribution by definition? How come they don't here? Sameer suggested noise + multimodality, but the data isn't noisy, and there aren't multiple modes in the situations where the stars are misaligned. This would explain the apparent difference in MLE locations between the violin plot (where I used the distribution maximum) and the MLEs shown in the appendix figures.
+    \item On NHI weighting, density weighting, OVI weighting, etc. A lot of the concern over this I think decreases when I've used a more stringent normalization. You can find unweighted plots in the image folder I shared. As you can see, a weighting other than NHI exacerbates disagreements between the data and parameter estimates, because the parameter estimates are most sensitive to the cool, HI-dominated gas, as we have argued in the paper. I haven't done OVI weighting yet (requires changing the pipeline), but you can expect similar results. So for now I've removed comments regarding weighting.
+    \item Accuracy of weak vs strong instead of hot vs cool. It is true for samples 0 and 1 that hot gas is extracted better than cool gas. However in sample2 the weaker components are poorly constrained for both hot and cold gas. The thing that is true across all samples is that weaker-absorbing systems are less well-constrained.
+    \item Density concerns for simulations. Jane mentioned several times that simulations cannot resolve high densities, which may actually exist. That may be true, but that is not relevant here: the density ``ceiling'' is well below what the simulation can resolve (please confirm, Nir). Instead, the revelation regarding simulation resolution from this experiment is that, probably because the provided spectra just don't provide enough data, the distribution that \textit{does} exist in the simulations is not well resolved in observations. There are a number of components that improve the fit, but whose properties are poorly constrained. 
 \end{enumerate}
 
 \textbf{Priorities:}
@@ -236,6 +238,20 @@ For the OP: the quantity often scaling as $n^2$ is the cooling rate, whereas the
 Why is the hottest gas also the one with posteriors reaching down to the lowest limits? If the issue is that it's hot, how come the posteriors aren't limited to $T \gtrsim 10^4.5$ K?
 \textbf{Sameer:}
 For the hotter phase, the likelihood function is weakly informative because of the independence on density. The priors in this case will significantly influence the posterior distribution. More informative priors could have led to more precise parameter estimates. However, our prior beliefs were driven by sample0 which tuned us to not enforce restrictive priors. For the future, a sensitivity analyses to assess the influence of prior specifications can be undertaken.
+
+% On implications for total mass
+% For analyses that infer total masses or mass profiles
+\textbf{Zach:}
+Some analyses aim to constrain total masses or mass profiles~\citep[e.g.][]{zahedy2019Characterizing}, typically relying on the average properties of the gas and the total columns.
+This modeling challenge suggests that these bulk properties are well-recovered for low-ionization $T \sim 10^4$ K gas.
+\textbf{Jane:}
+This particular paper of Zahedy's that is cited does take into account separate components of absorption, associate different amounts of HI with each, and derive properties that vary across profiles. It was one of the first, if not the first, paper to do things in this way. There are lots of papers that use averages and associate all the HI with all the metals.  I don't know that we need to discuss this point in this location in the draft.  If we do maybe more/other references should be given.
+
+% On CMBM handling blending
+\textbf{Zach:}
+Worth adding a quick blurb on why CMBM handles blending well?
+\textbf{Sameer:}
+The absorption features of doublets/multiplets of a given ion help in identifying blends. By comparing the relative strengths of the absorption in different transitions of the ion with expectations from atomic physics, we are able to mask out blends in the analysis.
 
 \section{Introduction}
 
@@ -774,6 +790,7 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     The MLE of the strongest-$N_{\ion{H}{I}}$ component typically describes the parameters of most of the absorbing gas---the largest errors are in $Z$ and at a $\lesssim 1$ dex level.
     The lower-$N_{\ion{H}{I}}$ components trace some features of the underlying distribution,
     but arguably the lower-$N_{\ion{H}{I}}$ structure present in the source data is not retrieved.
+    \todo{Is there something going on with these components? Check. E.g. SL 15 vs the 1D version for vlos.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
@@ -900,7 +917,8 @@ and in cases where the parameter estimates do not identify all modes of a multim
 % Distributions of clouds --- metallicities
 Concerning metallicity, in all \texttt{sample2} sightlines the metals were well-mixed, resulting in a narrow metallicity distribution peaked at {\metallicity} $\sim -1.2$.
 Parameter estimation identified at least one component with this metallicity in all sightlines.
-However, in $\sim 6$ / 10 sightlines parameter estimation also identified a significantly-contributing component with a metallicity $>0.5$ dex higher or lower than the source metallicity.
+However, in $\sim 6$ / 10 sightlines parameter estimation also identified a significantly-contributing component with a metallicity $>0.5$ dex higher or lower than the source metallicity,
+albeit with 16th-84th percentile uncertainties that often are consistent with the source metallicities.
 
 % Distributions of clouds --- ionization states
 Regarding the main ionization states of distributions of clouds,
@@ -968,15 +986,37 @@ This is shown with the \ion{C}{III} absorption in Figure~\ref{f: sample1 spectru
 In several studies, it has been found that small, dense clouds are required to explain observed absorption profiles~\citep{Rigby2002, Narayanan2008, Muzahid2018}.
 Across all samples in the present study the density of the strongest absorbing component is not overestimated,
 suggesting that the high density estimates are not a common artifact of parameter estimation.
-However, some of the poorly-constrained components or components nonessential for a good fit can have overestimated densities---in 4 / 10 of the sightlines of \texttt{sample2} there exists such a component with a density $\sim 1-2$ dex higher than found in the source data.
+However, some of the poorly-constrained components or components nonessential for a good fit can have overestimated densities---in 4 / 10 of the sightlines of \texttt{sample2} there exists such a component where the best estimate for the density is $\sim 1-2$ dex higher than found in the source data.
+This suggests that the best estimate of poorly-constrained components is not good evidence for small, dense gas clouds.
+However, the 16th-84th percentile uncertainties of these components overlap the source density,
+so these components are not discrepant with the source data.
+We reiterate that none of the strong, well-constrained components have over-estimated densities.
+\atsameer{I revised this text to address your overleaf comments (copied into the text as a comment).}
+% Jane's commentary:
+% In all four cases, the 1 sigma error bar overlaps with the source distribution so this is not meaningful.  Simulations do not allow densities higher than a certain value because they do not allow structures less than the cell size.  If the density is very high across an entire cell that would lead to a higher total H column density than these simulations allow.  There is no such limitation on size or density in the real Universe.  This may be worth noting, but most importantly, there is no discrepancy here even with the poorly constrained components.  They are just poorly constrained and not discrepant.
+% Most importantly, the previous studies of Rigby et al. etc. always had detections of low and intermediate ionization transitions and when those are detected for sample two clouds, the densities are not overestimated as you say.
+
+Grid-based simulations such as those employed here can struggle to simulate high-density gas.
+This raises the question of whether the immediately-above conclusion regarding lack of density overestimates is subject to numerical issues.
+This is not the case in our analysis---the sharp cutoffs seen in the \texttt{sample2} density distributions (e.g. Figure~\ref{f: sample2 violin vs components})  at maximum densities of $n_{\rm H} \sim 10^{-2}$ cm$^{-3}$ are well below any numerical density ``ceiling'' of these simulations.
+Instead these cutoffs are likely related to an effective ceiling from photoionization.
+\atnir{I inferred this from 1e-2 being a CGM density well within what grid-based codes can typically simulate, and because the point at which the density cutoff changes depending on the sightline. Do you have a good citation for this though?}
 
 % Resolution requirements
-In our analysis the parameter estimation excels at recovering the properties of the dominant absorbing gas,
-but cannot resolve detailed cloud structure as well,
+In our analysis the parameter estimation excels at recovering the properties of the dominant absorbing gas
+but the properties of weaker components are poorly constrained,
 possibly due to limitations in the provided spectra.
-One implication for this is that the resolution required to produce accurate mock observations may be the resolution at which the mass of cool gas converges, if such a scale exists~\citep[e.g.][]{mccourt2018Characteristic}.
+% Jane's suggested text:
+% there can be ambiguities in the properties of weaker components, particularly those arising from higher temperature gas such that their contributions to UV absorption are small.
+% Zach's response:
+% I edited the text to what it is above, based on similar language for the abstract
+This has implications for the required resolution for simulations for mock observations.
+Because thermally unstable gas has a fractal structure, fully resolving the gas is effectively impossible.
+However, if spectra do not provide enough data to distinguish structure beyond the dominant properties then the resolution required to produce accurate mock observations may be less stringent.
+One suggestion for the target resolution for mock observations is the resolution at which the mass of cool gas converges~\citep[e.g.][, though such a scale may not exist]{mccourt2018Characteristic},
+which is still well below the resolution of most cosmological simulations.
 Further resolving the simulated gas may yield more complex cloud structure,
-but it may be below the resolution of the observations.
+but it may also be below the resolution of the observations, particularly for very cold gas~\citep[e.g.][]{jones2010Bare}.
 % % Additional directions to discuss further:
 % FOGGIE paper on sim resolution affect on spectra.
 % Souqing Ji's column density paper(s).
@@ -984,19 +1024,15 @@ but it may be below the resolution of the observations.
 % https://ui.adsabs.harvard.edu/abs/2022arXiv220313915B/abstract
 
 % For analyses that infer a physical picture from individual sightlines
-Some works argue that it is possible to extract detailed information about the origin of absorbing gas, often with the aid of additional observations of the galaxy associated with the absorption system.
+Some works argue that it is possible to extract detailed information about the origin of absorbing gas with the aid of additional observations of the galaxy associated with the absorption system.
 For example, \cite{peroux2013SINFONI} argue that one of their identified absorption systems is dominated by gas originating in an outflow, and \cite{peroux2017Nature} suggest that a separate absorption system has little contribution from outflows.
 Making statements regarding the origin or fate of absorbing gas may require being able to identify and separate multiple clouds along a given line of sight,
 because sightlines are predicted to frequently penetrate multiple clouds with multiple origins~\citep[e.g.][]{hafen2019Origins, hafen2020Fates}.
 Our results indicate that clouds with distinct, uniform properties can indeed be distinguished from one another successfully (Figure~\ref{f: sample1 violin}).
 On the other hand, \texttt{sample2} is spectra of a filament falling in from the IGM and passing through a metal-enriched halo.
-Individual clouds cannot be easily identified in the provided spectra
-but the average properties of the filament can be identified clearly,
+In this case individual clouds that produce weak absorption cannot be easily identified in the provided spectra,
+but the average properties of the filament can be identified clearly.
 and these properties may allow observers to constrain the \ion{H}{I}-weighted origin of absorbing gas if constraining origin via e.g. metallicity.
-
-% For analyses that infer total masses or mass profiles
-Some analyses aim to constrain total masses or mass profiles~\citep[e.g.][]{zahedy2019Characterizing}, typically relying on the average properties of the gas and the total columns.
-This modeling challenge suggests that these bulk properties are well-recovered for low-ionization $T \sim 10^4$ K gas.
 
 \subsection{Choices in parameter estimation}
 \label{s: discussion -- modeling choices}
@@ -1052,7 +1088,7 @@ The effect of assuming ionization equilibrium on parameter estimation is a promi
 There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999Multiple, charlton2000anticipating, charlton2003high, ding2003quadruple, ding2003multiphase, ding2005absorption, zonak2004absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015Extreme, richter2018New, rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the observers (CMBM; \citealt{sameer2021Cloudbycloud, sameer2022Probing}) are based on these earlier models but with significant improvements.
 CMBM selects a set of possible properties, generates spectra, and repeats the process based on agreement with the observed spectra.
-This algorithmic approach covers a wider range of parameter space than feasible when modeling ``by-hand'', including testing multi-cloud models.
+This algorithmic approach covers a wider range of parameter space than feasible when modeling ``by-hand'', including quantifying the likelihood of the range of possible models.
 Additional beneficial features include
 a $\sim 10-100 \times$ automation-enabled decrease in human hours,
 the ability to vary all parameters independently (including temperature),
@@ -1060,7 +1096,6 @@ the output includes the full posterior for each cloud,
 and the self-consistent inclusion of all transitions, weighted by noise level.
 CMBM also handles blending well, an issue in real observations that is largely not present here
 (the only line with slight blending was \ion{Si}{II} 989 from \ion{N}{III} 989, and this was included in the modeling).
-\atsameer{Worth adding a quick blurb on why CMBM handles blending well?}
 
 \subsection{Comparison to similar analyses}
 
@@ -1076,7 +1111,7 @@ Regarding estimates of the bulk properties of gas along a LOS,
 \cite{marra2021.cosmo.sims.test.observational.modeling} confirmed this finding using a blind study of spectra from cosmological simulations of a $z=1$ Milky Way-type galaxy and a $z=0$ dwarf galaxy.
 Approaching this problem from the observer side yields similar results:
 \cite{sameer2021Cloudbycloud} showed that the HI-weighted average metallicities of multiple components agree with the single values that earlier modeling had found by using total column densities as constraints.
-However, a single valued property washes out the different physical processes that could be responsible for those different properties.
+However, a single valued property washes out the different physical processes that could be responsible for those different components.
 \cite{acharya2021How} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
 
 \subsection{Recommendations}
@@ -1089,15 +1124,21 @@ Based on our analysis we provide brief recommendations for observers estimating 
     \item Avoid restricting the parameter space of derived properties, including temperature, density, and metallicity. 
     \item The distribution of possible values is more informative than a single best value. Even when the best estimated value and the real value are not the same, the real value is typically among the likely values (Figure~\ref{f: sample1 violin}).
     \item Be cautious when identifying multiple contributing clouds---while the \ion{H}{I}-weighted averages can reliably be recovered, successful parameter estimation of multiple clouds depends on how distinct the cloud properties are and the per-cloud contribution to observable ion absorption (Figure~\ref{f: sample2 violin vs components}).
+    \todo{Return to this after our meeting, regarding what information can indeed be taken away accurately.}
 \end{enumerate}
+% Jane's suggested text:
+% I think the first two points here are good, but this one doesn't emphasize quite the right aspects I don't think.  "It is important to use methods that can isolate regions with very different properties (density, temperature, metallicity) across a simulation box.   Though \ion{H}{I}-weighted averages are reliably recovered, they are limiting the information that can be extracted.  It is also important to note the limitations of access only to UV transitions in absorption.  Though cool/warm regions can be correctly isolated,  the properties of hotter, more diffuse gas will be uncertain given their weak contributions to {\HI} absorption."   Something like that.  We want to emphasize it is worth getting properties of multiple clouds and that multiphase can be determined with this type of modeling.  But we also want to emphasize that we can't do much to measure properties of hotter regions other than to say they are present in some form.
 
 \subsubsection{For theorists}
 
 \begin{enumerate}
     \item Avoid source properties that are overly pathological. While testing the limits of  parameter estimation is useful, unusual source properties are disproportionately likely to be poorly modeled (Figure~\ref{f: idealized explanation}).
     \item Provide mock spectra when available, not just column densities.
+    \item When comparing simulated source data to the results of parameter estimation, visualizing the sightline can provide important context.
     % \item Be aware that forward-modeling simulation output using a different UVB than the one used to produce the simulation can have undesirable consequences.
 \end{enumerate}
+% Jane suggested text: For example, the summed length of contributing cells with certain properties, at a certain velocity range, can allow better comparisons between real and derived properties.
+% Zach: left this out because we don't actually do this
 
 \section{Conclusions}
 \label{s: conclusions}
@@ -1110,12 +1151,12 @@ For \texttt{sample1} theorists provided absorption spectra of multiple uniform c
 For \texttt{sample2} theorists provided absorption spectra of a high-resolution simulation of a $T \sim 10^4$ K filament embedded in a $T \sim 10^6$ K halo~\citep{mandelker2020Instability}.
 The sample2 spectra pierced turbulent-mixing zones, and subsequently had a complex cloud structure.
 For all three samples the observers estimated parameters via cloud-by-cloud, multiphase, Bayesian ionization modeling (CMBM) methods~\citep{sameer2021Cloudbycloud, sameer2022Probing}.
-CMBM enabled observers to systematically explore parameter space to identify the number of clouds and their properties that provided a best fit.
+CMBM enabled observers to systematically explore parameter space to identify the number of clouds and their properties that provided an acceptable fit to the data.
 Our conclusions are as follows.
 
 \begin{enumerate}
     \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the bulk properties of the absorbing gas (Figure~\ref{f: summary}), \textit{provided} temperature and density are allowed to vary independently as part of the fitting process (\S\ref{s: results -- sample0}).
-    \item \textbf{Estimation uncertainty:} The inferred range of feasible gas properties is broad. The source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative.
+    \item \textbf{Estimation uncertainty:} The inferred range of feasible gas properties is broad for weakly-absorbing components. The source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative.
     \item \textbf{Recovery of cloud structure:} Parameter estimation successfully recovered the number and properties of uniform clouds (Figure~\ref{f: sample1 violin}). When the source is a distribution of clouds parameter estimation recovered the full extent of source gas $v_{\rm LOS}$ in approximately half the sightlines (Figure~\ref{f: sample2 violin vs components}), and similar for temperature. For the same data, in $\sim 6$ / 10 of the sightlines parameter estimation predicted a metallicity distribution broader than the source distribution. The shape of the property distributions was not recovered.
     \item \textbf{Highlighted factors affecting parameter estimation:} the imprint of the source line-of-sight velocity distribution on absorption spectra can strongly affect recovery of $Z$, $T$, and $n_{\rm H}$ (\S\ref{s: discussion -- cloud structure -- factors}). Ionization state also plays an important role, with better recovery of lower-ionization, $T \sim 10^4$ K gas.
 \end{enumerate}
@@ -1126,10 +1167,13 @@ Our conclusions are as follows.
 
 % Future work -- resolution
 As briefly discussed in \S\ref{s: discussion -- cloud structure -- implications},
-provided the average temperature, density, and metallicity distributions are well-approximated,
+provided the average temperature, density, and metallicity distributions are well-converged,
 hydrodynamic simulations may only need to surpass the ``resolution'' of the observations and parameter estimations to produce sufficiently realistic mock spectra.
-The challenge in recovering cloud structure suggests that this may only require simulations to resolve the dominant components.
+To rephrase, \textit{if} the simulations are converged with respect to bulk properties it may not be necessary to further resolve the gas structure, as spectra may not provide enough information to extract that structure.
+The evidence for this is that there are a distribution of properties within the simulations, but only the dominant
 However this warrants further analysis.
+% Jane's comment:
+% I disagree with this for low ionization systems.  Let me try to explain again.  Say for example that a structure exists along the sightline that is 0.01 parsecs in extent.  Say that its density is 1/cc.  Such structures exist in the Milky Way ISM.  Such structures cannot exist in simulations if the simulations have a resolution of 1 parsec, for example.  The material that would have collapsed to form that cloud would have to be spread over the whole cell in the simulation so it would not have the high density that a real structure might have.  High density, small structures will be missed by simulations.  Such structures do come out of analysis of real, observational data though.
 
 % Future work -- error vs error
 Reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties (\S\ref{s: results -- sample0}, Appendix \ref{a: error vs error}).
