@@ -98,8 +98,7 @@ Jane Charlton$^2$,
 Nir Mandelker$^5$,
 Nastasha Wijers$^{6, 7}$,
 James Bullock$^{1}$,
-Yakov Faerman$^{8}$,
-\ldots
+Yakov Faerman$^{8}$
 } \vspace{0.4cm}\\
 \parbox{\textwidth}{
 % List of institutions
@@ -170,22 +169,18 @@ For scientists who so far have contributed data or analysis, look out for the fo
 
 \textbf{Priorities:}
 \begin{enumerate}
-    \item Re-broaden vlos. Try doing a broadening of vlos for the sim data. No such sim data exists, but it may still be informative.
-    \item In-text feedback (Jane, Sameer, Cameron)
-    \item Nicolas' feedback
     \item Check w/ Nir about numerical density resolution limit.
-    \item Acknowledgements
-    \item Use consistent log notation for plots.
-    \item Comment on grey lines, and figure out if they're okay.
+    \item Acknowledgements.
     \item Rerun all plots for consistency.
     \item Reread.
-    \item Ensure I mention NHI weighting in the discussion.
-    \item Mention in discussion: what range of densities are necessary for one cloud to no longer be a good fit?
 \end{enumerate}
 
 \textbf{Secondary priorities:}
 \begin{enumerate}
     \item Change sample numbers for samples 1 and 2 to remove the ``sample from a larger selection'' step, for simplification.
+    \item Ensure I mention NHI weighting in the discussion.
+    \item Mention in discussion: what range of densities are necessary for one cloud to no longer be a good fit?
+    \item Provide a bit more detail about the errors added to sample0.
     \item Plot scatter vs x, in addition to binned data, for Figure~\ref{f: sample2 structure 15}.
     \item Add more ticks to component structure plot.
     \item Fix possible linewidth issue in component structure plots.
@@ -263,26 +258,25 @@ Central to this effort are absorption system observations~\citep[e.g.][]{bahcall
 Absorption system observations typically consist of $\sim 1$ absorption spectrum per halo, each from a beam of background light (typically a quasar) that is partially absorbed by intervening gas en route to the observer.
 Unfortunately, these observations are notoriously difficult to interpret.
 
-% Interpreting given correct properties
+% Deriving accurate properties
 The challenge in interpreting absorption spectra arises in two ways.
-First, the information obtainable from an absorption spectrum is typically limited to the temperature, density, and metallicity as a function of line-of-sight velocity along a spectral skewer through the CGM.
+The first challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectrum.
+In observations the properties of the gas are derived based on spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and their interpretation is hampered by line saturation, large and uncertain ionization corrections~\citep[e.g.][]{schaye2006Importance, acharya2021How}, and more.
+One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that the absorbing gas is a single cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds spanning a range of properties~\citep[e.g.][]{boksenberg1979Multiple, muzahid2015Extreme, liang2017BayesVP, Lehner2019,Wotta2019, haislmaier2021COS, sameer2021Cloudbycloud, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{marra2022Examining}.
+High-resolution simulations and ionizatino models predict a distribution of many small clouds instead of a few larger clouds~\citep[e.g.][]{fielding2020Multiphase, vijayan2021Xray, lehner2019COS},
+consistent with nearby ($\lesssim 100$~pc to the sun) interstellar absorption systems best fit by multiple components~\citep[e.g.][]{welsh2010HighResolution}.
+
+% Interpreting given correct properties
+Second, the information obtainable from an absorption spectrum is typically limited to the temperature, density, and metallicity as a function of line-of-sight velocity along a spectral skewer through the CGM.
 If the CGM is described by a few discrete clouds (as proposed by earlier models for absorption system distributions, e.g.~\citealt{srianand1994Halo, das2001Unified, maller2003Damped}) a small number of sightlines per halo might be sufficient to constrain models of the CGM.
 Instead, observations suggest metallicities, densities, and temperatures continuously varying, and spanning orders of magnitude, suggestive of a complex multiphase system~\citep{Lehner2019, Lehner2022}.
 This is consistent with analytic theory and high-resolution simulations that predict fragmentation and mixing of circumgalactic and intergalactic clouds~\citep[e.g.][]{maller2004Multiphase, mccourt2018Characteristic, hummels2019Impact, vandevoort2019Cosmological, peeples2019Figuring, mandelker2019Shattering, mandelker2021Thermal}.
 A complex multiphase CGM is also seen in cosmological simulations, which predict wind from the central galaxy, wind and stripping from satellite galaxies, and pristine accretion all give rise to absorbing gas, and in fact multiple origins likely overlap along a given sightline~\citep[e.g.][]{hafen2019Origins, hafen2020Fates}.
 As such, even given perfect information from each observed absorption line spectrum it may be challenging to use that information to gain a clear picture of cosmic ecosystems.
 
-% Deriving accurate properties
-The second challenge is that it is highly non-trivial to extract the properties of the gas responsible for a given absorption spectrum.
-In observations the properties of the gas are derived based on spectra of individual ions (e.g. \ion{H}{I}, \ion{Mg}{II}, and \ion{O}{VI}), and their interpretation is hampered by line saturation, large and uncertain ionization corrections~\citep[e.g.][]{schaye2006Importance, acharya2021How}, and more.
-One of the largest uncertainties is the structure of the absorbing gas---the simplest assumption is that the absorbing gas is a single cloud with uniform temperature, density, and metallicity, but many absorption spectra are best fit by assuming multiple clouds spanning a range of properties~\citep[e.g.][]{boksenberg1979Multiple, muzahid2015Extreme, liang2017BayesVP, liang2018Model,Lehner2019,Wotta2019, haislmaier2021COS, sameer2021Cloudbycloud, zahedy2021.CUBS.III.zle1.LLSs, marra2021.cosmo.sims.test.observational.modeling, narayanan2021.a.multiphase.pLLS, nielsen2022.a.multiphase.DLA}, some of which can have overlapping LOS velocities~\citep[e.g.][]{marra2022Examining}.
-High-resolution simulations predict a distribution of many small clouds instead of a few larger clouds~\citep[e.g.][]{fielding2020Multiphase, vijayan2021Xray},
-consistent with nearby ($\lesssim 100$~pc to the sun) interstellar absorption systems best fit by multiple components~\citep[e.g.][]{welsh2010HighResolution}.
-
 % Hope for the future
-Despite the above concerns, there is reason to be optimistic.
-While interpreting individual absorption systems is challenging, the bulk properties of absorption surveys can place constraints on galactic ecosystem models~\citep[e.g.][]{sorini2018Fundamental, lan2018Circumgalactic}.
-Simultaneously, interpretations of absorption spectra are becoming more sophisticated~\citep[e.g.][]{churchill2015Direct, sameer2021Cloudbycloud}, often with insight from synthetic spectra~\citep[e.g.][]{hummels2013Constraints, liang2018Observing}.
+Despite the above concerns, there is reason to be optimistic,
+as interpretations of absorption spectra continue to improve~\citep[e.g.][]{churchill2015Direct, sameer2021Cloudbycloud}, often with insight from synthetic spectra~\citep[e.g.][]{hummels2013Constraints, liang2018Observing}.
 This paper marks the next step in improving interpretations of absorption spectra---the Halo21 Absorption Modeling Challenge, a mock-data challenge~\citep[e.g.][]{regimbau2012Mock, meacher2015Mock, hazboun2019Second} that combines the expertise of observers and theorists to test the limits of the current methodology for interpreting absorption spectra.
 
 % Challenge summary
@@ -336,7 +330,7 @@ We set the redshift for our mock sample to $z=0.25$ (typical for many CGM sample
 For each ion we evaluated the ion densities according to photo-ionization equilibrium, as tabulated by \textsc{trident} for single zone simulations produced with \textsc{cloudy}~\citep{ferland20132013} using the \cite{haardt2012RADIATIVE} UV background.
 Note that photo-ionization equilibrium does not assume cooling-heating equilibrium (i.e. gas is in heating-cooling balance, resulting in constant temperature),
 an assumption often employed in parameter estimation.
-To determine the total amount of absorbing gas given its properties we calculated the length of the absorber from the \ion{H}{I} column density and its ionization state, $\ell = N_{\ion{H}{I}} / n_{\ion{H}{I}}$.
+To determine the total amount of absorbing gas given its properties, we calculated the length of the absorber from the \ion{H}{I} column density and its ionization state, $\ell = N_{\ion{H}{I}} / n_{\ion{H}{I}}$.
 Note that the tabulated ion densities used to calculate the ionization state do not assume a size for the cloud, which is acceptable assuming the effects of self-shielding are small.
 Using an ionization table that includes self-shielding reveals that self-shielding has a small (typically much less than $\lesssim 0.1$ dex) effect on ion column densities for the clouds considered here.
 To avoid unphysically large absorbers we discarded absorbers with length $> 1$ Mpc (comparable to a conservative estimate of the diameter of the CGM of a MW-mass galaxy).
@@ -344,7 +338,6 @@ To avoid unphysically large absorbers we discarded absorbers with length $> 1$ M
 % Noising of data
 Prior to making the ion column densities available to the observers, we modified them to reflect uncertainty typical of similar real observations.
 The mock errors for each ion, $e_{\log N_{\rm ion}}$, were estimated by sampling a gamma function fit to the distribution of errors estimated as part of the COS-Halos survey~\citep{werk2013COSHALOS}.
-\todo{provide a bit more details about the distribution propeties or the typical error?This would be useful, especially when comparing to the SNR of the next samples.}
 Errors a factor of $1.5\times$ beyond the COS-Halos range of errors were re-sampled.
 The ion column density made available to observers was then modified to be $\log N_{\rm ion,\,provided} = \log N_{\rm ion} + U(-e_{\log N_{\rm ion}}, e_{\log N_{\rm ion}} )$, where $U$ is a value drawn from a uniform distribution spanning $\pm e_{\log N_{\rm ion}}$.
 
@@ -403,6 +396,7 @@ We determined the ion densities and column densities as described for \texttt{sa
 We used \textsc{trident} to produced spectra for both COS G130M and COS G160M, and we also provided spectra for the \ion{Mg}{II} doublet at $\lambda = 2796, 2803$ {\AA} to mimic complementary observations from the ground with a resolving power of $\approx$ 40,000.
 The $\alpha$ element abundances relative to other elements were set to solar, e.g. \ion{C}{}/$\alpha$ is solar.
 We applied the COS line spread function to each spectrum and included Gaussian noise with an SNR of 30.
+Data with this low noise is unusual (as discussed in \S\ref{s: discussion -- cloud structure -- recovery}), but provides a good baseline for performance in a best-case scenario.
 The wavelength resolution for each spectrum was set to $0.01$ \AA.
 During the data analysis, the log-likelihood is calculated utilizing the per-pixel difference between the spectra and the model, normalized by the per-pixel error.
 Therefore in a typical scenario the per-pixel error would determine how important discrepancies between model and data are in certain regions of the spectrum relative to others.
@@ -502,7 +496,6 @@ For the revised parameter estimation of \texttt{sample0} we also added in the te
 In some of this parameter space, at higher temperature, the gas is predominantly collisionally ionized.
 The distribution of the four parameters, $N_{\ion{H}{I}}$, $Z$, $n_H$, and $T$, was then evaluated as constrained by the model column densities.
 \S\ref{s: discussion -- modeling choices} contains further discussion regarding equilibrium assumptions.
-\atsameer{Naive question a few theorists who have provided feedback have asked: Why is this not the default procedure? Why initially assume photoionization equilibrium?}
 
 For the other two samples, \texttt{sample1} and \texttt{sample2}, model spectra were provided.
 The shapes of the model line profiles provide an important constraint using the methods of \cite{sameer2021Cloudbycloud} and \cite{sameer2022Probing}.
@@ -549,6 +542,7 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
     For the turbulent mixing zone the \ion{H}{I}-weighted average of the source data is shown.
     The parameter-estimation best estimates and the source data typically agree to $\lesssim$ ( 0.5, 0.3, 1 ) dex in ( $Z$, $T$, $n_{\rm H}$),
     excluding the blinded \texttt{sample0} estimates (\S\ref{s: results -- sample0}).
+    The grey lines connect the source clouds and the corresponding estimates.
     }
     \label{f: summary}
 \end{figure*}
@@ -692,7 +686,6 @@ In Figure~\ref{f: sample1 spectrum} we show an example spectrum provided to obse
 The grey bands indicate areas that are masked and do not contribute to parameter estimation because there is a blend known to contaminate the spectrum or because there is no detected absorption in the region.
 For \texttt{sample1} the parameter-estimation best fit was selected from models with varying numbers of clouds.
 In this sightline, the data is best fit by two clouds, one with significant low-ion absorption (e.g. \ion{C}{III})  and one with significant high-ion absorption (e.g. \ion{O}{VI}).
-\atsameer{How do you decide on your component names? It was pointed out to me that the \ion{O}{VI} component in Figure~\ref{f: sample1 spectrum} actually dominates the \ion{C}{II} absorption.}
 In \texttt{sample1} the observers did not perform a revised parameter estimation because the blinded parameter estimates agreed well with the source data, in part because cooling-heating equilibrium was not assumed.
 
 % Comparison to data
@@ -743,7 +736,8 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     best fit absorption profiles found by observers,
     and the parameters of the best fits.
     The absorption along this sightline is best fit by five components.
-    \atsameer{Are the stars MLEs? If so, why are some not at the distribution peak? Thanks for your answer, I've added further questions in the response.}
+    The stars in the right panel indicate the maximum likelihood estimate (MLE) according to best fit across all iterations tested during parameter estimation.
+    The MLE displayed elsewhere in the analysis traces the peak of the posterior distribution.
     }
     \label{f: sample2 spectrum 15}
     \end{figure*}
@@ -799,7 +793,6 @@ The exception is sightline 050, which has a hot, low-density, low-metallicity ab
     The MLE of the strongest-$N_{\ion{H}{I}}$ component typically describes the parameters of most of the absorbing gas---the largest errors are in $Z$ and at a $\lesssim 1$ dex level.
     The lower-$N_{\ion{H}{I}}$ components trace some features of the underlying distribution,
     but arguably the lower-$N_{\ion{H}{I}}$ structure present in the source data is not retrieved.
-    \todo{Is there something going on with these components? Check. E.g. SL 15 vs the 1D version for vlos.}
     }
     \label{f: sample2 violin vs components}
 \end{figure*}
@@ -818,10 +811,15 @@ Integrating over the source data for any property yields the total \ion{H}{I} co
 Integrating over any property posterior for a component yields the median estimated \ion{H}{I} column for that component.
 The combined posterior is the result of co-adding the normalized single-component distributions.
 
+% MLEs
+In our analysis we typically bin the posterior distribution and use the peak as the MLE.
+An alternative is to use a ``point-estimate'' MLE, i.e. the single set of parameters with the highest probability across all sets calculated during parameter estimation.
+We do not use the point-estimate MLE because it can be noisy and not representative of the posterior, but Figure~\ref{f: sample2 spectrum 15} shows this estimate as stars.
+
 % Original blinded
 In \texttt{sample2} the ``original blinded'' data provided to the observers was a $z=2$ simulation ``observed'' at $z=0.13$ (\S\ref{s: data generation -- sample2}).
 This choice complicated the interpretation of the parameter estimates,
-so the observers reran their parameter estimation on the same $z=2$ sightlines but now also ``observed'' at $z=2$.
+so the observers reran their parameter estimation on the same sightlines but now ``observed'' at $z=2$.
 In our analysis we utilize the ``rerun'' parameter estimates,
 and relegate the original blinded parameter estimates to Appendix~\ref{a: sample2 blinded}.
 We emphasize that, while not strictly blinded, the observers did not revise their methodology prior to analyzing \texttt{sample2} ``observed'' at $z=2$.
@@ -832,14 +830,14 @@ The lower-column-density components are not perfect tracers of the source distri
 For example, the four MLEs of the individual cloud posteriors approximately span the high-$T$ and low-$n_{\rm H}$ source data.
 
 % Sightline 15 comparison
-Figure~\ref{f: sample2 structure 15} shows for sightline 0015 the relationship between gas properties as a function of line-of-sight position vs as a function of line-of-sight velocity.
+Figure~\ref{f: sample2 structure 15} shows for sightline 0015 the relationship between gas properties as a function of line-of-sight position as a function of line-of-sight velocity.
 % From Figure~\ref{f: sample2 ray 15} we see that the sightline 0015 pierces through $n_{\rm H} \sim 10^{-2}$ cm$^{-2}$ gas over $6$ kpc $ \lesssim x \lesssim 9$ kpc,
 % intersects $n_{\rm H} \sim - 10^{-2} - 10^{-3}$ cm$^{-2}$ gas over $-2$ kpc $\le x \le 2$ kpc,
 % briefly intersects $n_{\rm H} \sim 10^{-2.5}$ cm$^{-2.5}$ gas at $x \approx -4$ kpc,
 % and briefly intersects $n_{\rm H} \sim 10^{-2} - 10^{-2.5}$ cm$^{-2}$ at $x \approx -6$ kpc.
 The gas sightline 0015 pierces in Figure~\ref{f: sample2 ray 15} shows up as $\approx 5$ roughly-separated regions in $v_{\rm LOS}$-$x$ space (the top left panel of Figure~\ref{f: sample2 structure 15}).
 This is the same number regions as there are components derived from parameter estimation,
-though each estimated component does not clearly correspond to a specific region.
+though all estimated components do not clearly correspond to specific regions.
 Two of these regions are responsible for the majority of the \ion{H}{I} absorption,
 and the parameter estimation describes these regions with a $\log N_{\ion{H}{I}} \approx 17.2$ component (yellow) and a $\log N_{\ion{H}{I}} \approx 17$ component (pink).
 The density, temperature, and metallicity of these two strongest components are well-constrained, and consistent with the source data.
@@ -918,16 +916,14 @@ a) the primary velocity components,
 b) the primary metallicities,
 c) the primary ionization states, and
 d) the shapes of the property distributions.
-Regarding capturing the bulk of the velocity structure, Figure~\ref{f: sample2 violin vs components} shows that in approximately half the \texttt{sample2} sightlines the component best estimates span the full width of the $v_{\rm LOS}$ distribution.
-In the remaining sightlines there is $N_{\ion{H}{I}}>10^{13}$ cm$^{-2}$ source gas without a corresponding estimated component.
-This occurs both in cases where the source $v_{\rm LOS}$ is a broad unimodal distribution with tails that extend beyond the estimates (e.g. sightlines 03 and 08),
-and in cases where the parameter estimates do not identify all modes of a multimodal $v_{\rm LOS}$ distribution (e.g. sightlines 12 and 14).
+Regarding capturing the bulk of the velocity structure, Figure~\ref{f: sample2 violin vs components} shows that in all \texttt{sample2} sightlines the component best estimates span the full width of the $v_{\rm LOS}$ distribution.
+Note that the error bars show only the 68th percentile of the component posteriors (see Figure~\ref{f: sample2 ray 15} for an example of the range of the full posteriors).
 
 % Distributions of clouds --- metallicities
 Concerning metallicity, in all \texttt{sample2} sightlines the metals were well-mixed, resulting in a narrow metallicity distribution peaked at {\metallicity} $\sim -1.2$.
-Parameter estimation identified at least one component with this metallicity in all sightlines.
+Parameter estimation identified at least one component consistent with this metallicity in all sightlines.
 However, in $\sim 6$ / 10 sightlines parameter estimation also identified a significantly-contributing component with a metallicity $>0.5$ dex higher or lower than the source metallicity,
-albeit with 16th-84th percentile uncertainties that often are consistent with the source metallicities.
+albeit with 16th-84th percentile uncertainties that are typically consistent with the source metallicities.
 
 % Distributions of clouds --- ionization states
 Regarding the main ionization states of distributions of clouds,
@@ -1064,9 +1060,8 @@ The most realistic among our samples, \texttt{sample2}, consists not of discrete
 This is consistent with analytic theory and high-resolution simulations that predict turbulent mixing layers have fractal structure with a continuous distribution of temperatures~\citep[e.g.][]{Tan2021Model}.
 The implication is that any fully-successful model of absorption systems should also include absorption from gas with a distribution of properties.
 Such models exist~\citep[e.g.][]{stern2016Universal}, but are not commonly employed in parameter estimation.
-However, the difficulty in extracting information beyond the ion-weighted averages of absorbing gas (as stated above) may not be a result of the employed parameter estimation,
-but instead a limitation of the data (as is suggested by the difficulty recovering information about gas that produces weaker absorption).
-In such a case using a qualitatively different methodology may not provide a clear improvement.
+Given a physically-motivated parameter distribution (e.g., a power-law or log normal distribution in density, or the temperature distribution expected in a mixing layer),
+these models have the potential to significantly improve the accuracy of the reproduced parameters.
 
 \subsubsection{Assumptions about thermal and ionization equilibrium}
 
@@ -1094,7 +1089,7 @@ The effect of assuming ionization equilibrium on parameter estimation is a promi
 
 \subsubsection{Absorption modeling ``by hand''}
 
-There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999Multiple, charlton2000anticipating, charlton2003high, ding2003quadruple, ding2003multiphase, ding2005absorption, zonak2004absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010bare, muzahid2015Extreme, richter2018New, rosenwasser2018understanding, norris2021Discovery}.
+There are a number of works that use a less-algorithmic, more people-driven approach to model sightlines~\citep[e.g.][]{churchill1999Multiple, charlton2000anticipating, charlton2003high, ding2003quadruple, ding2003multiphase, ding2005absorption, zonak2004absorption, masiero2005models, lynch2007physical, misawa2008supersolar, lacki2010z, jones2010Bare, muzahid2015Extreme, richter2018New, rosenwasser2018understanding, norris2021Discovery}.
 The methods employed by the observers (CMBM; \citealt{sameer2021Cloudbycloud, sameer2022Probing}) are based on these earlier models but with significant improvements.
 CMBM selects a set of possible properties, generates spectra, and repeats the process based on agreement with the observed spectra.
 This algorithmic approach covers a wider range of parameter space than feasible when modeling ``by-hand'', including quantifying the likelihood of the range of possible models.
@@ -1121,11 +1116,13 @@ Regarding estimates of the bulk properties of gas along a LOS,
 Approaching this problem from the observer side yields similar results:
 \cite{sameer2021Cloudbycloud} showed that the HI-weighted average metallicities of multiple components agree with the single values that earlier modeling had found by using total column densities as constraints.
 However, a single valued property washes out the different physical processes that could be responsible for those different components.
-\cite{acharya2021How} test the robustness of density and metallicity to changes in the UV background, and find that these quantities are uncertain by factors of $\approx 4-6.3$ and $\approx 1.6-3.2$ respectively.
+A number of analyses also \cite{acharya2021How} test the robustness of density and metallicity to changes in the UV background~\citep[][]{Wotta2016, Wotta2019, acharya2021How}, and find that these factors are uncertain by factors of a few.
 
 \subsection{Recommendations}
 
 Based on our analysis we provide brief recommendations for observers estimating the parameters of real and mock spectra and for theorists producing mock spectra.
+Please note that many observers and theorists may already be following similar guidelines, 
+independent of this analysis.
 
 \subsubsection{For observers}
 
@@ -1166,13 +1163,10 @@ Our conclusions are as follows.
 \begin{enumerate}
     \item \textbf{Best estimates:} Across all three samples the maximum-likelihood estimates from parameter estimation agree well with the bulk properties of the absorbing gas (Figure~\ref{f: summary}), \textit{provided} temperature and density are allowed to vary independently as part of the fitting process (\S\ref{s: results -- sample0}).
     \item \textbf{Estimation uncertainty:} The inferred range of feasible gas properties is broad for weakly-absorbing components. The source parameters typically lie within the 16th to 84th percentiles of the posterior distribution, suggesting errors are typically sufficiently conservative.
-    \item \textbf{Recovery of cloud structure:} Parameter estimation successfully recovered the number and properties of uniform clouds (Figure~\ref{f: sample1 violin}). When the source is a distribution of clouds parameter estimation recovered the full extent of source gas $v_{\rm LOS}$ in approximately half the sightlines (Figure~\ref{f: sample2 violin vs components}), and similar for temperature. For the same data, in $\sim 6$ / 10 of the sightlines parameter estimation predicted a metallicity distribution broader than the source distribution. The shape of the property distributions was not recovered.
-    \item \textbf{Highlighted factors affecting parameter estimation:} the imprint of the source line-of-sight velocity distribution on absorption spectra can strongly affect recovery of $Z$, $T$, and $n_{\rm H}$ (\S\ref{s: discussion -- cloud structure -- factors}). Ionization state also plays an important role, with better recovery of lower-ionization, $T \sim 10^4$ K gas.
+    \item \textbf{Recovery of detailed cloud structure:} Parameter estimation successfully recovered the number and properties of uniform clouds (Figure~\ref{f: sample1 violin}). Parameter estimation captured the one or two dominant absorption components in the turbulent-mixing scenario, however the parameters of any additional absorbing gas were poorly constrained (Figure~\ref{f: sample2 violin vs components}).
+    On the other hand, including multiple additional clouds beyond the dominant ones did improve the fit, consistent with the true existence of complex cloud structures in the source. 
+    \item \textbf{Highlighted factors affecting parameter estimation:} The imprint of the source line-of-sight velocity distribution on absorption spectra can strongly affect recovery of $Z$, $T$, and $n_{\rm H}$ (\S\ref{s: discussion -- cloud structure -- factors}). Ionization state also plays an important role, with better recovery of lower-ionization, $T \sim 10^4$ K gas, and with differing profile shapes per ion constraining the contributions of multiple gas phases.
 \end{enumerate}
-% Some suggested wording from resolved comments below:
-% Jane:
-% When only column densities are used to infer constraints on parameters (sample 0), the results can be ambiguous. Profile shapes are important to obtaining multiphase component structure.
-% Component-by-component modeling works well for clouds that contribute significantly to observed absorption profiles. It cannot capture diffuse, hot gas, especially in low S/N data.
 
 % Future work -- resolution
 As briefly discussed in \S\ref{s: discussion -- cloud structure -- implications},
@@ -1181,13 +1175,13 @@ hydrodynamic simulations may only need to surpass the ``resolution'' of the obse
 To rephrase, \textit{if} the simulations are converged with respect to bulk properties it may not be necessary to further resolve the gas structure, as spectra may not provide enough information to extract that structure.
 The evidence for this is that there are a distribution of properties within the simulations, but only the dominant
 However this warrants further analysis.
-% Jane's comment:
-% I disagree with this for low ionization systems.  Let me try to explain again.  Say for example that a structure exists along the sightline that is 0.01 parsecs in extent.  Say that its density is 1/cc.  Such structures exist in the Milky Way ISM.  Such structures cannot exist in simulations if the simulations have a resolution of 1 parsec, for example.  The material that would have collapsed to form that cloud would have to be spread over the whole cell in the simulation so it would not have the high density that a real structure might have.  High density, small structures will be missed by simulations.  Such structures do come out of analysis of real, observational data though.
 
 % Future work -- error vs error
 Reasonable agreement in ion column densities does not necessarily signal that the modeled properties are consistent with the actual properties (\S\ref{s: results -- sample0}, Appendix \ref{a: error vs error}).
 However, this result is found under unusual circumstances---observers were only provided with ion column densities rather than spectra, and the source data lay in a region of parameter space not typically occupied by CGM gas.
-A promising future direction may be to evaluate spectra goodness-of-fit as a predictor of accuracy of and uncertainty in $Z$, $T$, and $n_{\rm H}$.
+A promising future direction may be to evaluate spectra goodness-of-fit as a predictor of accuracy and uncertainty in $Z$, $T$, and $n_{\rm H}$.
+Such an analysis would be complementary to repeating the mock data challenge on additional data sources with properties differing from common parameter estimation assumptions,
+e.g. sources such as cosmological simulations or a density power law.
 
 \section*{Acknowledgements}
 
