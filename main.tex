@@ -64,23 +64,10 @@
 % overwriting existing commands. Example:
 %\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
 
-\newcommand{\thoughts}[1]{\textcolor{BurntOrange}{\textbf{Contributions welcome: #1}}}
-\newcommand{\todo}[1]{\textcolor{Maroon}{\textbf{Address: #1}}}
-\newcommand{\note}[1]{\textbf{@Coauthors: #1}}
-\newcommand{\atsameer}[1]{\textcolor{CornflowerBlue}{\textbf{@Sameer or Jane: #1}}}
-% \newcommand{\atsameer}[1]{}
-\newcommand{\atcameron}[1]{\textcolor{Thistle}{\textbf{@Cameron: #1}}}
-\newcommand{\atnastasha}[1]{\textcolor{Plum}{\textbf{@Nastasha: #1}}}
-\newcommand{\atnir}[1]{\textcolor{ForestGreen}{\textbf{@Nir: #1}}}
-\newcommand{\nmr}[1]{\textcolor{red}{NM: #1}}
 \newcommand{\metallicity}{$\log Z/Z_{\sun}$}
-
-\makeatletter
-\newcommand\thefontsize[1]{{#1 The current font size is: \f@size pt\par}}
-\makeatother
-
 \newcommand{\NHI}{N_{\ion{H}{I}}}
 \def\kms{\hbox{km~s$^{-1}$}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
@@ -157,105 +144,6 @@ galaxies: absorption lines -- galaxies: haloes -- methods: data analysis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
-
-% \subsection{Notes for Authors}
- 
-% \textbf{Notes for authors in the text.}
-% \thoughts{If you are reading this then you, yes you, are welcome and encouraged to add in any relevant thoughts whenever you see this color.}
-% \todo{This is something that needs to be done by someone. Probably Zach, but anyone is welcome to jump in.}
-% For scientists who so far have contributed data or analysis, look out for the following colors\ldots
-% \atsameer{this color.}
-% \atcameron{this color.}
-% \atnastasha{this color.}
-% \atnir{this color.}
-
-% % \textbf{Discuss at next meeting}
-% % \begin{enumerate}
-% % \end{enumerate}
-
-% \textbf{Priorities:}
-% \begin{enumerate}
-%     \item Check w/ Nir about numerical density resolution limit.
-%     \item Acknowledgements.
-%     \item Reread.
-% \end{enumerate}
-
-% \textbf{Secondary priorities:}
-% \begin{enumerate}
-%     \item Remove grid from sample2 figure. It's distracting.
-%     \item Change sample numbers for samples 1 and 2 to remove the ``sample from a larger selection'' step, for simplification.
-%     \item Ensure I mention NHI weighting in the discussion.
-%     \item Mention in discussion: what range of densities are necessary for one cloud to no longer be a good fit?
-%     \item Provide a bit more detail about the errors added to sample0.
-%     \item Show the histograms the data from sample1 was sampled from.
-%     \item Plot scatter vs x, in addition to binned data, for Figure~\ref{f: sample2 structure 15}.
-%     \item Add more ticks to component structure plot.
-%     \item Fix possible linewidth issue in component structure plots.
-%     \item Add 1D x histogram somewhere.
-%     \item Double-check we're using the right Zsun everywhere.
-%     \item Add sample number to the top of each plot?
-%     \item Use consistent format for sightline numbers.
-%     \item Re-evaluate colors. Maybe not red and blue for blinded and revised.
-%     \item Why is the density agreement for sightlines 03, 07, and 11 in \texttt{sample2} worse after revision?
-%     \item Add pressure contours to Figure~\ref{f: idealized explanation} illustrate how extreme the absorbers are.
-%     \item For the images from Nir's simulations: at least on my computer (mac), these are rendered with a bunch of white lines between the image `pixels'. There are a few suggestions for fixing this on stackexchange; one that's worked for me in the past is to add `rasterized=True' to the imshow/pcolormesh arguments. 
-% \end{enumerate}
-
-% \textbf{Things that would be nice, but that we probably won't get to:}
-% \begin{enumerate}
-%     \item Expand on discussion we could address (see below).
-%     \item Focus on other components for \texttt{sample2}, i.e. \ion{C}{IV}- and \ion{O}{VI}-weighting.
-%     \item Share total column/absorber length data for all samples missing it (e.g. \texttt{sample0}, revised.
-%     \item Quantitatively estimate the expected shift in temperature from changing UVBs for \texttt{sample2}, and compare that shift to the shift in MLE values.
-%     \item If weighting by something other than NHI currently observations are still weighted by their median NHI.
-% \end{enumerate}
-
-% \subsection{Conversations between coauthors we could elaborate on}
-
-% % On why PIE is the default
-% \textbf{Zach:}
-% Naive question a few theorists who have provided feedback have asked: Why is this not the default procedure? Why initially assume photoionization equilibrium?
-% \textbf{Jane:} 
-% There are several reasons: 1) Historically, low and intermediate ions have been modeled by most observers in PIE.
-% The PIE models have explained the various absorption strengths of metal ions relative to HI adequately, with relatively small numbers of clouds, without relaxing that assumption; 2) Many low redshift absorbers do have galaxy information and it is usually found that such absorbers arise from sightlines with impact parameters >50kpc from the nearest galaxy.   At these distances, the PIE assumption is reasonable as the CGM gas is ionized primarily by the intergalactic background radiation, and is not undergoing significant changes in temperature or density. over short timescales. So in general, photoionization equilibrium is logically a good approximation for such environments; 3) When we began this experiment we were familiar with Liang \& Remming's paper which did similar things and were aware that photoionization equilibrium was assumed when they produced and analyzed their simulated data using Cloudy models;  4) Historically, it was often the case that photoionization equilibrium was relaxed when considering the origin of OVI absorption, in which case collisional ionization equilibrium or non-equilibrium models were assumed.
-% Because of this experiment, we have moved toward relaxing the assumption for higher ionization gas sooner than we might have otherwise.  We do, however, generally find that photoionization equilibrium yields the same conditions for cool/warm clouds (densities and temperatures) when modeling real observed systems as does a model which considers time dependent photoionization models.
-
-% % Elaborating on the naming scheme
-% \textbf{Zach:}
-% How do you decide on your component names? It was pointed out to me that the \ion{O}{VI} component in Figure~\ref{f: sample1 spectrum} actually dominates the \ion{C}{II} absorption.
-% \textbf{Sameer:}
-% In this case, two clouds were ascertained to exist based on where the OVI absorption is centered and the HI absorption is centered. The OVI absorption is offset by ~20 {\kms} from where the HI absorption is centered. 
-% The name choice is generally based on which ions are determined to be tracing different phases. In this case, the bulk of the CII and OVI are found to be in the same phase (red curve). The CIII is in an other phase, the same phase of gas also produces small amount of CII (identified as the blue curve), seen as an asymmetry in the profiles of CII 1036 \& CII 1334.
-
-% % On how cooling scales at higher temperatures
-% \textbf{Zach:}
-% I'm trying to understand this cooling better. Why is cooling not going as $n^2$? Do you have a reference I can look at to read up on this?
-% \textbf{Sameer:}
-% A discussion on this is in Gnat 2017 paper titled Time-dependent Cooling in Photoionized Plasma.
-% According to them, there is existence of a threshold ionization parameter below which the cooling efficiencies resemble those in collisional time-dependent gas with no external radiation, and thus independent of density. 
-% Conversely, this means there is a density above which same holds true. The density and ionization parameter are inversely related.
-% \textbf{Yakov:}
-% For the OP: the quantity often scaling as $n^2$ is the cooling rate, whereas the text here addresses the cooling function (or cooling efficiency), which is the rate divided by $n^2$, and that can depend on the temperature (for CI) density (for PI), or both.
-
-% % On posterior width
-% \textbf{Zach:}
-% Why is the hottest gas also the one with posteriors reaching down to the lowest limits? If the issue is that it's hot, how come the posteriors aren't limited to $T \gtrsim 10^4.5$ K?
-% \textbf{Sameer:}
-% For the hotter phase, the likelihood function is weakly informative because of the independence on density. The priors in this case will significantly influence the posterior distribution. More informative priors could have led to more precise parameter estimates. However, our prior beliefs were driven by sample0 which tuned us to not enforce restrictive priors. For the future, a sensitivity analyses to assess the influence of prior specifications can be undertaken.
-
-% % On implications for total mass
-% % For analyses that infer total masses or mass profiles
-% \textbf{Zach:}
-% Some analyses aim to constrain total masses or mass profiles~\citep[e.g.][]{zahedy2019Characterizing}, typically relying on the average properties of the gas and the total columns.
-% This modeling challenge suggests that these bulk properties are well-recovered for low-ionization $T \sim 10^4$ K gas.
-% \textbf{Jane:}
-% This particular paper of Zahedy's that is cited does take into account separate components of absorption, associate different amounts of HI with each, and derive properties that vary across profiles. It was one of the first, if not the first, paper to do things in this way. There are lots of papers that use averages and associate all the HI with all the metals.  I don't know that we need to discuss this point in this location in the draft.  If we do maybe more/other references should be given.
-
-% % On CMBM handling blending
-% \textbf{Zach:}
-% Worth adding a quick blurb on why CMBM handles blending well?
-% \textbf{Sameer:}
-% The absorption features of doublets/multiplets of a given ion help in identifying blends. By comparing the relative strengths of the absorption in different transitions of the ion with expectations from atomic physics, we are able to mask out blends in the analysis.
 
 \section{Introduction}
 
