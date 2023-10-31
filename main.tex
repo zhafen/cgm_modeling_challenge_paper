@@ -93,30 +93,31 @@
 % If you need two or more lines of authors, add an extra line using \newauthor
 \author[Hafen, Sameer, et al.]{
 \parbox{\textwidth}{
-Zachary Hafen$^{1}$,
-Sameer$^{2,3}$,
-Cameron Hummels$^4$,
-Jane Charlton$^2$,
-Nir Mandelker$^{5, 6}$,
-Nastasha Wijers$^{7, 8}$,
+Zachary Hafen$^{1,2}$,
+Sameer$^{3,4}$,
+Cameron Hummels$^5$,
+Jane Charlton$^3$,
+Nir Mandelker$^{6, 7}$,
+Nastasha Wijers$^{8, 9}$,
 James Bullock$^{1}$,
-Yakov Faerman$^{9}$,
-Nicolas Lehner$^{3}$,
-Jonathan Stern$^{10}$
+Yakov Faerman$^{10}$,
+Nicolas Lehner$^{4}$,
+Jonathan Stern$^{11}$
 } \vspace{0.4cm}\\
 \parbox{\textwidth}{
 % List of institutions
 $^1$ Department of Physics and Astronomy, University of California Irvine, CA 92697, USA \\
-$^{2}$ Department of Astronomy \& Astrophysics, 525 Davey Lab, The Pennsylvania State University, University Park, PA 16802, USA \\
-$^{3}$ Department of Physics \& Astronomy, Nieuwland Science Hall, The University of Notre Dame, Notre Dame, IN 46556, USA \\
-$^4$ TAPIR, California Institute of Technology, Pasadena, CA 91125, USA \\
-$^5$ Racah Institute of Physics, The Hebrew University of Jerusalem,
+$^2$ The Adler Planetarium, 1300 S. Lake Shore Dr., Chicago, Illinois 60605, USA \\
+$^3$ Department of Astronomy \& Astrophysics, 525 Davey Lab, The Pennsylvania State University, University Park, PA 16802, USA \\
+$^4$ Department of Physics \& Astronomy, Nieuwland Science Hall, The University of Notre Dame, Notre Dame, IN 46556, USA \\
+$^5$ TAPIR, California Institute of Technology, Pasadena, CA 91125, USA \\
+$^6$ Racah Institute of Physics, The Hebrew University of Jerusalem,
 Jerusalem 91904, Israel \\
-$^6$ Kavli Institute for Theoretical Physics, Kohn Hall, Santa Barbara, CA 93106, USA\\
-$^7$ Leiden Observatory, Leiden University, PO Box 9513, NL-2300 RA Leiden, The Netherlands \\
-$^8$ Center for Interdisciplinary Exploration and Research in Astrophysics (CIERA), Northwestern University, 1800 Sherman Ave, Evanston, IL 60201, USA \\
-$^9$ Astronomy Department, University of Washington, Seattle, WA 98195, USA \\
-$^{10}$ School of Physics \& Astronomy, Tel Aviv University, Tel Aviv 69978, Israel
+$^7$ Kavli Institute for Theoretical Physics, Kohn Hall, Santa Barbara, CA 93106, USA\\
+$^8$ Leiden Observatory, Leiden University, PO Box 9513, NL-2300 RA Leiden, The Netherlands \\
+$^9$ Center for Interdisciplinary Exploration and Research in Astrophysics (CIERA), Northwestern University, 1800 Sherman Ave, Evanston, IL 60201, USA \\
+$^{10}$ Astronomy Department, University of Washington, Seattle, WA 98195, USA \\
+$^{11}$ School of Physics \& Astronomy, Tel Aviv University, Tel Aviv 69978, Israel
 }
 }
 
@@ -150,7 +151,7 @@ additional components beyond the dominant ones did improve the fit, consistent w
 % Select between one and six entries from the list of approved keywords.
 % Don't make up new ones.
 \begin{keywords}
-galaxies: absorption lines -- galaxies: haloes -- methods: data analysis
+quasars: absorption lines -- galaxies: haloes -- methods: data analysis
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -308,22 +309,6 @@ Throughout the paper $\log$ refers to $\log_{10}$.
 \section{Data generation and parameter estimation}
 \label{s: data generation}
 
-\begin{figure*}
-    \centering
-    \includegraphics[height=0.9\textheight]{figures/summary.pdf}
-    \caption{
-    The source properties (black) used to produce the synthetic absorption systems
-    compared to the best estimates from parameter estimation (blue) across all three of our samples.
-    The lines span the 16th to 84th percentiles of the parameter-estimation posteriors or source data when available.
-    The samples range from uniform clouds to a turbulent mixing zone.
-    For the turbulent mixing zone the thick black line spans the parameter range responsible for $68\%$ of the \ion{H}{I}-absorption.
-    The parameter-estimation best estimates and the source data agree to $\lesssim 0.1$ dex in ( $Z$, $T$, $n_{\rm H}$) for $\gtrsim 90\%$ of the systems,
-    excluding the blinded \texttt{sample0} estimates (red; \S\ref{s: results -- sample0}).
-    The grey lines connect the source clouds and the corresponding estimates.
-    }
-    \label{f: summary}
-\end{figure*}
-
 % Summary
 Participating theorists came from a wide variety of CGM-related backgrounds, from cosmological and idealized simulations to analytic models.
 Drawing on this expertise, theorists produced three mock data samples of increasing sophistication for observers to model:
@@ -401,19 +386,6 @@ Beyond providing the columns and errors on the columns, we informed the observer
     }
     \label{f: sample1 spectrum}
 \end{figure*}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\columnwidth]{figures/sample1/comparison.pdf}
-    \caption{
-    Synthetic data properties for multiple uniform clouds (\texttt{sample1}, black) compared to the distribution of expected values (the posteriors) from parameter estimation (blue).
-    The wider the ``violin'' plots, the larger the value of the posterior at that value.
-    As an example, for sightline 05 the parameter estimation suggests two components with metallicities \metallicity $\sim [ 1, -2]$ and \metallicity $\sim [ 0.5, 1.5 ]$.
-    The numbers above each sightline indicate the actual number of source clouds compared to the estimated number of clouds.
-    The maximum likelihood estimates (the peak values of the posteriors) typically align with the source parameters.
-    }
-    \label{f: sample1 violin}
-\end{figure}
 
 % Relative to sample0
 This sample was designed to test how well multiple clouds could be modeled.
@@ -520,7 +492,7 @@ The only additional information provided to observers was that they could assume
     \centering
     \includegraphics[width=\textwidth]{figures/sample2/violin_rerun.pdf}
     \caption{
-    The distributions of $v_{\rm LOS}$, $Z$, $T$, and $n_{\rm H}$ for the synthetic source data (black) compared to the full posteriors from parameter estimation (blue).
+    The distributions of $v_{\rm LOS}$, $Z$, $T$, and $n_{\rm H}$ for the synthetic source data (\texttt{sample2}, black) compared to the full posteriors from parameter estimation (blue).
     The width of the violin plots scales with $N_{\ion{H}{I}}$.
     The parameter estimation accurately describes the properties of the gas responsible for the majority of the absorption.
     }
@@ -531,7 +503,7 @@ The only additional information provided to observers was that they could assume
     \centering
     \includegraphics[width=\textwidth]{figures/sample2/violin_vs_components_rerun.pdf}
     \caption{
-    The distributions of $v_{\rm LOS}$, $Z$, $T$, and $n_{\rm H}$ for the synthetic source data (black) compared to the best estimates for individual components comprising the parameter estimation.
+    The distributions of $v_{\rm LOS}$, $Z$, $T$, and $n_{\rm H}$ for the synthetic source data (\texttt{sample2}, black) compared to the best estimates for individual components comprising the parameter estimation.
     Each point is the maximum-likelihood estimate (MLE) of an individual component,
     and the associated bars enclose the 16th to 84th percentiles of the posterior.
     The width of the violin plots and the opacity of the points are scaled \textit{logarithmically} with $N_{\ion{H}{I}}$,
@@ -557,7 +529,7 @@ This represents a cold stream tracing a cosmic-web filament as it flows towards 
 The initial density in the stream is $n_{\rm H,s}=10^{-2}$ cm$^{-3}$ and the density in the background is smaller by a factor of $\delta=100$, $n_{\rm H,b}=10^{-4}$ cm$^{-3}$.
 The temperature in the cold stream is set by cooling-heating equilibrium with a $z=2$ \cite{haardt1996Radiative} UV background with no self-shielding for dense gas, resulting in $T_{\rm s}\sim 1.5 \times 10^4$ K.
 The hot and cold gas are initially in pressure equilibrium, which sets the temperature in the hot phase, $T_{\rm b}\sim 1.5 \times 10^6$ K.
-Note that at this temperature there is insufficient rest-frame UV absorption to accurately model the hot phase, which affected the parameter estimation.
+Note that at this temperature there is insufficient rest-frame UV absorption to accurately model the hot phase, which affected the parameter estimation (see \S\ref{s: discussion -- cloud structure -- recovery}).
 The stream is initialized with a metallicity of $0.03 Z_\odot$ (with $Z_\odot = 0.02$), while the background is initialized with a metallicity of $0.1 Z_\odot$.
 The individual abundances are set to solar composition, a fiducial choice for many simulations.
 The stream initially flows parallel to its axis with a velocity equal to the sound speed in the hot background.
@@ -661,6 +633,22 @@ Given that the $b$ parameters of the metal lines and the \ion{H}{I} must be self
 \section{Results}
 \label{s: results}
 
+\begin{figure*}
+    \centering
+    \includegraphics[height=0.9\textheight]{figures/summary.pdf}
+    \caption{
+    The source properties (black) used to produce the synthetic absorption systems
+    compared to the best estimates from parameter estimation (blue) across all three of our samples.
+    The lines span the 16th to 84th percentiles of the parameter-estimation posteriors or source data when available.
+    The samples range from uniform clouds to a turbulent mixing zone.
+    For the turbulent mixing zone the thick black line spans the parameter range responsible for $68\%$ of the \ion{H}{I}-absorption.
+    The parameter-estimation best estimates and the source data agree to $\lesssim 0.1$ dex in ( $Z$, $T$, $n_{\rm H}$) for $\gtrsim 90\%$ of the systems,
+    excluding the blinded \texttt{sample0} estimates (red; \S\ref{s: results -- sample0}).
+    The grey lines connect the source clouds and the corresponding estimates.
+    }
+    \label{f: summary}
+\end{figure*}
+
 % Summary of averages
 We discuss the per-sample results in the following subsections, while Figure~\ref{f: summary} summarizes some of the key results.
 The overlap of points in Figure~\ref{f: summary} reflects the agreement between the parameter-estimation best estimates and the source properties.
@@ -671,6 +659,19 @@ and when there are disagreements, the estimated uncertainty is typically suffici
 
 \subsection{Column densities of uniform clouds --- \texttt{sample0}}
 \label{s: results -- sample0}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{figures/sample1/comparison.pdf}
+    \caption{
+    Synthetic data properties for multiple uniform clouds (\texttt{sample1}, black) compared to the distribution of expected values (the posteriors) from parameter estimation (blue).
+    The wider the ``violin'' plots, the larger the value of the posterior at that value.
+    As an example, for sightline 05 the parameter estimation suggests two components with metallicities \metallicity $\sim [ 1, -2]$ and \metallicity $\sim [ 0.5, 1.5 ]$.
+    The numbers above each sightline indicate the actual number of source clouds compared to the estimated number of clouds.
+    The maximum likelihood estimates (the peak values of the posteriors) typically align with the source parameters.
+    }
+    \label{f: sample1 violin}
+\end{figure}
 
 % Intro
 The left side of Figure~\ref{f: summary} shows the results of parameter estimation for \texttt{sample0}.
@@ -986,10 +987,12 @@ This may suggest that estimating the parameters of poorly-constrained clouds wit
 Throughout the analysis, the participating observers and theorists assumed ionization equilibrium, with contributions from both collisional- and photo-ionization.
 On the data-generation side, this is a common assumption in cosmological and idealized hydrodynamical simulations, largely driven by the challenge in modeling non-equilibrium chemistry~\citep[e.g.][]{richings2014Nonequilibrium}.
 However, in some cases non-equilibrium chemistry can have a significant effect on the properties of absorbing gas in the CGM, including providing one explanation for the observed bimodality in \ion{O}{VI} around low-redshift galaxies~\citep{oppenheimer2016Bimodality}.
-The effect of ionization equilibrium has also been studied in focused simulations of turbulent mixing layers~\citep[e.g.][]{ji2019Simulations}.
+The effect of ionization equilibrium has also been studied in focused simulations of turbulent mixing layers~\citep[e.g.][]{ji2019Simulations} and outflows~\citep{gray2019Nonequilibrium}.
+On the observational side, non-equilibrium effects may be necessary to explain observed ion column density ratios~\citep[e.g.][]{Wakker2012, bordoloi2016Formation}.
 Note that the ionization and recombination timescales are different for every ion.
 It is possible that at a given ($Z$, $T$, $n_{\rm H}$) some ions are ionization equilibrium while others are not.
-The effect of assuming ionization equilibrium on parameter estimation is a promising avenue of further research.
+The effect of assuming ionization equilibrium on parameter estimation is a promising avenue of further research,
+and may make a critical difference in the ability to recover gas properties accurately.
 
 \subsubsection{Absorption modeling ``by hand''}
 
@@ -1090,11 +1093,11 @@ We thank J. Xavier Prochaska for proposing the challenge.
 ZH was supported by a Gary A. McCue postdoctoral fellowship at UC Irvine.
 CBH is supported by NSF grant AAG-1911233, and NASA grants HST-AR-15800, HST-AR-16633, and HST-GO-16703.
 S and JC were supported by HST-AR-16607.
-NM acknowledges support from ISF grant 3061/21 and BSF grant 2020302, and partial support from the Gordon and Betty Moore Foundation through Grant GBMF7392 and from the National Science Foundation under Grant No. NSF PHY1748958. 
+NM acknowledges support from ISF grant 3061/21 and BSF grant 2020302, and partial support from the Gordon and Betty Moore Foundation through Grant GBMF7392. 
 NW was supported in part by a CIERA Postdoctoral Fellowship.
 JSB was supported by NSF grant AST-1910346.
 NL acknowledges support from NASA through grant HST-AR-15634 from the Space Telescope Science Institute (STScI), which is operated by the Association of Universities for Research in Astronomy, Incorporated, under NASA contract NAS5-26555.
-JS was supported by the Israel Science Foundation (grant No. 2584/21) and by the German Science Foundation via DIP grant STE 1869/2-1 GE 625/17-1. 
+JS was supported by the Israel Science Foundation (grant No. 2584/21). 
 This research was supported in part by the National Science Foundation under Grant No. NSF PHY-1748958.
 Some computations for this research were performed on the Pennsylvania State University's Institute for Computational and Data Sciences' Roar supercomputer.
 This work used the DiRAC@Durham facility managed by the Institute for Computational Cosmology on behalf of the STFC DiRAC HPC Facility (www.dirac.ac.uk). The equipment was funded by BEIS capital funding via STFC capital grants ST/K00042X/1, ST/P002293/1, ST/R002371/1 and ST/S002502/1, Durham University and STFC operations grant ST/R000832/1.
@@ -1108,7 +1111,7 @@ The EAGLE simulation data \citep{EagleTeam2017} and halo catalogues \citep{McAlp
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
 
-% The best way to enter references is to use BibTeX:
+% The best way to enter references is to use TeX:
 
 \bibliographystyle{mnras}
 \bibliography{hafen_references, wijers_references, newerref} % if your bibtex file is called example.bib
@@ -1140,6 +1143,26 @@ We demonstrate this in Figure~\ref{f: error vs error},
 which compares the per-sightline disagreement between the estimated and provided properties to the disagreement between the estimated and provided column densities, averaged across all fit ions. 
 The revised estimates are in much better agreement with the actual properties, but the revised ion column densities are adjusted by only $\lesssim 0.2$ dex relative to the column densities modeled blind.
 More broadly, this exemplifies the issue where multiple inconsistent parameter estimates provide equally good descriptions of the data.
+
+\section{\texttt{sample1} parent distribution}
+\label{a: sample1 parent}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/sample1/clouddist_Temperature_Density.png}
+    \includegraphics[width=0.45\textwidth]{figures/sample1/clouddist_Metallicity_HIColumn.png}
+    \caption{
+    Distributions of of CGM gas properties in the EAGLE simulations, and the distributions from which we sampled our clouds for \texttt{sample1} (overlaid as points).
+    The distributions are 4-dimensional (temperature, density, metallicity, and $N_{\ion{H}{I}}$), and we show the marginal distributions of two of these dimensions per panel.
+    The color scales logarithmically with probability, with higher probabilities being darker.
+    }
+    \label{f: sample1 parent}
+\end{figure*}
+
+Figure~\ref{f: sample1 parent} shows the properties of CGM gas in the EAGLE simulations, and the properties of the clouds passed to observers.
+Both the histogram (background distribution) and the clouds (points) are colored by the PDF probability of that combination of properties,
+but the histograms show the probabilities for the marginal distribution while the clouds show the probabilities according to the properties in all four dimensions.
+Data was sampled with \texttt{kalepy}~\citep{kelley2021Kalepy}.
 
 \section{\texttt{sample2} blinded parameter estimation}
 \label{a: sample2 blinded}
@@ -1188,6 +1211,7 @@ and provided synthetic observations mimicking COS observations of gas at $z=0.13
 The concept was to generate absorption from $z=0.13$ gas,
 independent of the mechanisms responsible for setting the properties of the gas.
 This proved to complicate the interpretation of the results, so we provided a revised set of spectra to the observers, for them to rerun their analysis on.
+In particular, because the gas was simulated at $z=2$ but ``observed'' at $z=0.13$, it was unclear if any error in recovering the true properties was due to error in the modeling or an artifact of the mismatched redshifts.
 
 % Revised sample
 The revised \texttt{sample2} synthetic spectra used a $z=2$ ionization table,
